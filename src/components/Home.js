@@ -306,28 +306,7 @@ proposals in hours.
         <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8">
           <div>
             <div className="text-purple-600 font-bold text-xl mb-6">Ai evoked</div>
-            <div className="flex space-x-4 mb-6">
-              <a href="#" className="text-gray-600 hover:text-purple-600">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111 1.022-.254 1.022-.577v-2.123c-3.576.846-4.254-1.696-4.254-1.696-.577-.745-.745-1.696-.745-2.647 0-.951.168-1.897.745-2.647 4.897-5.302 12.674-5.302 17.571 0 .577.75.745 1.696.745 2.647 0 .951-.168 1.897-.745 2.647-.577.745-1.022 1.696-1.022 2.647v2.123c0 .323.423.688 1.022.577 4.769-1.587 8.207-6.085 8.207-11.387 0-6.627-5.374-12-12-12z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-600 hover:text-purple-600">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.991 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.978.923-1.978 1.875v2.23h3.357l-.53 3.47h-2.827v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-600 hover:text-purple-600">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.55v-5.86c0-1.405-1.139-2.544-2.544-2.544S11.799 13.187 11.799 14.592v5.86h-3.55V9.55h3.55v1.625c.51-.78 1.45-1.29 2.544-1.29 1.74 0 3.145 1.405 3.145 3.145v6.322zM6.677 9.165c-1.144 0-2.07-.926-2.07-2.07 0-1.144.926-2.07 2.07-2.07s2.07.926 2.07 2.07c0 1.144-.926 2.07-2.07 2.07zm1.778 11.287h-3.55V9.55h3.55v10.902z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-600 hover:text-purple-600">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.55v-5.86c0-1.405-1.139-2.544-2.544-2.544S11.799 13.187 11.799 14.592v5.86h-3.55V9.55h3.55v1.625c.51-.78 1.45-1.29 2.544-1.29 1.74 0 3.145 1.405 3.145 3.145v6.322zM6.677 9.165c-1.144 0-2.07-.926-2.07-2.07 0-1.144.926-2.07 2.07-2.07s2.07.926 2.07 2.07c0 1.144-.926 2.07-2.07 2.07zm1.778 11.287h-3.55V9.55h3.55v10.902z"/>
-                </svg>
-              </a>
-            </div>
+           
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               <span className="text-xs text-gray-600">All systems operational</span>
