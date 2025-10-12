@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../Images/Logo.jpg';
 
 const Home = () => {
   return (
@@ -295,7 +296,15 @@ proposals in hours.
       <footer className="border-t border-gray-100 px-6 py-12">
         <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8">
           <div>
-            <div className="text-purple-600 font-bold text-xl mb-6">Ai evoked</div>
+            <div className=" font-bold text-xl mb-6">
+               <Link to="/" className="flex items-center">
+                        <img 
+                          src= {Logo}
+                          alt="Openlayer" 
+                          className="h-16 w-auto"
+                        />
+                      </Link>
+            </div>
            
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
