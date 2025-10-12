@@ -1,13 +1,14 @@
 import React from 'react';
 import Logo from '../Images/Logo.png';
 import { Link } from 'react-router-dom';
-
+import AnimatedSection from '../components/AnimatedSection';
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: 'rgba(4, 1, 14, 0.9)' }}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
  
       
       {/* Hero Section */}
+      <AnimatedSection>
       <section className="mt-24 pt-24 pb-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
           {/* Left Content */}
@@ -111,7 +112,9 @@ const Home = () => {
         
     
       </section>
-      
+      </AnimatedSection>
+
+      <AnimatedSection delay={100}>
       {/* Trusted by Section */}
       <section className="py-16 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
@@ -134,8 +137,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+      </AnimatedSection>
       {/* Second Section */}
+      <AnimatedSection delay={200}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
           {/* Left Content */}
@@ -226,8 +230,10 @@ const Home = () => {
           </div>
         </div> 
       </section>
+      </AnimatedSection>
 
       {/* Third Section: Monitor Production Requests */}
+      <AnimatedSection delay={300}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
           {/* Left Content */}
@@ -334,8 +340,10 @@ const Home = () => {
         </div>
         
       </section>
-      
+      </AnimatedSection>
+
       {/* Fourth Section: Automated Checks for Data Quality */}
+      <AnimatedSection delay={400}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
           {/* Left Content */}
@@ -421,8 +429,10 @@ SLAs
         
      
       </section>
+       </AnimatedSection>
 
       {/* Fifth Section: Effortless Governance */}
+      <AnimatedSection delay = {500}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
         
@@ -571,8 +581,10 @@ SLAs
 
        
       </section>
+      </AnimatedSection>
 
       {/* Sixth Section: Designed for Builders */}
+      <AnimatedSection delay = {600}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
           {/* Header - Centered */}
@@ -651,7 +663,10 @@ SLAs
 
    
       </section>
+      </AnimatedSection>
+
       {/* Seventh Section: Testimonials */}
+      <AnimatedSection delay = {700}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
           {/* Header */}
@@ -716,8 +731,10 @@ SLAs
           </div>
         </div>
       </section>
+    </AnimatedSection>
 
       {/* Eighth Section: Openlayer in Action */}
+       <AnimatedSection delay = {800}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
           {/* Header */}
@@ -840,8 +857,10 @@ SLAs
           </div>
         </div>
       </section>
+     </AnimatedSection>
 
       {/* Ninth Section: Templates */}
+      <AnimatedSection delay = {900}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
           {/* Header */}
@@ -956,8 +975,9 @@ SLAs
           </div>
         </div>
       </section>
-
+      </AnimatedSection>
       {/* Tenth Section: Final CTA */}
+      <AnimatedSection delay = {1000}>
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-black/30">
         <div className="container mx-auto text-center">  
           <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
@@ -976,7 +996,8 @@ SLAs
           </div>
         </div>
       </section>
-
+      </AnimatedSection>
+      
  {/* Footer */}
  <footer className="border-t border-gray-100 px-6 py-12">
   <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8">
