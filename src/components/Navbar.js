@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from "../Images/Logo.jpg"
+import Logo from "../Images/Logo.jpg";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Product', href: '/product' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Documentation', href: '/documentation' },
-    { name: 'Company', href: '/company' },
-    { name: 'Pricing', href: '/pricing' },
+    { name: 'Product', href: '/' },
+    { name: 'Resources', href: '/' },
+    { name: 'Documentation', href: '/' },
+    { name: 'Company', href: '/' },
+    { name: 'Pricing', href: '/' },
   ];
 
   return (
     <header className="border-b border-gray-100 px-4 sm:px-6 py-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to={Logo} className="flex items-center">
+        <Link to="/" className="flex items-center">
+          <img 
+            src= {Logo}
+            alt="Openlayer" 
+            className="h-16 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -101,7 +107,7 @@ const Navbar = () => {
               ))}
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-100">
                 <Link
-                  to="/login"
+                  to="/"
                   className="text-gray-700 hover:text-purple-600 py-2 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >

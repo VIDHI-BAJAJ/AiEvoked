@@ -8,14 +8,21 @@ const Home = () => {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              AI governance platform for trust and control
+              Turn More Leads into Booked Calls & Closed Deals—Automatically
             </h1>
             <p className="text-lg text-gray-700 mb-8">
-              Automate compliance, behavioral testing, and security to detect and prevent risks like prompt injections, bias, hallucinations, and PII leakage before they spread.
+             Automate+ (ops & revenue), SalesPilot (AI sales Autopilot), and Custom
+Automations (enterprise). Save 40+ hours/week, reply to 90% of leads in 2 min, ship
+proposals in hours.
             </p>
-            <button className="bg-purple-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-purple-700 transition">
-              Let's talk AI governance
+            <div className = "flex flex-row">
+               <button className="bg-purple-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-purple-700 transition">
+             Book a 15-min teardown
             </button>
+            <button className="bg-purple-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-purple-700 transition ml-10">
+             See live demo
+            </button>
+            </div>
           </div>
           <div className="relative">
             <div className="bg-white rounded-xl p-6 shadow-lg">
@@ -76,7 +83,7 @@ const Home = () => {
       {/* Trusted by Section */}
       <section className="py-12 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-center text-sm text-gray-500 mb-8">Trusted by top AI teams</h2>
+          <h2 className="text-center text-sm text-gray-500 mb-8">Trusted by performance-led agencies & venture-backed teams</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div className="flex justify-center">
               <img src="https://via.placeholder.com/120x40?text=rootly" alt="Rootly" className="h-10" />
@@ -100,79 +107,22 @@ const Home = () => {
         </div>
       </section>
 
-      {/* From Prototype to Production Section */}
-      <section className="py-20 px-6 md:px-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-sm text-purple-600 mb-2">Offline evaluation</div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">From prototype to production. Safely.</h2>
-            <p className="text-lg text-gray-700 mb-8">
-              Across ML and LLM systems, Openlayer supports you from day one, ensuring a smooth transition from prototype to production through ongoing testing.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore for LLMs →</a>
-              <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore for traditional ML →</a>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-2">
-                  <img src="https://via.placeholder.com/20" alt="Hurb" className="w-5 h-5" />
-                  <span className="text-sm font-medium">Hurb</span>
-                </div>
-                <div className="text-xs text-gray-500">4 of 4 Test results ready</div>
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                  <div className="flex items-center space-x-2">
-                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
-                    <span className="text-sm">Outputs do not contain PII</span>
-                  </div>
-                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Passing</span>
-                </div>
-                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                  <div className="flex items-center space-x-2">
-                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
-                    <span className="text-sm">Surface diverse recommendations</span>
-                  </div>
-                  <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Failing</span>
-                </div>
-                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                  <div className="flex items-center space-x-2">
-                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
-                    <span className="text-sm">Time-to-first-token 100ms</span>
-                  </div>
-                  <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Failing</span>
-                </div>
-                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                  <div className="flex items-center space-x-2">
-                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
-                    <span className="text-sm">Ensure answers in PT-BR</span>
-                  </div>
-                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Passing</span>
-                </div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
-                <div>Waiting for results...</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Monitor Production Requests Section */}
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="text-sm text-purple-600 mb-2">Observability and real-time guardrails</div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Monitor production requests with ease</h2>
+            <div className="text-sm text-purple-600 mb-2">Automate+ (Revenue Growth Engine)</div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Automate+ (Revenue Growth Engine)</h2>
             <p className="text-lg text-gray-700 mb-8">
-              Observe and monitor your AI systems in real-time with Openlayer. Catch issues in production and fix your AI within a matter of minutes.
+             Replies in 2 min (90% of inbound), +20–40% show rate, proposals in hours, revive
+~10% of cold pipeline.
+
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore for LLMs →</a>
-              <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore for traditional ML →</a>
+              <a href="#" className="text-sm text-gray-700 hover:text-purple-600"> See the 7-day rollout →</a>
+              {/* <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore for traditional ML →</a> */}
             </div>
           </div>
           <div className="relative">
@@ -226,12 +176,12 @@ const Home = () => {
       <section className="py-20 px-6 md:px-12 bg-gray-50">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="text-sm text-purple-600 mb-2">Data quality</div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Automated checks for data quality</h2>
+            <div className="text-sm text-purple-600 mb-2">SalesPilot</div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">SalesPilot</h2>
             <p className="text-lg text-gray-700 mb-8">
-              Connect your data pipelines and automatically test for schema changes, drift, and anomalies, so you catch bad data before it reaches your models.
+            AI lead triage, human-like follow-ups, meeting orchestration, pipeline hygiene.
             </p>
-            <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore data quality monitoring →</a>
+            <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Watch a 60-sec demo →</a>
           </div>
           <div className="relative">
             <div className="bg-white rounded-xl p-6 shadow-lg">
@@ -290,80 +240,64 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Effortless Governance Section */}
-      <section className="py-20 px-6 md:px-12">
+    
+          {/* From Prototype to Production Section */}
+      <section className="py-20 px-6 md:px-12 bg-gray-50">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="text-sm text-purple-600 mb-2">Automated compliance</div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Effortless governance</h2>
+            <div className="text-sm text-purple-600 mb-2">Custom Automations</div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Custom Automations</h2>
             <p className="text-lg text-gray-700 mb-8">
-              Align AI systems with standards like ISO/IEC 42001, OWASP, NIST, and the EU AI Act for worry-free compliance.
+             Bespoke workflows across CRMs, ads, finance, support; SOC-friendly delivery & SLAs.
             </p>
-            <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Explore governance and compliance →</a>
+            <div className="flex space-x-6">
+              <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Scope a build →</a>
+            </div>
           </div>
           <div className="relative">
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center">
-                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                    </svg>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-2">
+                  <img src="https://via.placeholder.com/20" alt="Hurb" className="w-5 h-5" />
+                  <span className="text-sm font-medium">Hurb</span>
+                </div>
+                <div className="text-xs text-gray-500">4 of 4 Test results ready</div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Outputs do not contain PII</span>
                   </div>
+                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Passing</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Surface diverse recommendations</span>
+                  </div>
+                  <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Failing</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Time-to-first-token 100ms</span>
+                  </div>
+                  <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Failing</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Ensure answers in PT-BR</span>
+                  </div>
+                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Passing</span>
                 </div>
               </div>
-              <div className="flex justify-center space-x-4 mb-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <div className="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">
-                  All Checks Passed
-                </div>
+              <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
+                <div>Waiting for results...</div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-
-
-      {/* CTA Section */}
-      <section className="py-20 px-6 md:px-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="w-20 h-20 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-            </svg>
-          </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Stop guessing. Ship with confidence.</h2>
-          <p className="text-lg text-gray-700 mb-8">The automated AI evaluation and monitoring platform.</p>
-          <button className="bg-purple-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-purple-700 transition">
-            Request demo
-          </button>
         </div>
       </section>
 
