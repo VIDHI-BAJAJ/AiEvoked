@@ -3,26 +3,6 @@ import React from 'react';
 const Home = () => {
   return (
       <div className="bg-white font-sans">
-      {/* Header */}
-      <header className="border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center space-x-8">
-          <div className="text-purple-600 font-bold text-xl">Openlayer</div>
-          <nav className="hidden md:flex space-x-6 text-sm text-gray-700">
-            <a href="#" className="hover:text-purple-600">Product</a>
-            <a href="#" className="hover:text-purple-600">Resources</a>
-            <a href="#" className="hover:text-purple-600">Documentation</a>
-            <a href="#" className="hover:text-purple-600">Company</a>
-            <a href="#" className="hover:text-purple-600">Pricing</a>
-          </nav>
-        </div>
-        <div className="flex items-center space-x-4">
-          <a href="#" className="text-sm text-gray-700 hover:text-purple-600">Login</a>
-          <button className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-700 transition">
-            Request demo
-          </button>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="py-20 px-6 md:px-12 bg-gradient-to-r from-purple-50 to-indigo-50">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -391,7 +371,7 @@ const Home = () => {
       <footer className="border-t border-gray-100 px-6 py-12">
         <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8">
           <div>
-            <div className="text-purple-600 font-bold text-xl mb-6">Openlayer</div>
+            <div className="text-purple-600 font-bold text-xl mb-6">Ai evoked</div>
             <div className="flex space-x-4 mb-6">
               <a href="#" className="text-gray-600 hover:text-purple-600">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
