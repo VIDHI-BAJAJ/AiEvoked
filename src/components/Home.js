@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Logo from '../Images/Logo.png';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 const Home = () => {
+
+  const [testProgress, setTestProgress] = useState(0);
+
+  // Simulate test completion over time
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTestProgress(prev => {
+        if (prev < 4) return prev + 1;
+        clearInterval(timer);
+        return prev;
+      });
+    }, 1500); // Each test completes every 1.5 seconds
+
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
  
@@ -32,83 +47,128 @@ const Home = () => {
           </div>
           
           {/* Right Content - Test Results Card */}
-          <div className="lg:w-1/2 relative">
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <img src="https://via.placeholder.com/32" alt="eBay" className="w-8 h-8 rounded" />
-                <div className="ml-3">
-                  <span className="font-semibold">eBay</span>
-                  <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-                      </svg>
-                    </div>
-                    <span>Optimal F1 and precision</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-                      </svg>
-                    </div>
-                    <span>LLM accurately summarizes context</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-                      </svg>
-                    </div>
-                    <span>Prevent fake product prompts</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-                      </svg>
-                    </div>
-                    <span>P99 latency  {'<'} 5000ms</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-              </div>
-              
-              {/* Stats */}
-              <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-700">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-1">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">22 tests passing</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <span className="text-sm">10 tests failing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="lg:w-1/2 relative">
+  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
+    {/* Header */}
+    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
+    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
+      <img src="https://via.placeholder.com/32" alt="eBay" className="w-8 h-8 rounded" />
+      <div className="ml-3">
+        <span className="font-semibold">eBay</span>
+        <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
+      </div>
+    </div>
+
+    {/* Timeline Content */}
+    <div className="relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
+      
+      {/* Timeline Item 1 - Optimal F1 and precision */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
+        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Optimal F1 and precision</span>
+            {testProgress >= 1 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
           </div>
         </div>
+      </div>
+
+      {/* Timeline Item 2 - LLM accurately summarizes context */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
+        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>LLM accurately summarizes context</span>
+            {testProgress >= 2 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 3 - Prevent fake product prompts */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
+        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Prevent fake product prompts</span>
+            {testProgress >= 3 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 4 - P99 latency < 5000ms */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
+        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>P99 latency {'<'} 5000ms</span>
+            {testProgress >= 4 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Summary Stats - Appears AFTER all timeline items */}
+      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="text-sm">22 tests passing</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span className="text-sm">10 tests failing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
         
     
       </section>
