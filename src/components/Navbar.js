@@ -1,127 +1,67 @@
-import React, { useState } from 'react';
+// src/components/navbar.js
+import React, { useState, useEffect } from 'react';
+import Logo from "../Images/Logo.png";
 import { Link } from 'react-router-dom';
-import Logo from "../Images/Logo.jpg";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const navLinks = [
-    { name: 'Product', href: '/' },
-    { name: 'Resources', href: '/' },
-    { name: 'Documentation', href: '/' },
-    { name: 'Company', href: '/' },
-    { name: 'Pricing', href: '/' },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="border-b border-gray-100 px-4 sm:px-6 py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-md shadow-lg' : 'bg-black/90 backdrop-blur-md shadow-lg'}`}>
+      {/* Announcement Bar */}
+      <div className="bg-black border-b border-gray-800 py-2 px-4 text-center text-sm">
+        <p className="text-white">
+          Announcing our $14.5M Series A!{' '}
+          <span className="text-purple-400 cursor-pointer hover:underline">Read the blog post {'>'}</span>
+        </p>
+      </div>
+      
+      {/* Main Navigation */}
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img 
+        <div className="flex items-center space-x-2">
+          <div className="">
+          </div>
+          <Link to="/" className="flex items-center">
+         <img 
             src= {Logo}
             alt="Openlayer" 
             className="h-16 w-auto"
           />
         </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              className="text-sm text-gray-700 hover:text-purple-600 transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
-          <Link
-            to="/login"
-            className="text-sm text-gray-700 hover:text-purple-600 transition-colors"
-          >
-            Login
-          </Link>
-          <button className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-700 transition-colors">
-            Request demo
+        </div>
+        
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center space-x-8">
+          <a href="#" className="text-white hover:text-purple-400 transition-colors">Product</a>
+          <a href="#" className="text-white hover:text-purple-400 transition-colors">Resources</a>
+          <a href="#" className="text-white hover:text-purple-400 transition-colors">Documentation</a>
+          <a href="#" className="text-white hover:text-purple-400 transition-colors">Company</a>
+          <a href="#" className="text-white hover:text-purple-400 transition-colors">Pricing</a>
+        </div>
+        
+        {/* Right Side Buttons */}
+        <div className="flex items-center space-x-4">
+          <a href="#" className="text-white hover:text-purple-400 transition-colors">Login</a>
+          <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
+            Request demo {'>'}
           </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-700"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden mt-4 pb-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col space-y-4 pt-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="text-gray-700 hover:text-purple-600 py-2 transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="flex flex-col space-y-3 pt-4 border-t border-gray-100">
-                <Link
-                  to="/"
-                  className="text-gray-700 hover:text-purple-600 py-2 transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Login
-                </Link>
-                <button className="bg-purple-600 text-white px-4 py-2 rounded-full font-medium hover:bg-purple-700 transition-colors">
-                  Request demo
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
+    </nav>
   );
 };
 
