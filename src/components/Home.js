@@ -60,16 +60,16 @@ const Home = () => {
     </div>
 
     {/* Timeline Content */}
-    <div className="relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
+    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
       
       {/* Timeline Item 1 - Optimal F1 and precision */}
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
       >
-        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
           testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
-        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
           </svg>
@@ -89,9 +89,9 @@ const Home = () => {
         className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
       >
-        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
           testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
-        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
           </svg>
@@ -111,9 +111,9 @@ const Home = () => {
         className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
       >
-        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
           testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
-        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
           </svg>
@@ -133,9 +133,9 @@ const Home = () => {
         className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
       >
-        <div className={`absolute left-3 w-6 h-6 bg-black border-2 ${
+           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
           testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
-        } rounded-full flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
@@ -199,6 +199,7 @@ const Home = () => {
       </section>
       </AnimatedSection>
       {/* Second Section */}
+
       <AnimatedSection delay={200}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
@@ -220,74 +221,135 @@ const Home = () => {
           </div>
           
           {/* Right Content - Test Results Card */}
-          <div className="lg:w-1/2 relative">
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-400">Environment</span>
-                  <span className="bg-yellow-800 text-yellow-200 text-xs px-2 py-1 rounded">Development</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center mb-4">
-                <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
-                <div className="ml-3">
-                  <span className="font-semibold">Hurb</span>
+<div className="lg:w-1/2 relative">
+  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
+<h4 className="text-center mb-4">
+  Environment{" "}
+  <span
+    className="px-2 py-1 rounded text-[#EDA430] bg-[linear-gradient(90deg,rgba(237,164,48,0.10)_0%,rgba(237,164,48,0.02)_100%)]"
+  >
+    Development
+  </span>
+</h4>
+    {/* Header */}
+    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
+    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
+      <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
+      <div className="ml-3">
+        <span className="font-semibold">Hurb</span>
                   <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 6v.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                      </svg>
-                    </div>
-                    <span>Outputs do not contain PII</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                      </svg>
-                    </div>
-                    <span>Surface diverse recommendations</span>
-                  </div>
-                  <span className="text-red-500 text-sm font-medium px-2 py-1 bg-red-900/30 rounded">Failing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2h3.28a1 1 0 01.806.57l1.954 4.276a1 1 0 01-.806.806L7.28 10H4a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                      </svg>
-                    </div>
-                    <span>Time-to-first-token  {'<'} 100ms</span>
-                  </div>
-                  <span className="text-red-500 text-sm font-medium px-2 py-1 bg-red-900/30 rounded">Failing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.806.57l1.954 4.276a1 1 0 01-.806.806L7.28 10H4a2 2 0 01-2-2V5zM3 10a2 2 0 012-2h3.28a1 1 0 01.806.57l1.954 4.276a1 1 0 01-.806.806L7.28 15H4a2 2 0 01-2-2V10zM3 15a2 2 0 012-2h3.28a1 1 0 01.806.57l1.954 4.276a1 1 0 01-.806.806L7.28 20H4a2 2 0 01-2-2v-5z" />
-                      </svg>
-                    </div>
-                    <span>Ensure answers in PT-BR</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-              </div>
-            </div>
+      </div>
+    </div>
+
+    {/* Timeline Content */}
+    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
+      
+      {/* Timeline Item 1 - Optimal F1 and precision */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
+        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Outputs do not contain PII</span>
+            {testProgress >= 1 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
           </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 2 - LLM accurately summarizes context */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Surface diverse recommendations</span>
+            {testProgress >= 2 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 3 - Prevent fake product prompts */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Time-to-first-token {'<'} 100ms </span>
+            {testProgress >= 3 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 4 - P99 latency < 5000ms */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Ensure answers in PT-BR</span>
+            {testProgress >= 4 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Summary Stats - Appears AFTER all timeline items */}
+      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="text-sm">22 tests passing</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span className="text-sm">10 tests failing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
         </div> 
       </section>
       </AnimatedSection>
@@ -313,90 +375,135 @@ const Home = () => {
           </div>
           
           {/* Right Content - Test Results Card */}
-          <div className="lg:w-1/2 relative">
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-400">Environment</span>
-                  <span className="bg-green-800 text-green-200 text-xs px-2 py-1 rounded">Production</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center mb-4">
-                <img src="https://via.placeholder.com/32" alt="Cutshort" className="w-8 h-8 rounded" />
-                <div className="ml-3">
-                  <span className="font-semibold">Cutshort</span>
+         <div className="lg:w-1/2 relative">
+  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
+<h4 className="text-center mb-4">
+  Environment{" "}
+  <span
+    className="px-2 py-1 rounded text-[#EDA430] bg-[linear-gradient(90deg,rgba(237,164,48,0.10)_0%,rgba(237,164,48,0.02)_100%)]"
+  >
+    Development
+  </span>
+</h4>
+    {/* Header */}
+    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
+    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
+      <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
+      <div className="ml-3">
+        <span className="font-semibold">Cutshort</span>
                   <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 6v.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                      </svg>
-                    </div>
-                    <span>Context precision > 0.9</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-                      </svg>
-                    </div>
-                    <span>Outputs are in JSON</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                      </svg>
-                    </div>
-                    <span>LLM score avoids discrimination</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 bg-gray-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-                      </svg>
-                    </div>
-                    <span>Average latency {"<"} 0.5s</span>
-                  </div>
-                  <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-              </div>
-              
-              {/* Real-time status */}
-              <div className="mt-6 pt-4 border-t border-gray-700 flex items-center">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm">Cutshort receiving real-time requests</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Timeline indicator dots below card */}
-            <div className="flex justify-center mt-6 space-x-3">
-              {[1,2,3,4,5].map((i) => (
-                <div key={i} className="w-4 h-4 bg-gray-700 rounded border border-gray-500"></div>
-              ))}
-            </div>
+      </div>
+    </div>
+
+    {/* Timeline Content */}
+    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
+      
+      {/* Timeline Item 1 - Optimal F1 and precision */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
+        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Context precision {'>'} 0.9</span>
+            {testProgress >= 1 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
           </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 2 - LLM accurately summarizes context */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Outputs are in JSON</span>
+            {testProgress >= 2 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 3 - Prevent fake product prompts */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>LLM score avoids discrimination</span>
+            {testProgress >= 3 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 4 - P99 latency < 5000ms */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Average latency {'<'} 0.5s</span>
+            {testProgress >= 4 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Summary Stats - Appears AFTER all timeline items */}
+      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="text-sm">22 tests passing</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span className="text-sm">10 tests failing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
         </div>
         
       </section>
@@ -422,227 +529,140 @@ SLAs
           </div>
           
           {/* Right Content - Data Quality Visualization */}
-          <div className="lg:w-1/2 relative">
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="relative">
-                {/* Central Icon */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-full flex items-center justify-center shadow-lg">
-                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m-2 6h-2M5 5h14v14H5z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Floating Icons Around Center */}
-                <div className="flex justify-around items-center h-40 relative">
-                  {/* Left Icons */}
-                  <div className="flex flex-col items-center space-y-4">
-                    <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                    </div>
-                    <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  {/* Right Icons */}
-                  <div className="flex flex-col items-center space-y-4">
-                    <div className="w-12 h-12 bg-purple-800 rounded-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                      </svg>
-                    </div>
-                    <div className="w-12 h-12 bg-purple-800 rounded-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Status indicators */}
-                <div className="mt-8 pt-4 border-t border-gray-700 flex flex-col space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">Schema changes ✓</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">Drift ✓</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">Anomalies ✓</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div className="lg:w-1/2 relative">
+  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
+<h4 className="text-center mb-4">
+  Environment{" "}
+  <span
+    className="px-2 py-1 rounded text-[#EDA430] bg-[linear-gradient(90deg,rgba(237,164,48,0.10)_0%,rgba(237,164,48,0.02)_100%)]"
+  >
+    Development
+  </span>
+</h4>
+    {/* Header */}
+    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
+    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
+      <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
+      <div className="ml-3">
+        <span className="font-semibold">Cutshort</span>
+                  <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
+      </div>
+    </div>
+
+    {/* Timeline Content */}
+    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
+      
+      {/* Timeline Item 1 - Optimal F1 and precision */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
+        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Context precision {'>'} 0.9</span>
+            {testProgress >= 1 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
           </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 2 - LLM accurately summarizes context */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Outputs are in JSON</span>
+            {testProgress >= 2 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 3 - Prevent fake product prompts */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>LLM score avoids discrimination</span>
+            {testProgress >= 3 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Item 4 - P99 latency < 5000ms */}
+      <div 
+        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
+        style={{ transition: 'opacity 0.5s ease-in-out' }}
+      >
+           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
+        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
+          </svg>
+        </div>
+        <div className="ml-6 flex-1">
+          <div className="flex items-center justify-between">
+            <span>Average latency {'<'} 0.5s</span>
+            {testProgress >= 4 && (
+              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Summary Stats - Appears AFTER all timeline items */}
+      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="text-sm">22 tests passing</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span className="text-sm">10 tests failing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
         </div>
         
      
       </section>
        </AnimatedSection>
-
-      {/* Fifth Section: Effortless Governance */}
-      <AnimatedSection delay = {500}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto">
-        
-          {/* Cards Grid - Below Header */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Card 1: Activity Log */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-                </svg>
-                <span className="font-semibold">Activity log</span>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.456 9.118 5 7.5 5S4.168 5.456 3 6.253v13C4.168 18.456 5.882 18 7.5 18s3.332.456 4.5 1.253m0-13C13.168 5.456 14.882 5 16.5 5c1.618 0 3.332.456 4.5 1.253v13C19.832 18.456 18.118 18 16.5 18c-1.618 0-3.332.456-4.5 1.253" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium">Test created</span>
-                      <span className="text-xs text-gray-400">a week ago</span>
-                    </div>
-                    <div className="flex items-center space-x-2 mt-1">
-                      <span className="font-medium">Commented</span>
-                      <span className="text-xs text-gray-400">30 min ago</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="ml-11 pl-4 border-l border-gray-600">
-                  <div className="text-gray-300">@caleb should we revert the latest changes?</div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium">Commented</span>
-                      <span className="text-xs text-gray-400">30 min ago</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="ml-11 pl-4 border-l border-gray-600">
-                  <div className="text-gray-300">This was expected @ava — please take a look</div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium">Commented</span>
-                      <span className="text-xs text-gray-400">3 min ago</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="ml-11 pl-4 border-l border-gray-600">
-                  <div className="text-gray-300">Understood — I reviewed the underlying rows and looks like we’re all clear</div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.456 9.118 5 7.5 5S4.168 5.456 3 6.253v13C4.168 18.456 5.882 18 7.5 18s3.332.456 4.5 1.253m0-13C13.168 5.456 14.882 5 16.5 5c1.618 0 3.332.456 4.5 1.253v13C19.832 18.456 18.118 18 16.5 18c-1.618 0-3.332.456-4.5 1.253" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium">Test created</span>
-                      <span className="text-xs text-gray-400">a week ago</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Graph */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18v2h-2M3 20h18v2h-2M3 4h18v2h-2" />
-                </svg>
-                <span className="font-semibold">Outputs relevant to user question</span>
-              </div>
-              
-              <div className="mb-4">
-                <div className="grid grid-cols-4 gap-4 text-sm text-gray-400">
-                  <div><strong>Threshold</strong><br/>Answer relevancy > 0.95</div>
-                  <div><strong>Evaluation window</strong><br/>24h</div>
-                  <div><strong>Status</strong><br/><span className="text-green-500 inline-flex items-center"><span className="w-3 h-3 bg-green-500 rounded-full mr-1"></span> Passing</span></div>
-                  <div><strong>Result</strong><br/><span className="text-green-500">0.98</span></div>
-                </div>
-              </div>
-              
-              {/* Simple Line Graph */}
-              <div className="h-32 bg-gray-800 rounded relative">
-                <div className="absolute top-1/2 left-0 right-0 h-px bg-green-500/30"></div>
-                <svg className="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
-                  <polyline 
-                    fill="none" 
-                    stroke="#8B5CF6" 
-                    strokeWidth="2"
-                    points="0,80 50,60 100,70 150,50 200,65 250,45 300,55 350,35 400,40"
-                  />
-                </svg>
-                <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-gray-400 px-2">
-                  <span>10:32 AM</span>
-                  <span>3:20 PM</span>
-                  <span>8:08 PM</span>
-                  <span>12:58 AM</span>
-                  <span>5:44 AM</span>
-                  <span>10:32 AM</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3: Deployment Status */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center space-x-3">
-                <img src="https://via.placeholder.com/24" alt="Openlayer" className="w-6 h-6 rounded" />
-                <div>
-                  <div className="font-semibold">Openlayer</div>
-                  <div className="text-sm text-gray-300">Deployment status changed to</div>
-                  <div className="text-sm text-green-500 flex items-center">
-                    <span className="w-3 h-3 bg-green-500 rounded-full mr-1"></span>
-                    Ready to deploy for Cutshort
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-       
-      </section>
-      </AnimatedSection>
-
       {/* Sixth Section: Designed for Builders */}
       <AnimatedSection delay = {600}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
@@ -732,7 +752,7 @@ SLAs
           {/* Header */}
           <div className="max-w-xl mx-auto text-center mb-12">
             <p className="text-gray-300 text-lg">
-              and seamless integration.
+             Openlayer is trusted by leading organizations to enhance their development and operational efficiency for accuracy, scalability, and seamless integration.
             </p>
           </div>
 
@@ -793,131 +813,7 @@ SLAs
       </section>
     </AnimatedSection>
 
-      {/* Eighth Section: Openlayer in Action */}
-       <AnimatedSection delay = {800}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto">
-          {/* Header */}
-          <div className="max-w-xl mx-auto text-center mb-12">
-            <div className="text-sm text-purple-400 uppercase">Impact</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-2">
-              Openlayer in action
-            </h2>
-            <p className="text-gray-300 text-lg mt-6">
-              See how Openlayer helps teams across different industries ship AI with confidence.
-            </p>
-          </div>
-
-          {/* Industry Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {['Cybersecurity', 'Travel & tourism', 'E-commerce', 'Property management', 'Automation'].map((item, index) => (
-              <button
-                key={index}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                  item === 'Cybersecurity'
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-800 text-white hover:bg-gray-700'
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-
-          {/* Case Study Card */}
-          <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
-            {/* Top Bar */}
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-purple-600 rounded flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-                  </svg>
-                </div>
-                <span className="text-sm">Tests Jericho created</span>
-                <a href="#" className="text-purple-400 text-xs ml-2">View site {'>'}</a>
-              </div>
-              <div className="text-sm text-gray-400">1 of 3</div>
-            </div>
-
-            {/* Main Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Left Card - Phishing Test */}
-              <div className="bg-gray-800 rounded-xl p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.456 9.118 5 7.5 5S4.168 5.456 3 6.253v13C4.168 18.456 5.882 18 7.5 18s3.332.456 4.5 1.253m0-13C13.168 5.456 14.882 5 16.5 5c1.618 0 3.332.456 4.5 1.253v13C19.832 18.456 18.118 18 16.5 18c-1.618 0-3.332.456-4.5 1.253" />
-                      </svg>
-                    </div>
-                    <span className="font-semibold">Phishing message hides AI source</span>
-                  </div>
-                  <span className="text-green-500 text-xs font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                </div>
-                
-                <div className="mb-4">
-                  <div className="text-xs text-gray-400 mb-1">Environments:</div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-300">Development</span>
-                    <span className="text-xs text-gray-300">Production</span>
-                  </div>
-                </div>
-                
-                <div className="text-sm text-gray-300">
-                  <strong>Objective:</strong> ensure that phishing messages do not disclose they are generated by AI, maintaining authenticity, effectiveness, and user deception.
-                </div>
-              </div>
-
-              {/* Right Card - LinkedIn Message */}
-              <div className="bg-gray-800 rounded-xl p-4">
-                <div className="bg-purple-600 text-white px-4 py-2 rounded-t-xl">
-                  <div className="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m-2 13a2 2 0 01-2-2V7m-2 13a2 2 0 01-2-2V7m-2 13a2 2 0 01-2-2V7m-2 13a2 2 0 01-2-2V7" />
-                    </svg>
-                    <span>Let's connect on LinkedIn</span>
-                  </div>
-                </div>
-                
-                <div className="p-4">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <img src="https://via.placeholder.com/40" alt="Gavin Di Luca" className="w-10 h-10 rounded-full" />
-                    <div>
-                      <div className="font-semibold">Gavin Di Luca</div>
-                      <div className="text-xs text-gray-400">gavin@talentbridge.com</div>
-                    </div>
-                  </div>
-                  
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <p>Hey Jo, how are you doing?</p>
-                    <p>I'm the head of engineering at TalentBridge, and I'm looking to bring cybersecurity experts to our team. TalentBridge is a startup that helps businesses protect themselves easily when they launch their business online.</p>
-                    <p>Your position at Good Org grabbed my interest.</p>
-                    <p>If this interests you, here is the job description.</p>
-                    <p>Let me know if you'd like to schedule some time to discuss the position.</p>
-                    <p>Have a great day!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Metrics */}
-            <div className="mt-8 grid grid-cols-2 gap-6">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-green-400">78%</div>
-                <div className="text-sm text-gray-400 mt-1">Revenue</div>
-                <div className="text-xs text-gray-500 mt-1">We observed a sharp increase</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-green-400">6x</div>
-                <div className="text-sm text-gray-400 mt-1">Deployment frequency</div>
-                <div className="text-xs text-gray-500 mt-1">We saw a 6x increase in</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-     </AnimatedSection>
+   
 
       {/* Ninth Section: Templates */}
       <AnimatedSection delay = {900}>
