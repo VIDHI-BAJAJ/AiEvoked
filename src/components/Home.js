@@ -185,55 +185,45 @@ proposals in hours.
           </div>
           <div className="relative">
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center">
-                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                    </svg>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-2">
+                  <img src="https://via.placeholder.com/20" alt="Cutshort" className="w-5 h-5" />
+                  <span className="text-sm font-medium">Cutshort</span>
+                </div>
+                <div className="text-xs text-gray-500">0 of 4 Waiting for requests...</div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Request received</span>
                   </div>
+                  <span className="text-xs text-gray-500">10:32 AM</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Processing</span>
+                  </div>
+                  <span className="text-xs text-gray-500">10:32 AM</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Response generated</span>
+                  </div>
+                  <span className="text-xs text-gray-500">10:32 AM</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                  <div className="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/16" alt="Icon" className="w-4 h-4" />
+                    <span className="text-sm">Guardrail check passed</span>
+                  </div>
+                  <span className="text-xs text-gray-500">10:32 AM</span>
                 </div>
               </div>
-              <div className="flex justify-center space-x-6 mb-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm">Schema changes ✓</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm">Drifts ✓</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm">Anomalies ✓</span>
-                </div>
+              <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
+                <div>Waiting for requests to the deployment...</div>
               </div>
             </div>
           </div>
