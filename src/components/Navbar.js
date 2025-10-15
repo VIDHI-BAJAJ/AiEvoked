@@ -28,15 +28,6 @@ const Navbar = () => {
           : "bg-black/90 backdrop-blur-md shadow-lg"
       }`}
     >
-      {/* 🔔 Announcement Bar */}
-      <div className="bg-black border-b border-gray-800 py-2 px-4 text-center text-sm">
-        <p className="text-white">
-          Announcing our $14.5M Series A!{" "}
-          <span className="text-purple-400 cursor-pointer hover:underline">
-            Read the blog post {">"}
-          </span>
-        </p>
-      </div>
 
       {/* 🌐 Main Navbar */}
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -62,12 +53,6 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          <a
-            href="#"
-            className="text-white hover:text-purple-400 transition-colors"
-          >
-            Login
-          </a>
           <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
             Request demo {">"}
           </button>
