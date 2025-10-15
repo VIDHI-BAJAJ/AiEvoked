@@ -18,6 +18,40 @@ const Home = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+    const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      question: "How does AuraOS automate customer follow-ups?",
+      answer:
+        "AuraOS uses AI-driven workflows to send personalized messages via email, SMS, and calls, ensuring timely and human-like engagement with every lead.",
+    },
+    {
+      question: "How quickly can I set up AuraOS for my business?",
+      answer:
+        "Setup typically takes less than 48 hours. Our onboarding team assists with CRM integration, campaign configuration, and AI training for your brand voice.",
+    },
+    {
+      question: "Can I customize messages and follow-up frequency?",
+      answer:
+        "Yes, every message, tone, and timing can be tailored to match your sales cycle, industry, and customer preferences — ensuring a non-intrusive experience.",
+    },
+    {
+      question: "Is AuraOS compliant with data and privacy regulations?",
+      answer:
+        "Absolutely. AuraOS adheres to GDPR, TCPA, and other compliance standards, ensuring data protection and legal communication practices.",
+    },
+    {
+      question: "How do I measure ROI from AI-powered follow-ups?",
+      answer:
+        "You can track performance through a built-in dashboard showing open rates, conversions, and revenue impact — giving you clear visibility into ROI.",
+    },
+  ];
+
+  const toggleFAQ = (index) =>
+    setOpenIndex(openIndex === index ? null : index);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
  
@@ -662,88 +696,91 @@ SLAs
       
       </section>
        </AnimatedSection>
+
       {/* Sixth Section: Designed for Builders */}
       <AnimatedSection delay = {600}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto">
-          {/* Header - Centered */}
-          <div className="max-w-xl mx-auto text-center mb-12">
-            <div className="text-sm text-purple-400 uppercase">Platform</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-2">
-              Designed for builders
-            </h2>
-            <p className="text-gray-300 text-lg mt-6">
-              Openlayer fits into your workflow without friction, allowing you to focus on what matters most: crafting high-quality systems with AI.
+     {/* Experience Section */}
+      <section className="py-12 px-6 bg-gray-900">
+        <div className="text-center mb-10">
+          <div className="inline-block bg-gray-800 text-xs px-3 py-1 rounded-full mb-4">EXPERIENCE THE DIFFERENCE</div>
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            Don't Just Read About AuraOS – <br /> Experience It Live
+          </h2>
+          <p className="max-w-2xl mx-auto text-gray-300 mb-6">
+            See exactly how AuraOS will handle your high-value prospects. Choose your experience:
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ml-28 mr-24">
+          <div className="border border-gray-700 p-6 rounded-xl">
+            <div className="text-center mb-4">
+              <div className="text-3xl mb-2">📞</div>
+              <h3 className="text-xl font-semibold">Experience AuraOS Live</h3>
+            </div>
+            <p className="text-sm text-gray-400 mb-4">
+              Our AI will call you right now and demonstrate exactly how it handles prospects. See the technology in action with your own ears.
             </p>
+            <ul className="space-y-1 text-xs mb-4">
+              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Live conversation with AuraOS</li>
+              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Immediate results showcased</li>
+              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Feel the premium conversation quality</li>
+            </ul>
+            <button className="w-full bg-gradient-to-r from-purple-500 to-blue-600 px-4 py-2 rounded font-medium hover:shadow-lg transition">
+              Call Me Now - Experience AuraOS
+            </button>
           </div>
-
-          {/* Feature Cards Grid - Below Header */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Card 1: Tests for any scenario */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-                </svg>
-                <span className="font-semibold">Tests for any scenario</span>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Openlayer offers an expansive set of customizable tests to help you make systematic progress and avoid regressions.
-              </p>
+          <div className="border border-gray-700 p-6 rounded-xl">
+            <div className="text-center mb-4">
+              <div className="text-3xl mb-2">💼</div>
+              <h3 className="text-xl font-semibold">Strategic Implementation Call</h3>
             </div>
-            
-            {/* Card 2: Observability */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-                </svg>
-                <span className="font-semibold">Observability</span>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Trace and track all your system’s requests in real-time, annotate these requests with human feedback for better insights and run tests on live data to ensure robustness and reliability.
-              </p>
-            </div>
-            
-            {/* Card 3: API & CLI */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 16l4-16m-8 8h8M6 8h8v8H6z" />
-                </svg>
-                <span className="font-semibold">Your favorite tools</span>
-              </div>
-              <p className="text-gray-300 text-sm mb-4">
-                Openlayer integrates with Git, has SDKs in your favorite programming languages, and works out of the box for every LLM provider. Fully customizable via a CLI and REST API, Openlayer fits any workflow seamlessly.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-700 rounded text-xs">REST APIs</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-xs">CLI</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-xs">Git</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-xs">SDKs</span>
-                <span className="px-3 py-1 bg-gray-700 rounded text-xs">Integrations</span>
-              </div>
-            </div>
-            
-            {/* Card 4: Collaboration */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h-2v-2a6 6 0 00-5.356-5.356L9 9H7v2H4v10h13v-2zM7 19h6v-2a3 3 0 005.356-2.356L15 12H9z" />
-                </svg>
-                <span className="font-semibold">Collaboration</span>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Collaborate effortlessly with your team in a shared workspace. Assign roles, define tests, and debug issues together, ensuring all stakeholders are aligned.
-              </p>
-            </div>
+            <p className="text-sm text-gray-400 mb-4">
+              Speak with our team to understand how AuraOS will integrate with your business and drive revenue growth for your specific use case.
+            </p>
+            <ul className="space-y-1 text-xs mb-4">
+              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Custom implementation strategy</li>
+              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> ROI projection for your business</li>
+              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Technical integration overview</li>
+            </ul>
+            <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded font-medium hover:shadow-lg transition">
+              Book Strategic Call
+            </button>
           </div>
         </div>
-
-   
+        <div className="text-center text-sm text-gray-400">
+          *Results in 24 hours • Risk-free guarantee • Average 817% ROI
+        </div>
       </section>
       </AnimatedSection>
 
+   {/* Speed to Lead Section */}
+    <AnimatedSection delay = {600}>
+      <section className="py-12 px-6">
+        <div className="text-center mb-10">
+          <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">THE SPEED IMPERATIVE</div>
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+            Speed to Lead <br /> Determines Everything
+          </h2>
+          <p className="max-w-2xl mx-auto text-gray-300">
+            In today's market, the fastest response wins—regardless of price, quality, or reputation.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { icon: "📉", value: "900%", title: "Conversion Drop", desc: "Response delay beyond 5 minutes causes 900% decrease in lead conversion rates" },
+            { icon: "🚀", value: "21x", title: "Speed Advantage", desc: "Companies responding within 5 minutes are 21x more likely to qualify leads" },
+            { icon: "$", value: "78%", title: "Revenue at Risk", desc: "Of premium prospects research and decide within the first hour of inquiry" }
+          ].map((item, index) => (
+            <div key={index} className="border border-gray-700 p-6 rounded-xl hover:border-red-500 transition">
+              <div className="text-2xl mb-3">{item.icon}</div>
+              <div className="text-2xl font-bold text-red-400 mb-2">{item.value}</div>
+              <h3 className="font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-400">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      </AnimatedSection>
+      
       {/* Seventh Section: Testimonials */}
       <AnimatedSection delay = {700}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
@@ -931,6 +968,55 @@ SLAs
         </div>
       </section>
       </AnimatedSection>
+
+
+      {/* FAQ */}
+      <AnimatedSection delay = {1000}>
+      <section className="py-16 px-6 bg-black text-white">
+      <div className="text-center mb-10">
+        <div className="inline-block bg-gray-800 text-xs px-3 py-1 rounded-full mb-4">
+          QUESTIONS ANSWERED
+        </div>
+        <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          Everything You Need <br /> To Know About AuraOS
+        </h2>
+        <p className="max-w-2xl mx-auto text-gray-300">
+          Find clear answers about setup, compliance, and how AuraOS helps you
+          automate conversations to close more deals effortlessly.
+        </p>
+      </div>
+
+      <div className="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className="border border-gray-700 rounded-lg overflow-hidden"
+          >
+            <button
+              className="w-full flex justify-between items-center px-4 py-4 text-left hover:bg-gray-900 transition"
+              onClick={() => toggleFAQ(index)}
+            >
+              <span className="font-medium">{faq.question}</span>
+              <span className="text-purple-400 text-lg">
+                {openIndex === index ? "−" : "+"}
+              </span>
+            </button>
+
+            {openIndex === index && (
+              <div className="px-4 pb-4 text-gray-300 animate-fadeIn">
+                {faq.answer}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 text-center text-sm text-gray-400">
+        Need more information? Our team offers personalized onboarding and
+        24/7 support to ensure your success with AuraOS.
+      </div>
+    </section>
+    </AnimatedSection>
       {/* Tenth Section: Final CTA */}
       <AnimatedSection delay = {1000}>
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-black/30">

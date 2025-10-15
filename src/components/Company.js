@@ -771,7 +771,7 @@ const AuraOSLandingPage = () => {
             See exactly how AuraOS will handle your high-value prospects. Choose your experience:
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ml-28 mr-24">
           <div className="border border-gray-700 p-6 rounded-xl">
             <div className="text-center mb-4">
               <div className="text-3xl mb-2">📞</div>
@@ -855,79 +855,7 @@ const AuraOSLandingPage = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-12 px-6 bg-gray-900">
-        <div className="text-center mb-10">
-          <div className="inline-block bg-gray-800 text-xs px-3 py-1 rounded-full mb-4">LIMITED TO 12 IMPLEMENTATIONS MONTHLY</div>
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            Stop Losing Revenue <br /> To Faster Competitors
-          </h2>
-          <p className="max-w-2xl mx-auto text-gray-300 mb-6">
-            Every day you delay costs you $1,247 in lost opportunities. Join industry leaders who have turned speed into their biggest competitive advantage.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="border border-gray-700 p-6 rounded-xl">
-            <div className="text-center mb-4">
-              <div className="text-2xl mb-2">🔁</div>
-              <h3 className="text-xl font-semibold">Even Full Refund Guarantee</h3>
-            </div>
-            <p className="text-sm text-gray-400 mb-4">
-              If we don't recover our cost in leads within 60 days, full refund - no questions asked.
-            </p>
-            <p className="text-xs text-gray-500">
-              Average client sees first reactivated lead within 7 days
-            </p>
-          </div>
-          <div className="border border-gray-700 p-6 rounded-xl">
-            <div className="text-center mb-4">
-              <div className="text-2xl mb-2">🚀</div>
-              <h3 className="text-xl font-semibold">Immediate Production</h3>
-            </div>
-            <p className="text-sm text-gray-400 mb-4">
-              Complete setup and first leads captured within 24 hours of approval.
-            </p>
-            <p className="text-xs text-gray-500">
-              Zero technical work required from your team
-            </p>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <button className="bg-gradient-to-r from-purple-500 to-blue-600 px-6 py-3 rounded-full font-medium hover:shadow-lg transition">
-            See Your Hidden Revenue
-          </button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-800">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <img src="https://via.placeholder.com/150x30?text=Wave+Runner+Digital" alt="Wave Runner Digital" className="h-8 mb-4" />
-            <p className="text-sm text-gray-400 mb-4">
-              Transforming voice platforms delivers consistent booking rates and complete analytics visibility.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Get in Touch</h4>
-            <div className="space-y-2 text-sm text-gray-400">
-              <div>hello@waverunner.digital</div>
-              <div>Contact Us</div>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <div className="space-y-2 text-sm text-gray-400">
-              <div>Terms of Service</div>
-              <div>Privacy Policy</div>
-              <div>Cookie Preferences</div>
-            </div>
-          </div>
-        </div>
-        <div className="pt-4 border-t border-gray-800 text-xs text-gray-500 text-center">
-          © 2024 Wave Runner Media LLC. All rights reserved.
-        </div>
-      </footer>
+  
     </div>
   );
 };
