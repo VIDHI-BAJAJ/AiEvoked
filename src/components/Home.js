@@ -52,6 +52,52 @@ const Home = () => {
   const toggleFAQ = (index) =>
     setOpenIndex(openIndex === index ? null : index);
 
+
+    const [activeTab, setActiveTab] = useState('website'); // Default: Website Inquiry
+  
+    const channels = [
+      {
+        id: 'facebook',
+        name: 'Facebook Ad Lead',
+        subtitle: 'Social Media Conversion',
+        icon: '📱',
+        color: 'from-blue-500 to-purple-600',
+        flow: [
+          { time: '0s', icon: '⏱️', title: 'Form submitted on Facebook', desc: 'Lead clicks ad and fills out form' },
+          { time: '2s', icon: '⚡', title: 'AuraOS detects lead instantly', desc: 'All processes load information and qualify' },
+          { time: '30s', icon: '📞', title: 'Calls prospect within 30 seconds', desc: 'Intelligent conversation begins qualification' },
+          { time: '90s', icon: '✅', title: 'Qualified and meeting booked', desc: 'Appointment secured in your calendar' }
+        ],
+        stats: {
+          captureRate: '100%',
+          availability: '24/7 Available'
+        },
+        conversionTime: '<2 minutes',
+        successRate: '300% higher than industry average'
+      },
+      {
+        id: 'website',
+        name: 'Website Inquiry',
+        subtitle: 'Organic Traffic Capture',
+        icon: '🌐',
+        color: 'from-purple-500 to-blue-600',
+        flow: [
+          { time: '0s', icon: '⏱️', title: 'Contact form submitted', desc: 'Website visitor submits inquiry' },
+          { time: '1s', icon: '💾', title: 'Instantly syncs to your CRM', desc: 'Lead data automatically populated' },
+          { time: '15s', icon: '📞', title: 'AuraOS calls immediately', desc: 'Smart qualification conversation starts' },
+          { time: '75s', icon: '📅', title: 'Appointment in your calendar', desc: 'Meeting scheduled with confirmation' }
+        ],
+        stats: {
+          captureRate: '100%',
+          availability: '24/7 Available'
+        },
+        conversionTime: '<2 minutes',
+        successRate: '300% higher than industry average'
+      },
+    ];
+  
+    const selectedChannel = channels.find(c => c.id === activeTab);
+    
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
  
@@ -780,7 +826,86 @@ SLAs
         </div>
       </section>
       </AnimatedSection>
-      
+
+      {/* Lead Generation */}
+      <AnimatedSection delay= {700}>
+      <div className="bg-black text-white min-h-screen py-12 px-4 md:px-8">
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-8">
+        <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">COMPLETE MULTI-CHANNEL INTELLIGENCE</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Every Channel. Every Lead. <br /> Captured and Converted
+        </h2>
+        <p className="text-gray-300 max-w-2xl mx-auto">
+          See exactly how AuraOS transforms leads from any source into qualified appointments—with lightning-fast response times that ensure no opportunity is ever missed.
+        </p>
+      </div>
+
+      {/* Channel Tabs */}
+      <div className="max-w-4xl mx-auto mb-8 flex flex-wrap justify-center gap-3">
+        {channels.map((channel) => (
+          <button
+            key={channel.id}
+            onClick={() => setActiveTab(channel.id)}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
+              activeTab === channel.id
+                ? `bg-gradient-to-r ${channel.color} text-white shadow-lg`
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+            }`}
+          >
+            <span>{channel.icon}</span>
+            <div className="text-left">
+              <div className="font-medium">{channel.name}</div>
+              <div className="text-xs opacity-70">{channel.subtitle}</div>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Main Content Card */}
+      <div className="max-w-5xl mx-auto bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800 shadow-2xl">
+        {/* Header Row */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-gray-800">
+          <div className="flex items-center space-x-3 mb-4 md:mb-0">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl">
+              {selectedChannel.icon}
+            </div>
+            <div>
+              <h3 className="text-xl font-bold">{selectedChannel.name}</h3>
+              <p className="text-sm text-gray-400">{selectedChannel.subtitle}</p>
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-2xl font-bold text-green-400">{selectedChannel.stats.captureRate}</div>
+            <div className="text-xs text-gray-400">{selectedChannel.stats.availability}</div>
+          </div>
+        </div>
+
+        {/* Flow Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          {selectedChannel.flow.map((step, index) => (
+            <div
+              key={index}
+              className="relative bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer group"
+            >
+              <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{step.icon}</div>
+              <div className="text-sm font-semibold mb-1">{step.time}</div>
+              <div className="text-xs text-gray-300 mb-1">{step.title}</div>
+              <div className="text-xs text-gray-500">{step.desc}</div>
+              {index < selectedChannel.flow.length - 1 && (
+                <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+</div>
+    </div>
+     </AnimatedSection>
+
       {/* Seventh Section: Testimonials */}
       <AnimatedSection delay = {700}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
