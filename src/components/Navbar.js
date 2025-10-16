@@ -16,11 +16,11 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const navLinks = [
+    { name: "Home", path: "/" },
     { name: "Product", path: "/product" },
-    { name: "Resources", path: "/resources" },
-    { name: "Documentation", path: "/documentation" },
-    { name: "Company", path: "/company" },
+    { name: "About Us", path: "/documentation" },
     { name: "Pricing", path: "/pricing" },
+    { name: "Conatct Us", path: "/company" },
   ];
 
   return (
