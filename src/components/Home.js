@@ -438,7 +438,7 @@ const Home = () => {
       <AnimatedSection delay={300}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
-          {/* Left Content */}
+       
           <div className="lg:w-1/2 space-y-6">
             <div className="text-sm text-purple-400 uppercase">Observability and real-time guardrails</div>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -454,7 +454,6 @@ const Home = () => {
             </div>
           </div>
           
-          {/* Right Content - Test Results Card */}
          <div className="lg:w-1/2 relative">
   <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
 <h4 className="text-center mb-4">
@@ -465,7 +464,7 @@ const Home = () => {
     Development
   </span>
 </h4>
-    {/* Header */}
+   
     <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
     <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
       <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
@@ -475,10 +474,10 @@ const Home = () => {
       </div>
     </div>
 
-    {/* Timeline Content */}
+    
     <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
       
-      {/* Timeline Item 1 - Optimal F1 and precision */}
+    
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -500,7 +499,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Timeline Item 2 - LLM accurately summarizes context */}
+     
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -522,7 +521,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Timeline Item 3 - Prevent fake product prompts */}
+    
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -544,7 +543,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Timeline Item 4 - P99 latency < 5000ms */}
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -567,7 +565,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Summary Stats - Appears AFTER all timeline items */}
+    
       <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1">
@@ -589,11 +587,11 @@ const Home = () => {
       </section>
       </AnimatedSection>
 
-      {/* Fourth Section: Automated Checks for Data Quality */}
+    
       <AnimatedSection delay={400}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
-          {/* Left Content */}
+ 
           <div className="lg:w-1/2 space-y-6">
             <div className="text-sm text-purple-400 uppercase">Data quality</div>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -608,7 +606,6 @@ SLAs
             </button>
           </div>
           
-          {/* Right Content - Data Quality Visualization */}
     <div className="lg:w-1/2 relative">
   <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
 <h4 className="text-center mb-4">
@@ -619,7 +616,6 @@ SLAs
     Development
   </span>
 </h4>
-    {/* Header */}
     <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
     <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
       <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
@@ -629,10 +625,9 @@ SLAs
       </div>
     </div>
 
-    {/* Timeline Content */}
+  
     <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
-      
-      {/* Timeline Item 1 - Optimal F1 and precision */}
+
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -654,7 +649,7 @@ SLAs
         </div>
       </div>
 
-      {/* Timeline Item 2 - LLM accurately summarizes context */}
+      
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -676,7 +671,6 @@ SLAs
         </div>
       </div>
 
-      {/* Timeline Item 3 - Prevent fake product prompts */}
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -698,7 +692,6 @@ SLAs
         </div>
       </div>
 
-      {/* Timeline Item 4 - P99 latency < 5000ms */}
       <div 
         className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
         style={{ transition: 'opacity 0.5s ease-in-out' }}
@@ -721,7 +714,7 @@ SLAs
         </div>
       </div>
 
-      {/* Summary Stats - Appears AFTER all timeline items */}
+  
       <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1">
