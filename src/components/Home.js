@@ -434,7 +434,7 @@ const Home = () => {
       </section>
       </AnimatedSection>
 
-      {/* Third Section: Monitor Production Requests */}
+      {/* Third Section: Monitor Production Requests
       <AnimatedSection delay={300}>
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
@@ -741,7 +741,7 @@ SLAs
         </div>
       
       </section>
-       </AnimatedSection>
+       </AnimatedSection> */}
 
       {/* Sixth Section: Designed for Builders */}
       <AnimatedSection delay = {600}>
