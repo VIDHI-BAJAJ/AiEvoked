@@ -150,15 +150,13 @@ const stats = [
 
   const [activeTab, setActiveTab] = useState("chat");
     const selectedChannel = channels.find(c => c.id === activeTab);
-
-  const [step, setStep] = useState(1);
-
-  const [data, setData] = useState({
-    avgDealSize: 25000,
+ const [step, setStep] = useState(1);
+  const [form, setForm] = useState({
+    dealSize: 25000,
     monthlyInquiries: 80,
-    bookingRate: 5,
+    bookingRate: 15,
     conversionRate: 25,
-    industry: "Legal Services",
+    industry: "",
   });
 
   const industries = [
@@ -170,19 +168,31 @@ const stats = [
     "Business Consulting",
   ];
 
-  const handleChange = (e) =>
-    setData({ ...data, [e.target.name]: Number(e.target.value) || e.target.value });
+  const handleChange = (field, value) => {
+    setForm({ ...form, [field]: value });
+  };
 
-  const nextStep = () => setStep((s) => Math.min(s + 1, 4));
-  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
+  const calculateResults = () => {
+    const { dealSize, monthlyInquiries, bookingRate, conversionRate } = form;
+    const currentRevenue =
+      dealSize * monthlyInquiries * (bookingRate / 100) * (conversionRate / 100);
+    const improvedBookingRate = bookingRate * 1.5; // +50% improvement
+    const improvedConversionRate = conversionRate * 1.1; // +10% improvement
+    const improvedRevenue =
+      dealSize *
+      monthlyInquiries *
+      (improvedBookingRate / 100) *
+      (improvedConversionRate / 100);
 
-  // 💡 Logic
-  const currentRevenue =
-    (data.monthlyInquiries * (data.bookingRate / 100) * (data.conversionRate / 100) * data.avgDealSize) || 0;
-  const improvedBookingRate = data.bookingRate * 2.5;
-  const improvedRevenue =
-    (data.monthlyInquiries * (improvedBookingRate / 100) * (data.conversionRate / 100) * data.avgDealSize) || 0;
-  const additionalRevenue = improvedRevenue - currentRevenue;
+    return {
+      currentRevenue,
+      improvedRevenue,
+      additionalRevenue: improvedRevenue - currentRevenue,
+      annualPotential: (improvedRevenue - currentRevenue) * 12,
+    };
+  };
+
+  const results = calculateResults();
 
 
   return (
@@ -918,112 +928,115 @@ const stats = [
 
 
 <AnimatedSection delay ={900}>
-  <section className="bg-black text-white py-20 px-4 md:px-8">
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <div className="inline-block bg-purple-900/40 text-xs px-3 py-1 rounded-full mb-4 border border-purple-500/40">
-          REVENUE PROJECTOR
+  <section className="bg-black text-white py-20 px-4">
+      <div className="max-w-3xl mx-auto text-center mb-10">
+        <div className="inline-block bg-gray-900 text-xs px-4 py-1 rounded-full mb-4 text-purple-400 border border-purple-600">
+          💜 REVENUE PROJECTOR
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-2">
           Calculate Your{" "}
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
             Revenue Growth Potential
           </span>
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Input your business metrics to discover how much additional revenue AuraOS can generate through
-          improved response times and booking rates.
+        <p className="text-gray-400 max-w-xl mx-auto">
+          Input your business metrics to discover how much additional revenue
+          you can generate through improved response times and booking rates.
         </p>
       </div>
 
-      {/* Step indicator */}
-      <div className="flex justify-center mb-10 space-x-4">
-        {[1, 2, 3, 4].map((n) => (
+      {/* Progress Steps */}
+      <div className="flex justify-center items-center space-x-3 mb-8">
+        {[1, 2, 3, 4].map((num) => (
           <div
-            key={n}
-            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium border ${
-              step >= n
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent"
-                : "border-gray-700 text-gray-400"
+            key={num}
+            className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
+              step >= num
+                ? "border-purple-500 bg-purple-600 text-white"
+                : "border-gray-700 text-gray-500"
             }`}
           >
-            {n}
+            {num}
           </div>
         ))}
       </div>
 
-      {/* Step cards */}
-      <div className="max-w-2xl mx-auto bg-gray-900 border border-gray-800 rounded-xl p-8 shadow-2xl">
-        {/* Step 1 */}
+      {/* Step Container */}
+      <div className="max-w-2xl mx-auto bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-lg">
         {step === 1 && (
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-left">Let’s start with your business basics</h3>
-            <div className="space-y-6">
+            <h3 className="text-lg font-semibold mb-4 text-purple-400">
+              Let’s start with your business basics
+            </h3>
+            <div className="space-y-4">
               <div>
-                <label className="block text-sm mb-1">Average Deal Size ($)</label>
+                <label className="block text-sm mb-1">Average Deal Size</label>
                 <input
                   type="number"
-                  name="avgDealSize"
-                  value={data.avgDealSize}
-                  onChange={handleChange}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                  value={form.dealSize}
+                  onChange={(e) => handleChange("dealSize", e.target.value)}
+                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
                 />
               </div>
               <div>
                 <label className="block text-sm mb-1">Monthly Inquiries</label>
                 <input
                   type="number"
-                  name="monthlyInquiries"
-                  value={data.monthlyInquiries}
-                  onChange={handleChange}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                  value={form.monthlyInquiries}
+                  onChange={(e) =>
+                    handleChange("monthlyInquiries", e.target.value)
+                  }
+                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
                 />
               </div>
             </div>
           </div>
         )}
 
-        {/* Step 2 */}
         {step === 2 && (
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-left">What's your current performance?</h3>
-            <div className="space-y-6">
+            <h3 className="text-lg font-semibold mb-4 text-purple-400">
+              What’s your current performance?
+            </h3>
+            <div className="space-y-4">
               <div>
-                <label className="block text-sm mb-1">Current Booking Rate (%)</label>
+                <label className="block text-sm mb-1">Booking Rate (%)</label>
                 <input
                   type="number"
-                  name="bookingRate"
-                  value={data.bookingRate}
-                  onChange={handleChange}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                  value={form.bookingRate}
+                  onChange={(e) => handleChange("bookingRate", e.target.value)}
+                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
                 />
               </div>
               <div>
                 <label className="block text-sm mb-1">Conversion Rate (%)</label>
                 <input
                   type="number"
-                  name="conversionRate"
-                  value={data.conversionRate}
-                  onChange={handleChange}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                  value={form.conversionRate}
+                  onChange={(e) =>
+                    handleChange("conversionRate", e.target.value)
+                  }
+                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
                 />
               </div>
             </div>
           </div>
         )}
 
-        {/* Step 3 */}
         {step === 3 && (
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-left">What industry are you in?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h3 className="text-lg font-semibold mb-4 text-purple-400">
+              What industry are you in?
+            </h3>
+            <div className="grid grid-cols-2 gap-3">
               {industries.map((ind) => (
                 <button
                   key={ind}
-                  onClick={() => setData({ ...data, industry: ind })}
-                  className={`p-4 rounded-lg border text-left transition-all ${
-                    data.industry === ind
-                      ? "border-purple-500 bg-purple-900/30"
-                      : "border-gray-700 hover:border-purple-500/40"
+                  onClick={() => handleChange("industry", ind)}
+                  className={`border rounded-lg py-3 text-sm transition-all ${
+                    form.industry === ind
+                      ? "bg-purple-600 border-purple-400 text-white"
+                      : "bg-black border-gray-700 text-gray-400 hover:border-purple-500"
                   }`}
                 >
                   {ind}
@@ -1033,69 +1046,57 @@ const stats = [
           </div>
         )}
 
-        {/* Step 4 */}
         {step === 4 && (
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-left">Your Growth Potential</h3>
+            <h3 className="text-lg font-semibold mb-4 text-purple-400">
+              Your Growth Potential
+            </h3>
+            <div className="bg-black rounded-lg border border-purple-600 p-6 text-center">
+              <p className="text-sm text-gray-400 mb-2">Additional Monthly Revenue</p>
+              <div className="text-3xl font-bold text-purple-400 mb-4">
+                +${results.additionalRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-gray-800 rounded-lg p-4">
-                <div className="text-sm text-gray-400 mb-1">Current Performance</div>
-                <div className="text-lg font-bold text-white">
-                  ${currentRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+              <div className="flex justify-around text-sm text-gray-400">
+                <div>
+                  <p>Annual Potential</p>
+                  <p className="text-white font-semibold">
+                    ${results.annualPotential.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                  </p>
+                </div>
+                <div>
+                  <p>Booking Improvement</p>
+                  <p className="text-white font-semibold">+50%</p>
+                </div>
+                <div>
+                  <p>Conversion Lift</p>
+                  <p className="text-white font-semibold">+10%</p>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg p-4">
-                <div className="text-sm text-gray-200 mb-1">With AuraOS</div>
-                <div className="text-lg font-bold text-white">
-                  ${improvedRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center bg-purple-900/30 border border-purple-700 rounded-lg p-4 mb-6">
-              <div className="text-3xl font-bold text-purple-400">
-                +${additionalRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-              </div>
-              <div className="text-sm text-gray-400">Additional Monthly Revenue Potential</div>
-            </div>
-
-            <div className="bg-gray-800 rounded-lg p-4 text-gray-300 text-sm">
-              <p>
-                Annual Projection:{" "}
-                <span className="text-white font-semibold">
-                  ${(additionalRevenue * 12).toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                </span>
-              </p>
-              <p>
-                Estimated Improvement:{" "}
-                <span className="text-purple-400 font-semibold">~2.5× Booking Rate Increase</span>
-              </p>
             </div>
           </div>
         )}
 
-        {/* Navigation */}
+        {/* Navigation Buttons */}
         <div className="flex justify-between mt-8">
           <button
-            onClick={prevStep}
+            onClick={() => setStep(step - 1)}
             disabled={step === 1}
-            className="px-6 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700 disabled:opacity-40 transition"
+            className={`px-5 py-2 rounded-lg border border-gray-700 hover:border-purple-500 transition ${
+              step === 1 ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             Previous
           </button>
-          {step < 4 ? (
-            <button
-              onClick={nextStep}
-              className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 transition"
-            >
-              Continue →
-            </button>
-          ) : (
-            <button className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 transition">
-              Get Your Custom Strategy →
-            </button>
-          )}
+          <button
+            onClick={() => setStep(step + 1)}
+            disabled={step === 4}
+            className={`px-5 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium hover:opacity-90 transition ${
+              step === 4 ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            Continue
+          </button>
         </div>
       </div>
     </section>
