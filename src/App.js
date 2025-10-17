@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Product from './components/Product'
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
-import Company from './components/Company';
+import Contact from './components/Contactus';
 import Resources from './components/Resources';
 import Documentations from './components/Documentations';
 
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<Product />} />
           <Route path='/pricing' element = {<Pricing/>} />
-          <Route path='/company' element = {<Company/>}/>
+          <Route path='/contact' element = {<Contact/>}/>
           <Route path='/resources' element = {<Resources/>}/>
           <Route path='/documentation' element = {<Documentations/>}/>
         </Routes>

@@ -863,256 +863,173 @@
 // export default AuraOSLandingPage;
 
 
-import React, { useState } from 'react';
+import React from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
-const ContactUsPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+const Contactus = () => {
+  const [state, handleSubmit, reset] = useForm("xanpvnqe");
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+  React.useEffect(() => {
+    if (state.succeeded) {
+      const timer = setTimeout(() => reset(), 5000);
+      return () => clearTimeout(timer);
     }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    return newErrors;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
-  };
+  }, [state.succeeded, reset]);
 
   return (
-    <div className="bg-black text-white min-h-screen py-12 px-4 md:px-8">
+    <div className="bg-black text-white min-h-screen py-16 px-6 md:px-12 md:pb-24">
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">GET IN TOUCH</div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      <div className="max-w-3xl mx-auto text-center mb-16 mt-24">
+        <span className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
+          Get in Touch
+        </span>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
           Let’s Talk About Your Growth
         </h1>
-        <p className="text-gray-300 max-w-2xl mx-auto">
-          Have questions about AuraOS? Want to schedule a demo or discuss how we can help you capture more leads? Fill out the form below or reach out directly.
+        <p className="text-gray-400 text-lg">
+          Have questions or want to discuss how we can help scale your business? Fill out the form, and we’ll reach out soon.
         </p>
       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left Column: Contact Form */}
-        <div className="bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800 shadow-2xl">
-          <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+        {/* Contact Form */}
+        <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl">
+          <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
 
-          {submitSuccess && (
+          {state.succeeded && (
             <div className="mb-6 p-4 bg-green-900 text-green-200 rounded-lg flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              Thank you! We’ll get back to you within 24 hours.
+              <i className="fas fa-check-circle text-green-400 mr-2"></i>
+              Message sent successfully! We’ll get back to you soon.
             </div>
           )}
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Full Name</label>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">
+                Full Name
+              </label>
               <input
+                id="name"
                 type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full bg-gray-800 border ${errors.name ? 'border-red-500' : 'border-gray-700'} rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500`}
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="John Doe"
               />
-              {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
+              <ValidationError
+                prefix="Name"
+                field="name"
+                errors={state.errors}
+                className="text-sm text-red-400 mt-1"
+              />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Email Address</label>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email Address
+              </label>
               <input
+                id="email"
                 type="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full bg-gray-800 border ${errors.email ? 'border-red-500' : 'border-gray-700'} rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500`}
-                placeholder="john@example.com"
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="you@example.com"
               />
-              {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Phone Number (Optional)</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                placeholder="+1 (555) 123-4567"
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+                className="text-sm text-[#7E22CE] mt-1"
               />
             </div>
 
-            <div className="mb-6">
-              <label className="block text-sm font-medium mb-2">Your Message</label>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Message
+              </label>
               <textarea
+                id="message"
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
                 rows="5"
-                className={`w-full bg-gray-800 border ${errors.message ? 'border-red-500' : 'border-gray-700'} rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500`}
-                placeholder="Tell us about your business and how we can help..."
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Tell us how we can help..."
+              ></textarea>
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+                className="text-sm text-[#7E22CE] mt-1"
               />
-              {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
             </div>
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className={`w-full bg-gradient-to-r from-purple-500 to-blue-600 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg hover:scale-105'
+              disabled={state.submitting}
+              className={`w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                state.submitting
+                  ? "opacity-70 cursor-not-allowed"
+                  : "hover:shadow-lg hover:scale-105"
               }`}
             >
-              {isSubmitting ? (
+              {state.submitting ? (
                 <span className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <i className="fas fa-spinner animate-spin mr-2"></i>
                   Sending...
                 </span>
               ) : (
-                'Send Message →'
+                "Send Message →"
               )}
             </button>
           </form>
         </div>
 
-        {/* Right Column: Contact Info + Map Placeholder */}
-        <div className="space-y-8">
-          {/* Contact Info Cards */}
-          <div className="bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800 shadow-2xl">
-            <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+        {/* Contact Info */}
+        <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl space-y-10">
+          <h2 className="text-2xl font-semibold mb-2">Contact Information</h2>
 
-            <div className="space-y-6">
-              <div className="flex items-start space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl">
-                  📧
-                </div>
-                <div>
-                  <h3 className="font-semibold">Email</h3>
-                  <a href="mailto:hello@waverunner.digital" className="text-blue-400 hover:underline">hello@waverunner.digital</a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-xl">
-                  📞
-                </div>
-                <div>
-                  <h3 className="font-semibold">Phone</h3>
-                  <a href="tel:+15551234567" className="text-green-400 hover:underline">+1 (555) 123-4567</a>
-                  <p className="text-xs text-gray-400 mt-1">Mon-Fri 9AM–6PM EST</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-xl">
-                  📍
-                </div>
-                <div>
-                  <h3 className="font-semibold">Office</h3>
-                  <p className="text-gray-300">123 Tech Avenue, Suite 400<br />San Francisco, CA 94107</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center text-xl">
-                  ⏱️
-                </div>
-                <div>
-                  <h3 className="font-semibold">Response Time</h3>
-                  <p className="text-gray-300">We respond within <span className="text-blue-400 font-medium">2.3 seconds</span> — 24/7.</p>
-                </div>
-              </div>
+          <div className="flex items-start space-x-4">
+            <div className="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center">
+              <i className="fas fa-envelope text-[#7E22CE] text-xl"></i>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Email</h3>
+              <a href="mailto:vidhibajaj1401@gmail.com" className="text-[#7E22CE] hover:underline">
+                vidhibajaj1401@gmail.com
+              </a>
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800 shadow-2xl">
-            <h3 className="text-xl font-bold mb-4">Find Us</h3>
-            <div className="aspect-video bg-gray-800 rounded-lg flex items-center justify-center text-gray-400">
-              <div className="text-center">
-                <div className="text-4xl mb-2">🗺️</div>
-                <p className="text-sm">Interactive map will appear here.<br />For now, see our address above.</p>
-              </div>
+          <div className="flex items-start space-x-4">
+            <div className="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center">
+              <i className="fas fa-phone text-[#7E22CE] text-xl"></i>
             </div>
-            <div className="mt-4 text-center">
-              <button className="text-blue-400 hover:underline text-sm">
-                Open in Google Maps →
-              </button>
+            <div>
+              <h3 className="text-lg font-semibold">Call</h3>
+              <a href="tel:+15551234567" className="text-[#7E22CE] hover:underline">
+                +1 (555) 123-4567
+              </a>
+              <p className="text-sm text-gray-400">Mon–Fri, 9 AM–6 PM</p>
             </div>
           </div>
 
-          {/* Quick Action Buttons */}
-          <div className="grid grid-cols-2 gap-4">
-            <button className="bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg transition">
-              <div className="flex items-center justify-center space-x-2">
-                <span>💬</span>
-                <span className="text-sm">Chat With AI</span>
-              </div>
-            </button>
-            <button className="bg-gradient-to-r from-purple-500 to-blue-600 px-4 py-3 rounded-lg font-medium transition hover:shadow-lg">
-              <div className="flex items-center justify-center space-x-2">
-                <span>📅</span>
-                <span className="text-sm">Book Demo</span>
-              </div>
-            </button>
+          <div className="flex items-start space-x-4">
+            <div className="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center">
+              <i className="fas fa-map-marker-alt text-[#7E22CE] text-xl"></i>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Location</h3>
+              <p className="text-gray-300">
+                123 Tech Avenue<br />
+                San Francisco, CA 94107
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Footer Callout */}
-      <div className="max-w-4xl mx-auto mt-12 text-center">
-        <p className="text-sm text-gray-500 mb-2">
-          Prefer to speak live? Our team is available 24/7 to answer your questions.
-        </p>
-        <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 rounded-full font-medium hover:shadow-lg transition">
-          Schedule a Live Demo →
-        </button>
       </div>
     </div>
   );
 };
 
-export default ContactUsPage;
+export default Contactus;

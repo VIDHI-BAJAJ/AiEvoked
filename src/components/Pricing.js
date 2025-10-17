@@ -1,74 +1,78 @@
-import React from 'react'
+import React from 'react';
+import { FiZap, FiClock, FiDollarSign, FiSettings } from 'react-icons/fi'; // outline icons
 
-const Prcining = () => {
+const Pricing = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
-    <div>
-      <section className="mt-24 py-20 px-4 md:px-8 lg:px-16">
+    <div className="min-h-screen bg-black text-white">
+      <section className="pt-28 py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
           {/* Header */}
-          <div className="max-w-xl mx-auto text-center mb-12">
-            <div className="text-sm text-purple-400 uppercase">Pricing</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-2">
+          <div className="max-w-xl mx-auto text-center mb-16">
+            <div className="text-sm text-[#7E22CE] uppercase tracking-widest">
+              Pricing
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-3">
               Get started in seconds
             </h2>
-            <p className="text-gray-300 text-lg mt-6">
-              Pick a Plan to accelerate your setup. 
-          </p>
+            <p className="text-gray-400 text-lg mt-4">
+              Choose a plan that scales with your business goals.
+            </p>
           </div>
 
-          {/* Template Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* Template 1: RAG with Python */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <h3 className="font-semibold mb-2 text-center">Pilot</h3>
-                <div className="text-lg text-center text-white mb-4">Free (3 automations)</div>
-                <p className="text-gray-300 text-sm mb-4 text-center">
-                  Create a RAG pipeline for question-answering using Azure OpenAI and Python
-                </p>
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Card 1 */}
+            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[400px] flex flex-col justify-center items-center">
+              <div className="w-16 h-16 flex items-center justify-center border border-[#7E22CE] rounded-full mb-6">
+                <FiZap className="text-[#7E22CE] text-3xl" />
               </div>
+              <div className="text-2xl font-semibold text-[#7E22CE] mb-2">Pilot</div>
+              <div className="text-lg font-medium text-white mb-3">Free (3 automations)</div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-[220px]">
+                Start your journey with essential automations and simple setup.
+              </p>
             </div>
 
-            {/* Template 2: Structured outputs */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <h3 className="font-semibold mb-2 text-center">Core (Automate+)</h3>
-                <div className="text-lg text-white text-center mb-4"> from $1,800/mo (SLA & outcomes).</div>
+            {/* Card 2 */}
+            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[400px] flex flex-col justify-center items-center">
+              <div className="w-16 h-16 flex items-center justify-center border border-[#7E22CE] rounded-full mb-6">
+                <FiSettings className="text-[#7E22CE] text-3xl" />
               </div>
+              <div className="text-2xl font-semibold text-[#7E22CE] mb-2">Core (Automate+)</div>
+              <div className="text-lg font-medium text-white mb-3">from $1,800/mo</div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-[220px]">
+                Automate smarter with SLA-backed performance and priority support.
+              </p>
             </div>
 
-            {/* Template 3: Simple chatbot */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <h3 className="font-semibold mb-2 text-center">SalesPilot add-on</h3>
-                <div className="text-lg text-white mb-4 text-center">from $500/mo</div>
-                <p className="text-gray-300 text-sm mb-4 text-center">
-                  Create your own simple chatbot using OpenAI and Python
-                </p>
+            {/* Card 3 */}
+            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[400px] flex flex-col justify-center items-center">
+              <div className="w-16 h-16 flex items-center justify-center border border-[#7E22CE] rounded-full mb-6">
+                <FiClock className="text-[#7E22CE] text-3xl" />
               </div>
+              <div className="text-2xl font-semibold text-[#7E22CE] mb-2">SalesPilot Add-on</div>
+              <div className="text-lg font-medium text-white mb-3">from $500/mo</div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-[220px]">
+                Accelerate response time and improve sales conversions instantly.
+              </p>
             </div>
 
-
-              <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-pink-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <h3 className="font-semibold mb-2 text-center">Custom</h3>
-                <div className="text-lg text-white mb-4 text-center">Scoped</div>
-                <p className="text-gray-300 text-sm mb-4 text-center">
-                  Create your own simple chatbot using OpenAI and Python
-                </p>
+            {/* Card 4 */}
+            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[400px] flex flex-col justify-center items-center">
+              <div className="w-16 h-16 flex items-center justify-center border border-[#7E22CE] rounded-full mb-6">
+                <FiDollarSign className="text-[#7E22CE] text-3xl" />
               </div>
+              <div className="text-2xl font-semibold text-[#7E22CE] mb-2">Custom</div>
+              <div className="text-lg font-medium text-white mb-3">Scoped</div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-[220px]">
+                Build tailor-made automation systems aligned with your workflows.
+              </p>
             </div>
           </div>
         </div>
       </section>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Prcining
+export default Pricing;

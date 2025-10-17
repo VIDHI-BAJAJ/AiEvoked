@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Logo from '../Images/Logo.png';
-import { Link} from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { Zap, Clock, DollarSign, MessageSquare, Phone, Mail, Bot,  CheckCircle } from "lucide-react";
+
 const Home = () => {
 
   const [testProgress, setTestProgress] = useState(0);
@@ -49,55 +52,139 @@ const Home = () => {
     },
   ];
 
+const stats = [
+    {
+      icon: <Zap className="w-10 h-10 text-[#7E22CE]" />,
+      value: "900%",
+      title: "Conversion Drop",
+      desc: "Response delay beyond 5 minutes causes 900% decrease in lead conversion rates",
+    },
+    {
+      icon: <Clock className="w-10 h-10 text-[#7E22CE]" />,
+      value: "21x",
+      title: "Speed Advantage",
+      desc: "Companies responding within 5 minutes are 21x more likely to qualify leads",
+    },
+    {
+      icon: <DollarSign className="w-10 h-10 text-[#7E22CE]" />,
+      value: "78%",
+      title: "Revenue at Risk",
+      desc: "Of premium prospects research and decide within the first hour of inquiry",
+    },
+  ];
+  
   const toggleFAQ = (index) =>
     setOpenIndex(openIndex === index ? null : index);
 
 
-    const [activeTab, setActiveTab] = useState('website'); // Default: Website Inquiry
-  
-    const channels = [
-      {
-        id: 'facebook',
-        name: 'Facebook Ad Lead',
-        subtitle: 'Social Media Conversion',
-        icon: '📱',
-        color: 'from-blue-500 to-purple-600',
-        flow: [
-          { time: '0s', icon: '⏱️', title: 'Form submitted on Facebook', desc: 'Lead clicks ad and fills out form' },
-          { time: '2s', icon: '⚡', title: 'AuraOS detects lead instantly', desc: 'All processes load information and qualify' },
-          { time: '30s', icon: '📞', title: 'Calls prospect within 30 seconds', desc: 'Intelligent conversation begins qualification' },
-          { time: '90s', icon: '✅', title: 'Qualified and meeting booked', desc: 'Appointment secured in your calendar' }
-        ],
-        stats: {
-          captureRate: '100%',
-          availability: '24/7 Available'
+   const channels = [
+    {
+      id: "chat",
+      name: "Facebook",
+      subtitle: "Instant web conversations",
+      icon: <MessageSquare className="w-5 h-5" />,
+      color: "from-[#7E22CE] to-purple-500",
+      stats: { captureRate: "94%", availability: "24/7 Response" },
+      flow: [
+        {
+          icon: <Zap className="text-[#7E22CE]" />,
+          time: "0.2s",
+          title: "Inquiry Captured",
+          desc: "Visitor engages via website chat.",
         },
-        conversionTime: '<2 minutes',
-        successRate: '300% higher than industry average'
-      },
-      {
-        id: 'website',
-        name: 'Website Inquiry',
-        subtitle: 'Organic Traffic Capture',
-        icon: '🌐',
-        color: 'from-purple-500 to-blue-600',
-        flow: [
-          { time: '0s', icon: '⏱️', title: 'Contact form submitted', desc: 'Website visitor submits inquiry' },
-          { time: '1s', icon: '💾', title: 'Instantly syncs to your CRM', desc: 'Lead data automatically populated' },
-          { time: '15s', icon: '📞', title: 'AuraOS calls immediately', desc: 'Smart qualification conversation starts' },
-          { time: '75s', icon: '📅', title: 'Appointment in your calendar', desc: 'Meeting scheduled with confirmation' }
-        ],
-        stats: {
-          captureRate: '100%',
-          availability: '24/7 Available'
+        {
+          icon: <Bot className="text-[#7E22CE]" />,
+          time: "0.5s",
+          title: "AI Qualification",
+          desc: "AuraOS verifies interest and intent.",
         },
-        conversionTime: '<2 minutes',
-        successRate: '300% higher than industry average'
-      },
-    ];
-  
+        {
+          icon: <Phone className="text-[#7E22CE]" />,
+          time: "2m",
+          title: "Instant Callback",
+          desc: "Lead connected with agent automatically.",
+        },
+        {
+          icon: <CheckCircle className="text-[#7E22CE]" />,
+          time: "5m",
+          title: "Appointment Set",
+          desc: "Meeting booked directly to CRM.",
+        },
+      ],
+    },
+    {
+      id: "email",
+      name: "Website",
+      subtitle: "Smart inbox response",
+      icon: <Mail className="w-5 h-5" />,
+      color: "from-[#7E22CE] to-purple-400",
+      stats: { captureRate: "87%", availability: "Auto-Replies within 1 min" },
+      flow: [
+        {
+          icon: <Mail className="text-[#7E22CE]" />,
+          time: "0.3s",
+          title: "Email Received",
+          desc: "Inquiry parsed by AuraOS filters.",
+        },
+        {
+          icon: <Bot className="text-[#7E22CE]" />,
+          time: "1s",
+          title: "AI Categorization",
+          desc: "Intent, urgency, and lead type detected.",
+        },
+        {
+          icon: <Phone className="text-[#7E22CE]" />,
+          time: "3m",
+          title: "Sales Notified",
+          desc: "CRM lead auto-created and assigned.",
+        },
+        {
+          icon: <CheckCircle className="text-[#7E22CE]" />,
+          time: "10m",
+          title: "Response Sent",
+          desc: "Personalized email reply dispatched.",
+        },
+      ],
+    },
+  ];
+
+  const [activeTab, setActiveTab] = useState("chat");
     const selectedChannel = channels.find(c => c.id === activeTab);
-    
+
+  const [step, setStep] = useState(1);
+
+  const [data, setData] = useState({
+    avgDealSize: 25000,
+    monthlyInquiries: 80,
+    bookingRate: 5,
+    conversionRate: 25,
+    industry: "Legal Services",
+  });
+
+  const industries = [
+    "Legal Services",
+    "Medical & Healthcare",
+    "Roofing & Construction",
+    "HVAC Services",
+    "Solar & Energy",
+    "Business Consulting",
+  ];
+
+  const handleChange = (e) =>
+    setData({ ...data, [e.target.name]: Number(e.target.value) || e.target.value });
+
+  const nextStep = () => setStep((s) => Math.min(s + 1, 4));
+  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
+
+  // 💡 Logic
+  const currentRevenue =
+    (data.monthlyInquiries * (data.bookingRate / 100) * (data.conversionRate / 100) * data.avgDealSize) || 0;
+  const improvedBookingRate = data.bookingRate * 2.5;
+  const improvedRevenue =
+    (data.monthlyInquiries * (improvedBookingRate / 100) * (data.conversionRate / 100) * data.avgDealSize) || 0;
+  const additionalRevenue = improvedRevenue - currentRevenue;
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
  
@@ -434,399 +521,117 @@ const Home = () => {
       </section>
       </AnimatedSection>
 
-      {/* Third Section: Monitor Production Requests
-      <AnimatedSection delay={300}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
-       
-          <div className="lg:w-1/2 space-y-6">
-            <div className="text-sm text-purple-400 uppercase">Observability and real-time guardrails</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-             SalesPilot
-            </h2>
-            <p className="text-gray-300 text-lg mt-6">
-              AI lead triage, human-like follow-ups, meeting orchestration, pipeline hygiene.
-            </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <button className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center">
-                Watch a 60-sec demo →
-              </button>
-            </div>
-          </div>
-          
-         <div className="lg:w-1/2 relative">
-  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
-<h4 className="text-center mb-4">
-  Environment{" "}
-  <span
-    className="px-2 py-1 rounded text-[#EDA430] bg-[linear-gradient(90deg,rgba(237,164,48,0.10)_0%,rgba(237,164,48,0.02)_100%)]"
-  >
-    Development
-  </span>
-</h4>
-   
-    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
-    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
-      <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
-      <div className="ml-3">
-        <span className="font-semibold">Cutshort</span>
-                  <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-      </div>
-    </div>
-
-    
-    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
-      
-    
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
-        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Context precision {'>'} 0.9</span>
-            {testProgress >= 1 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-     
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Outputs are in JSON</span>
-            {testProgress >= 2 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-    
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>LLM score avoids discrimination</span>
-            {testProgress >= 3 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Average latency {'<'} 0.5s</span>
-            {testProgress >= 4 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-    
-      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-sm">22 tests passing</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span className="text-sm">10 tests failing</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-        </div>
-        
-      </section>
-      </AnimatedSection>
-
-    
-      <AnimatedSection delay={400}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
- 
-          <div className="lg:w-1/2 space-y-6">
-            <div className="text-sm text-purple-400 uppercase">Data quality</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-             Custom Automations
-            </h2>
-            <p className="text-gray-300 text-lg mt-6">
-             Bespoke workflows across CRMs, ads, finance, support; SOC-friendly delivery &
-SLAs
-            </p>
-            <button className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center mt-8">
-              Scope a build →
-            </button>
-          </div>
-          
-    <div className="lg:w-1/2 relative">
-  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
-<h4 className="text-center mb-4">
-  Environment{" "}
-  <span
-    className="px-2 py-1 rounded text-[#EDA430] bg-[linear-gradient(90deg,rgba(237,164,48,0.10)_0%,rgba(237,164,48,0.02)_100%)]"
-  >
-    Development
-  </span>
-</h4>
-    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
-    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
-      <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
-      <div className="ml-3">
-        <span className="font-semibold">Cutshort</span>
-                  <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-      </div>
-    </div>
-
-  
-    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
-
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
-        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Context precision {'>'} 0.9</span>
-            {testProgress >= 1 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Outputs are in JSON</span>
-            {testProgress >= 2 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>LLM score avoids discrimination</span>
-            {testProgress >= 3 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Average latency {'<'} 0.5s</span>
-            {testProgress >= 4 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-  
-      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-sm">22 tests passing</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span className="text-sm">10 tests failing</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-        </div>
-      
-      </section>
-       </AnimatedSection> */}
-
       {/* Sixth Section: Designed for Builders */}
-      <AnimatedSection delay = {600}>
-     {/* Experience Section */}
-      <section className="py-12 px-6 bg-gray-900">
-        <div className="text-center mb-10">
-          <div className="inline-block bg-gray-800 text-xs px-3 py-1 rounded-full mb-4">EXPERIENCE THE DIFFERENCE</div>
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            Don't Just Read About AuraOS – <br /> Experience It Live
-          </h2>
-          <p className="max-w-2xl mx-auto text-gray-300 mb-6">
-            See exactly how AuraOS will handle your high-value prospects. Choose your experience:
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ml-28 mr-24">
-          <div className="border border-gray-700 p-6 rounded-xl">
-            <div className="text-center mb-4">
-              <div className="text-3xl mb-2">📞</div>
-              <h3 className="text-xl font-semibold">Experience AuraOS Live</h3>
-            </div>
-            <p className="text-sm text-gray-400 mb-4">
-              Our AI will call you right now and demonstrate exactly how it handles prospects. See the technology in action with your own ears.
-            </p>
-            <ul className="space-y-1 text-xs mb-4">
-              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Live conversation with AuraOS</li>
-              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Immediate results showcased</li>
-              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Feel the premium conversation quality</li>
-            </ul>
-            <button className="w-full bg-gradient-to-r from-purple-500 to-blue-600 px-4 py-2 rounded font-medium hover:shadow-lg transition">
-              Call Me Now - Experience AuraOS
-            </button>
+   <AnimatedSection delay={600}>
+  {/* Experience Section */}
+  <section className="py-16 px-6 bg-gray-900">
+    <div className="text-center mb-12">
+      <div className="inline-block bg-[#1F0F2B] text-xs px-3 py-1 rounded-full mb-4">
+        EXPERIENCE THE DIFFERENCE
+      </div>
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] to-pink-500 bg-clip-text text-transparent">
+        Don't Just Read About AuraOS – <br /> Experience It Live
+      </h2>
+      <p className="max-w-2xl mx-auto text-gray-300 mb-8">
+        See exactly how AuraOS will handle your high-value prospects. Choose your experience:
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {/* Card 1 */}
+      <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
+        <div className="text-center mb-4">
+          <div className="inline-block text-[#7E22CE] border border-[#7E22CE] p-3 rounded-full mb-2">
+            <FontAwesomeIcon icon={faPhone} size="lg" />
           </div>
-          <div className="border border-gray-700 p-6 rounded-xl">
-            <div className="text-center mb-4">
-              <div className="text-3xl mb-2">💼</div>
-              <h3 className="text-xl font-semibold">Strategic Implementation Call</h3>
-            </div>
-            <p className="text-sm text-gray-400 mb-4">
-              Speak with our team to understand how AuraOS will integrate with your business and drive revenue growth for your specific use case.
-            </p>
-            <ul className="space-y-1 text-xs mb-4">
-              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Custom implementation strategy</li>
-              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> ROI projection for your business</li>
-              <li className="flex items-start"><span className="text-blue-400 mr-2">✓</span> Technical integration overview</li>
-            </ul>
-            <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded font-medium hover:shadow-lg transition">
-              Book Strategic Call
-            </button>
+          <h3 className="text-xl font-semibold text-white">Experience AuraOS Live</h3>
+        </div>
+        <p className="text-sm text-gray-400 mb-4">
+          Our AI will call you right now and demonstrate exactly how it handles prospects. See the technology in action with your own ears.
+        </p>
+        <ul className="space-y-2 text-xs mb-4">
+          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Live conversation with AuraOS</li>
+          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Immediate results showcased</li>
+          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Feel the premium conversation quality</li>
+        </ul>
+        <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
+          Call Me Now - Experience AuraOS
+        </button>
+      </div>
+
+      {/* Card 2 */}
+      <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
+        <div className="text-center mb-4">
+          <div className="inline-block text-[#7E22CE] border border-[#7E22CE] p-3 rounded-full mb-2">
+            <FontAwesomeIcon icon={faCalendar} size="lg" />
           </div>
+          <h3 className="text-xl font-semibold text-white">Strategic Implementation Call</h3>
         </div>
-        <div className="text-center text-sm text-gray-400">
-          *Results in 24 hours • Risk-free guarantee • Average 817% ROI
-        </div>
-      </section>
-      </AnimatedSection>
+        <p className="text-sm text-gray-400 mb-4">
+          Speak with our team to understand how AuraOS will integrate with your business and drive revenue growth for your specific use case.
+        </p>
+        <ul className="space-y-2 text-xs mb-4">
+          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Custom implementation strategy</li>
+          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> ROI projection for your business</li>
+          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Technical integration overview</li>
+        </ul>
+        <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
+          Book Strategic Call
+        </button>
+      </div>
+    </div>
+
+    <div className="text-center text-sm text-gray-400 mt-8">
+      *Results in 24 hours • Risk-free guarantee • Average 817% ROI
+    </div>
+  </section>
+</AnimatedSection>
+
 
    {/* Speed to Lead Section */}
-    <AnimatedSection delay = {600}>
+   <AnimatedSection delay={600}>
       <section className="py-12 px-6">
         <div className="text-center mb-10">
-          <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">THE SPEED IMPERATIVE</div>
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+          <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
+            THE SPEED IMPERATIVE
+          </div>
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
             Speed to Lead <br /> Determines Everything
           </h2>
           <p className="max-w-2xl mx-auto text-gray-300">
             In today's market, the fastest response wins—regardless of price, quality, or reputation.
           </p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { icon: "📉", value: "900%", title: "Conversion Drop", desc: "Response delay beyond 5 minutes causes 900% decrease in lead conversion rates" },
-            { icon: "🚀", value: "21x", title: "Speed Advantage", desc: "Companies responding within 5 minutes are 21x more likely to qualify leads" },
-            { icon: "$", value: "78%", title: "Revenue at Risk", desc: "Of premium prospects research and decide within the first hour of inquiry" }
-          ].map((item, index) => (
-            <div key={index} className="border border-gray-700 p-6 rounded-xl hover:border-red-500 transition">
-              <div className="text-2xl mb-3">{item.icon}</div>
-              <div className="text-2xl font-bold text-red-400 mb-2">{item.value}</div>
-              <h3 className="font-semibold mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-400">{item.desc}</p>
+          {stats.map((item, index) => (
+            <div
+              key={index}
+              className="border border-gray-700 p-6 rounded-xl hover:border-[#7E22CE] transition duration-300"
+            >
+              <div className="flex justify-center mb-3">{item.icon}</div>
+              <div className="text-2xl font-bold text-[#7E22CE] mb-2 text-center">
+                {item.value}
+              </div>
+              <h3 className="font-semibold mb-2 text-center text-white">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-400 text-center">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
-      </AnimatedSection>
+    </AnimatedSection>
 
       {/* Lead Generation */}
       <AnimatedSection delay= {700}>
-      <div className="bg-black text-white min-h-screen py-12 px-4 md:px-8">
+     <div className="bg-black text-white min-h-screen py-12 px-4 md:px-8">
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-8">
-        <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">COMPLETE MULTI-CHANNEL INTELLIGENCE</div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
+          COMPLETE MULTI-CHANNEL INTELLIGENCE
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
           Every Channel. Every Lead. <br /> Captured and Converted
         </h2>
         <p className="text-gray-300 max-w-2xl mx-auto">
@@ -842,8 +647,8 @@ SLAs
             onClick={() => setActiveTab(channel.id)}
             className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
               activeTab === channel.id
-                ? `bg-gradient-to-r ${channel.color} text-white shadow-lg`
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                ? `bg-gradient-to-r ${channel.color} text-white shadow-lg shadow-[#7E22CE]/30`
+                : "bg-gray-800 text-gray-300 hover:bg-gray-700"
             }`}
           >
             <span>{channel.icon}</span>
@@ -860,7 +665,7 @@ SLAs
         {/* Header Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-gray-800">
           <div className="flex items-center space-x-3 mb-4 md:mb-0">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl">
+            <div className="w-10 h-10 bg-gradient-to-r from-[#7E22CE] to-purple-500 rounded-full flex items-center justify-center text-xl">
               {selectedChannel.icon}
             </div>
             <div>
@@ -869,8 +674,12 @@ SLAs
             </div>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-green-400">{selectedChannel.stats.captureRate}</div>
-            <div className="text-xs text-gray-400">{selectedChannel.stats.availability}</div>
+            <div className="text-2xl font-bold text-[#7E22CE]">
+              {selectedChannel.stats.captureRate}
+            </div>
+            <div className="text-xs text-gray-400">
+              {selectedChannel.stats.availability}
+            </div>
           </div>
         </div>
 
@@ -881,21 +690,34 @@ SLAs
               key={index}
               className="relative bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer group"
             >
-              <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{step.icon}</div>
+              <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
+                {step.icon}
+              </div>
               <div className="text-sm font-semibold mb-1">{step.time}</div>
               <div className="text-xs text-gray-300 mb-1">{step.title}</div>
               <div className="text-xs text-gray-500">{step.desc}</div>
               {index < selectedChannel.flow.length - 1 && (
                 <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3 text-gray-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </div>
               )}
             </div>
           ))}
         </div>
-</div>
+      </div>
     </div>
      </AnimatedSection>
 
@@ -971,122 +793,313 @@ SLAs
 
       {/* Ninth Section: Templates */}
       <AnimatedSection delay = {900}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto">
-          {/* Header */}
-          <div className="max-w-xl mx-auto text-center mb-12">
-            <div className="text-sm text-purple-400 uppercase">Templates</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-2">
-              Get started in seconds
-            </h2>
-            <p className="text-gray-300 text-lg mt-6">
-              Pick a template to accelerate your setup. Templates are sample projects with common AI patterns. They come pre-configured with all sorts of relevant tests.
-            </p>
-            <div className="flex justify-center gap-4 mt-8">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
-                Start from a template
-              </button>
-              <button className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center">
-                Browse templates {'>'}
-              </button>
+     <section className="py-20 px-4 md:px-8 lg:px-16 bg-black text-white">
+  <div className="container mx-auto">
+    {/* Header */}
+    <div className="max-w-xl mx-auto text-center mb-12">
+      <div className="text-sm text-[#7E22CE] uppercase tracking-widest">
+        Templates
+      </div>
+      <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-2 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        Get started in seconds
+      </h2>
+      <p className="text-gray-300 text-lg mt-6">
+        Pick a template to accelerate your setup. Templates are sample projects
+        with common AI patterns. They come pre-configured with all relevant tests.
+      </p>
+      <div className="flex justify-center gap-4 mt-8">
+        <button className="bg-[#7E22CE] hover:bg-[#6B1FB8] text-white px-6 py-2 rounded-full font-medium transition-all duration-300 shadow-lg shadow-[#7E22CE]/30">
+          Start from a template
+        </button>
+        <button className="text-[#7E22CE] hover:text-purple-300 text-sm font-medium flex items-center transition-colors">
+          Browse templates <span className="ml-1">{'>'}</span>
+        </button>
+      </div>
+    </div>
+
+    {/* Template Cards Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Template 1 */}
+      <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-800 shadow-lg relative overflow-hidden group hover:bg-gray-900/90 transition-colors">
+        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-[#7E22CE]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#7E22CE] to-purple-500 rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6zM13 13h8v6h-8v-6z" />
+              </svg>
             </div>
+            <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded transition-colors">
+              Clone template {'>'}
+            </button>
           </div>
-
-          {/* Template Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Template 1: RAG with Python */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-                    </svg>
-                  </div>
-                  <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded">Clone template {'>'}</button>
-                </div>
-                <h3 className="font-semibold mb-2">Question-answering retrieval</h3>
-                <div className="text-sm text-gray-400 mb-4">RAG with Python</div>
-                <p className="text-gray-300 text-sm mb-4">
-                  Create a RAG pipeline for question-answering using Azure OpenAI and Python
-                </p>
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs bg-gray-700 px-2 py-1 rounded">Generative</span>
-                  <span className="text-xs bg-gray-700 px-2 py-1 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                    </svg>
-                    Python
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Template 2: Structured outputs */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-                    </svg>
-                  </div>
-                  <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded">Clone template {'>'}</button>
-                </div>
-                <h3 className="font-semibold mb-2">Structured outputs</h3>
-                <div className="text-sm text-gray-400 mb-4">Instructor and Claude with Python</div>
-                <p className="text-gray-300 text-sm mb-4">
-                  Create an AI with structured outputs using Claude, Instructor and Python
-                </p>
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs bg-gray-700 px-2 py-1 rounded">Generative</span>
-                  <span className="text-xs bg-gray-700 px-2 py-1 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                    </svg>
-                    Python
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Template 3: Simple chatbot */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden group hover:bg-black/70 transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-                    </svg>
-                  </div>
-                  <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded">Clone template {'>'}</button>
-                </div>
-                <h3 className="font-semibold mb-2">Simple chatbot</h3>
-                <div className="text-sm text-gray-400 mb-4">OpenAI with Python</div>
-                <p className="text-gray-300 text-sm mb-4">
-                  Create your own simple chatbot using OpenAI and Python
-                </p>
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs bg-gray-700 px-2 py-1 rounded">Generative</span>
-                  <span className="text-xs bg-gray-700 px-2 py-1 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9M9 9M9 9l6 6M9 9l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-                    </svg>
-                    Python
-                  </span>
-                </div>
-              </div>
-            </div>
+          <h3 className="font-semibold mb-2 text-white">Question-answering retrieval</h3>
+          <div className="text-sm text-gray-400 mb-4">RAG with Python</div>
+          <p className="text-gray-300 text-sm mb-4">
+            Create a RAG pipeline for question-answering using Azure OpenAI and Python.
+          </p>
+          <div className="flex items-center space-x-2">
+            <span className="text-xs bg-gray-800 px-2 py-1 rounded">Generative</span>
+            <span className="text-xs bg-gray-800 px-2 py-1 rounded flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#7E22CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9m0 0l6 6m-6-6l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
+              </svg>
+              Python
+            </span>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Template 2 */}
+      <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-800 shadow-lg relative overflow-hidden group hover:bg-gray-900/90 transition-colors">
+        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-[#7E22CE]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-[#7E22CE] rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
+              </svg>
+            </div>
+            <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded transition-colors">
+              Clone template {'>'}
+            </button>
+          </div>
+          <h3 className="font-semibold mb-2 text-white">Structured outputs</h3>
+          <div className="text-sm text-gray-400 mb-4">Instructor and Claude with Python</div>
+          <p className="text-gray-300 text-sm mb-4">
+            Build an AI that generates structured outputs using Claude, Instructor, and Python.
+          </p>
+          <div className="flex items-center space-x-2">
+            <span className="text-xs bg-gray-800 px-2 py-1 rounded">Generative</span>
+            <span className="text-xs bg-gray-800 px-2 py-1 rounded flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#7E22CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9m0 0l6 6m-6-6l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
+              </svg>
+              Python
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Template 3 */}
+      <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-800 shadow-lg relative overflow-hidden group hover:bg-gray-900/90 transition-colors">
+        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-[#7E22CE]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#7E22CE] to-purple-500 rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6zM13 13h8v6h-8v-6z" />
+              </svg>
+            </div>
+            <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded transition-colors">
+              Clone template {'>'}
+            </button>
+          </div>
+          <h3 className="font-semibold mb-2 text-white">Simple chatbot</h3>
+          <div className="text-sm text-gray-400 mb-4">OpenAI with Python</div>
+          <p className="text-gray-300 text-sm mb-4">
+            Create a fully functional chatbot using OpenAI and Python in minutes.
+          </p>
+          <div className="flex items-center space-x-2">
+            <span className="text-xs bg-gray-800 px-2 py-1 rounded">Generative</span>
+            <span className="text-xs bg-gray-800 px-2 py-1 rounded flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#7E22CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9m0 0l6 6m-6-6l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
+              </svg>
+              Python
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </AnimatedSection>
 
+
+<AnimatedSection delay ={900}>
+  <section className="bg-black text-white py-20 px-4 md:px-8">
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="inline-block bg-purple-900/40 text-xs px-3 py-1 rounded-full mb-4 border border-purple-500/40">
+          REVENUE PROJECTOR
+        </div>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          Calculate Your{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Revenue Growth Potential
+          </span>
+        </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto">
+          Input your business metrics to discover how much additional revenue AuraOS can generate through
+          improved response times and booking rates.
+        </p>
+      </div>
+
+      {/* Step indicator */}
+      <div className="flex justify-center mb-10 space-x-4">
+        {[1, 2, 3, 4].map((n) => (
+          <div
+            key={n}
+            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium border ${
+              step >= n
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent"
+                : "border-gray-700 text-gray-400"
+            }`}
+          >
+            {n}
+          </div>
+        ))}
+      </div>
+
+      {/* Step cards */}
+      <div className="max-w-2xl mx-auto bg-gray-900 border border-gray-800 rounded-xl p-8 shadow-2xl">
+        {/* Step 1 */}
+        {step === 1 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-left">Let’s start with your business basics</h3>
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm mb-1">Average Deal Size ($)</label>
+                <input
+                  type="number"
+                  name="avgDealSize"
+                  value={data.avgDealSize}
+                  onChange={handleChange}
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm mb-1">Monthly Inquiries</label>
+                <input
+                  type="number"
+                  name="monthlyInquiries"
+                  value={data.monthlyInquiries}
+                  onChange={handleChange}
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 2 */}
+        {step === 2 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-left">What's your current performance?</h3>
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm mb-1">Current Booking Rate (%)</label>
+                <input
+                  type="number"
+                  name="bookingRate"
+                  value={data.bookingRate}
+                  onChange={handleChange}
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm mb-1">Conversion Rate (%)</label>
+                <input
+                  type="number"
+                  name="conversionRate"
+                  value={data.conversionRate}
+                  onChange={handleChange}
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-purple-500 outline-none"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3 */}
+        {step === 3 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-left">What industry are you in?</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {industries.map((ind) => (
+                <button
+                  key={ind}
+                  onClick={() => setData({ ...data, industry: ind })}
+                  className={`p-4 rounded-lg border text-left transition-all ${
+                    data.industry === ind
+                      ? "border-purple-500 bg-purple-900/30"
+                      : "border-gray-700 hover:border-purple-500/40"
+                  }`}
+                >
+                  {ind}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Step 4 */}
+        {step === 4 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-left">Your Growth Potential</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-gray-800 rounded-lg p-4">
+                <div className="text-sm text-gray-400 mb-1">Current Performance</div>
+                <div className="text-lg font-bold text-white">
+                  ${currentRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                </div>
+              </div>
+              <div className="bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg p-4">
+                <div className="text-sm text-gray-200 mb-1">With AuraOS</div>
+                <div className="text-lg font-bold text-white">
+                  ${improvedRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center bg-purple-900/30 border border-purple-700 rounded-lg p-4 mb-6">
+              <div className="text-3xl font-bold text-purple-400">
+                +${additionalRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+              </div>
+              <div className="text-sm text-gray-400">Additional Monthly Revenue Potential</div>
+            </div>
+
+            <div className="bg-gray-800 rounded-lg p-4 text-gray-300 text-sm">
+              <p>
+                Annual Projection:{" "}
+                <span className="text-white font-semibold">
+                  ${(additionalRevenue * 12).toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                </span>
+              </p>
+              <p>
+                Estimated Improvement:{" "}
+                <span className="text-purple-400 font-semibold">~2.5× Booking Rate Increase</span>
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Navigation */}
+        <div className="flex justify-between mt-8">
+          <button
+            onClick={prevStep}
+            disabled={step === 1}
+            className="px-6 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700 disabled:opacity-40 transition"
+          >
+            Previous
+          </button>
+          {step < 4 ? (
+            <button
+              onClick={nextStep}
+              className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 transition"
+            >
+              Continue →
+            </button>
+          ) : (
+            <button className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 transition">
+              Get Your Custom Strategy →
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
+</AnimatedSection>
 
       {/* FAQ */}
       <AnimatedSection delay = {1000}>

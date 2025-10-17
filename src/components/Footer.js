@@ -1,85 +1,129 @@
 import React from "react";
-import Logo from '../Images/Logo.png';
-import { Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Logo from "../Images/Logo.png";
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
+  return (
+    <footer
+      className="bg-gradient-to-br from-slate-900 to-black text-white py-12 px-6"
+      style={{ backgroundColor: "#080412" }}
+    >
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-10">
+        
+        {/* 1️⃣ Logo & Description */}
+        <div>
+          <Link to="/" className="flex items-center space-x-2 mb-4">
+            <img src={Logo} alt="Logo" className="h-14 w-auto" />
+          </Link>
 
-return (
-<div className="bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
- {/* Footer */}
- <footer className="border-t border-gray-100 px-6 py-12">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8">
-  <div>
-   <div className=" font-bold text-xl mb-6">
-      <Link to="/" className="flex items-center">
-                       <img 
-                          src= {Logo}
-                          alt="Openlayer" 
-                          className="h-16 w-auto"
-                        />
-                      </Link>
-            </div>
-           
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span className="text-xs text-gray-600">All systems operational</span>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-white mb-4">Products</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">LLM observability</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">LLM evaluation</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">ML observability</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">ML evaluation</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Data quality monitoring</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">AI governance & compliance</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Other products</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Blog</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Changelog</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Customers</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Glossary</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Pricing</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Discord</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Request demo</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-white mb-4">Documentation</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Getting started</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">API reference</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">SDKs</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">CLI</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Integrations</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Templates</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">About us</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Manifesto</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Careers</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Security</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Terms of service</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Privacy policy</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Cookie policy</a></li>
-              <li><a href="#" className="text-sm text-white hover:text-purple-600">Responsible disclosure</a></li>
-            </ul>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            Empowering innovation with AI-driven solutions that help businesses
+            scale faster, smarter, and more efficiently.
+          </p>
+
+          {/* Social Media Icons */}
+          <div className="flex space-x-4">
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-pink-500 transition"
+            >
+              <FaInstagram size={18} />
+            </a>
+            <a
+              href="https://facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-600 transition"
+            >
+              <FaFacebookF size={18} />
+            </a>
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              <FaLinkedinIn size={18} />
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-sky-400 transition"
+            >
+              <FaTwitter size={18} />
+            </a>
           </div>
         </div>
-      </footer>
-    </div>
+
+        {/* 2️⃣ Quick Links */}
+        <div>
+          <h3 className="font-semibold text-lg mb-4 text-white">Quick Links</h3>
+          <ul className="space-y-3">
+            <li><Link to="/" className="text-sm text-gray-400 hover:text-blue-400 transition">Home</Link></li>
+            <li><Link to="/product" className="text-sm text-gray-400 hover:text-blue-400 transition">Product</Link></li>
+            <li><Link to="/pricing" className="text-sm text-gray-400 hover:text-blue-400 transition">Pricing</Link></li>
+            <li><Link to="/contactus" className="text-sm text-gray-400 hover:text-blue-400 transition">Contact Us</Link></li>
+          </ul>
+        </div>
+
+        {/* 3️⃣ Policy & Legal */}
+        <div>
+          <h3 className="font-semibold text-lg mb-4 text-white">Legal & Policy</h3>
+          <ul className="space-y-3">
+            <li><Link to="/privacy" className="text-sm text-gray-400 hover:text-blue-400 transition">Privacy Policy</Link></li>
+            <li><Link to="/terms" className="text-sm text-gray-400 hover:text-blue-400 transition">Terms of Service</Link></li>
+            <li><Link to="/cookies" className="text-sm text-gray-400 hover:text-blue-400 transition">Cookie Policy</Link></li>
+            <li><Link to="/security" className="text-sm text-gray-400 hover:text-blue-400 transition">Security</Link></li>
+            <li><Link to="/disclaimer" className="text-sm text-gray-400 hover:text-blue-400 transition">Disclaimer</Link></li>
+          </ul>
+        </div>
+
+        {/* 4️⃣ Contact Info */}
+        <div>
+          <h3 className="font-semibold text-lg mb-4 text-white">Contact</h3>
+          <ul className="space-y-4">
+            <li className="flex items-start space-x-3">
+              <i className="fas fa-phone text-blue-400 mt-1"></i>
+              <div>
+                <h4 className="text-sm font-medium text-gray-300">Phone</h4>
+                <a href="tel:+15551234567" className="text-sm text-gray-400 hover:text-blue-400 transition">
+                  +1 (555) 123-4567
+                </a>
+              </div>
+            </li>
+
+            <li className="flex items-start space-x-3">
+              <i className="fas fa-envelope text-blue-400 mt-1"></i>
+              <div>
+                <h4 className="text-sm font-medium text-gray-300">Email</h4>
+                <a href="mailto:vidhibajaj1401@gmail.com" className="text-sm text-gray-400 hover:text-blue-400 transition">
+                  vidhibajaj1401@gmail.com
+                </a>
+              </div>
+            </li>
+
+            <li className="flex items-start space-x-3">
+              <i className="fas fa-map-marker-alt text-blue-400 mt-1"></i>
+              <div>
+                <h4 className="text-sm font-medium text-gray-300">Location</h4>
+                <p className="text-sm text-gray-400">
+                  123 Tech Avenue<br />San Francisco, CA 94107
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Footer Bottom */}
+      <div className="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} AuraOS. All rights reserved.
+      </div>
+    </footer>
   );
 };
 
