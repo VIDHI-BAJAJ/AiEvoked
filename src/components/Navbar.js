@@ -18,7 +18,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Product", path: "/product" },
-    { name: "About Us", path: "/documentation" },
+    { name: "About Us", path: "/aboutus" },
     { name: "Pricing", path: "/pricing" },
     { name: "Contact Us", path: "/contact" },
   ];
@@ -81,12 +81,13 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <button
-              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              Request demo {">"}
-            </button>
+           <Link
+           to="/contact"
+           className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors inline-block text-center"
+           onClick={() => setTimeout(() => setMenuOpen(false), 50)}
+          >
+           Request demo {">"}
+         </Link>
           </div>
         </div>
       )}

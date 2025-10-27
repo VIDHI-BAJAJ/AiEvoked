@@ -3,13 +3,11 @@ import AnimatedSection from '../components/AnimatedSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { Zap, Clock, DollarSign, MessageSquare, Phone, Mail, Bot,  CheckCircle } from "lucide-react";
-
+import { Zap, Clock, DollarSign, MessageSquare, Phone, Mail, Bot, CheckCircle, TrendingUp, FileCheck } from "lucide-react";
+import { Link } from "react-router-dom";
+import FixedFooter from './FixedFooter';
 const Home = () => {
-
   const [testProgress, setTestProgress] = useState(0);
-
-  // Simulate test completion over time
   useEffect(() => {
     const timer = setInterval(() => {
       setTestProgress(prev => {
@@ -17,42 +15,50 @@ const Home = () => {
         clearInterval(timer);
         return prev;
       });
-    }, 1500); // Each test completes every 1.5 seconds
-
+    }, 1500);
     return () => clearInterval(timer);
   }, []);
 
-    const [openIndex, setOpenIndex] = useState(null);
-
+  const [openIndex, setOpenIndex] = useState(null);
   const faqs = [
     {
-      question: "How does AuraOS automate customer follow-ups?",
+      question: "What exactly does Automate+ do?",
       answer:
-        "AuraOS uses AI-driven workflows to send personalized messages via email, SMS, and calls, ensuring timely and human-like engagement with every lead.",
+        "Automate+ installs your agency’s Revenue Engine — a done-for-you automation system that replies to leads, sends proposals, revives cold prospects and manages operations without your team lifting a finger.",
     },
     {
-      question: "How quickly can I set up AuraOS for my business?",
-      answer:
-        "Setup typically takes less than 48 hours. Our onboarding team assists with CRM integration, campaign configuration, and AI training for your brand voice.",
+      question: "How fast can we see results?",
+      answer: (
+        <>
+          <p>Usually, within 48 hours of setup.</p>
+          <p>Our full install takes about 7 days, and by the first month, most agencies see:</p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Replies going out in under 2 minutes</li>
+            <li>Proposals sent the same day instead of 2–3 days</li>
+            <li>Show rates increase by 20–40%</li>
+            <li>A smoother operations flow and faster pipeline that converts more deals</li>
+          </ul>
+        </>
+      ),
     },
     {
-      question: "Can I customize messages and follow-up frequency?",
+      question: "How much work will this be for my team?",
       answer:
-        "Yes, every message, tone, and timing can be tailored to match your sales cycle, industry, and customer preferences — ensuring a non-intrusive experience.",
+        "Almost none You’ll just assign three people — a lead owner, proposal approver, and ops point of contact. We handle everything else async. Two short check-ins a month, and you’ll get weekly dashboards showing progress and ROI.",
     },
     {
-      question: "Is AuraOS compliant with data and privacy regulations?",
+      question: "What if it doesn’t work for us?",
       answer:
-        "Absolutely. AuraOS adheres to GDPR, TCPA, and other compliance standards, ensuring data protection and legal communication practices.",
+        "Then you don’t pay.If we miss our benchmarks (like <2-minute replies or 10% pipeline revival), you get credits, free optimisation time, or a refund — your choice. We take the risk so you can focus on results.",
     },
     {
-      question: "How do I measure ROI from AI-powered follow-ups?",
+      question: "How do we get started?",
       answer:
-        "You can track performance through a built-in dashboard showing open rates, conversions, and revenue impact — giving you clear visibility into ROI.",
+        "Book a quick 15-minute teardown.We’ll review your current lead flow, show where time and money are leaking, and map exactly how to automate replies, proposals, operations and follow-ups within 7 days.",
     },
   ];
 
-const stats = [
+  const stats = [
     {
       icon: <Zap className="w-10 h-10 text-[#7E22CE]" />,
       value: "900%",
@@ -72,44 +78,23 @@ const stats = [
       desc: "Of premium prospects research and decide within the first hour of inquiry",
     },
   ];
-  
+
   const toggleFAQ = (index) =>
     setOpenIndex(openIndex === index ? null : index);
 
-
-   const channels = [
+  const channels = [
     {
       id: "chat",
-      name: "Facebook",
+      name: "Meta Ads / Google Ads",
       subtitle: "Instant web conversations",
       icon: <MessageSquare className="w-5 h-5" />,
       color: "from-[#7E22CE] to-purple-500",
       stats: { captureRate: "94%", availability: "24/7 Response" },
       flow: [
-        {
-          icon: <Zap className="text-[#7E22CE]" />,
-          time: "0.2s",
-          title: "Inquiry Captured",
-          desc: "Visitor engages via website chat.",
-        },
-        {
-          icon: <Bot className="text-[#7E22CE]" />,
-          time: "0.5s",
-          title: "AI Qualification",
-          desc: "AuraOS verifies interest and intent.",
-        },
-        {
-          icon: <Phone className="text-[#7E22CE]" />,
-          time: "2m",
-          title: "Instant Callback",
-          desc: "Lead connected with agent automatically.",
-        },
-        {
-          icon: <CheckCircle className="text-[#7E22CE]" />,
-          time: "5m",
-          title: "Appointment Set",
-          desc: "Meeting booked directly to CRM.",
-        },
+        { icon: <Zap className="text-[#7E22CE]" />, time: "0s", title: "Leads Captured", desc: "Forms, WhatsApp, Email, or Ads lead captured instantly." },
+        { icon: <Bot className="text-[#7E22CE]" />, time: "0.5s", title: "Speed Stack + Hot-Route", desc: "Instant humanlike reply + owner alerted for claim." },
+        { icon: <Phone className="text-[#7E22CE]" />, time: "2m", title: "Proposal Accelerator", desc: "Auto-draft proposals sent & e-sign enabled." },
+        { icon: <CheckCircle className="text-[#7E22CE]" />, time: "5m", title: "CRM Update & Reporting", desc: "Leads updated, revival engine triggered, and reports generated." },
       ],
     },
     {
@@ -120,37 +105,18 @@ const stats = [
       color: "from-[#7E22CE] to-purple-400",
       stats: { captureRate: "87%", availability: "Auto-Replies within 1 min" },
       flow: [
-        {
-          icon: <Mail className="text-[#7E22CE]" />,
-          time: "0.3s",
-          title: "Email Received",
-          desc: "Inquiry parsed by AuraOS filters.",
-        },
-        {
-          icon: <Bot className="text-[#7E22CE]" />,
-          time: "1s",
-          title: "AI Categorization",
-          desc: "Intent, urgency, and lead type detected.",
-        },
-        {
-          icon: <Phone className="text-[#7E22CE]" />,
-          time: "3m",
-          title: "Sales Notified",
-          desc: "CRM lead auto-created and assigned.",
-        },
-        {
-          icon: <CheckCircle className="text-[#7E22CE]" />,
-          time: "10m",
-          title: "Response Sent",
-          desc: "Personalized email reply dispatched.",
-        },
+        { icon: <Mail className="text-[#7E22CE]" />, time: "0s", title: "Leads Captured", desc: "Website inquiries parsed automatically." },
+        { icon: <Bot className="text-[#7E22CE]" />, time: "1s", title: "Speed Stack + Hot-Route", desc: "AI reply + owner alerted for immediate follow-up." },
+        { icon: <Phone className="text-[#7E22CE]" />, time: "3m", title: "Proposal Accelerator", desc: "Auto-drafted responses sent to leads quickly." },
+        { icon: <CheckCircle className="text-[#7E22CE]" />, time: "10m", title: "CRM Update & Reporting", desc: "Non-responders revived and performance reports updated." },
       ],
     },
   ];
 
   const [activeTab, setActiveTab] = useState("chat");
-    const selectedChannel = channels.find(c => c.id === activeTab);
- const [step, setStep] = useState(1);
+  const selectedChannel = channels.find(c => c.id === activeTab);
+
+  const [step, setStep] = useState(1);
   const [form, setForm] = useState({
     dealSize: 25000,
     monthlyInquiries: 80,
@@ -158,15 +124,6 @@ const stats = [
     conversionRate: 25,
     industry: "",
   });
-
-  const industries = [
-    "Legal Services",
-    "Medical & Healthcare",
-    "Roofing & Construction",
-    "HVAC Services",
-    "Solar & Energy",
-    "Business Consulting",
-  ];
 
   const handleChange = (field, value) => {
     setForm({ ...form, [field]: value });
@@ -176,14 +133,13 @@ const stats = [
     const { dealSize, monthlyInquiries, bookingRate, conversionRate } = form;
     const currentRevenue =
       dealSize * monthlyInquiries * (bookingRate / 100) * (conversionRate / 100);
-    const improvedBookingRate = bookingRate * 1.5; // +50% improvement
-    const improvedConversionRate = conversionRate * 1.1; // +10% improvement
+    const improvedBookingRate = bookingRate * 1.5;
+    const improvedConversionRate = conversionRate * 1.1;
     const improvedRevenue =
       dealSize *
       monthlyInquiries *
       (improvedBookingRate / 100) *
       (improvedConversionRate / 100);
-
     return {
       currentRevenue,
       improvedRevenue,
@@ -194,985 +150,668 @@ const stats = [
 
   const results = calculateResults();
 
+  const metrics = [
+    { icon: Clock, value: "90s", label: "p90 reply time", description: "From 6 hours to under 2 minutes" },
+    { icon: TrendingUp, value: "+38%", label: "Show rate lift", description: "20-40% improvement typical" },
+    { icon: FileCheck, value: "4 hrs", label: "Proposal speed", description: "Down from 3 days average" },
+  ];
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <>
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
- 
-      
       {/* Hero Section */}
       <AnimatedSection>
-      <section className="mt-24 pt-24 pb-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
-          {/* Left Content */}
-          <div className="lg:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
-             Turn More Leads into Booked Calls & Closed Deals—Automatically
-            </h1>
-            <p className="text-gray-300 text-lg mt-6">
-             Automate+ (ops & revenue), SalesPilot (AI sales Autopilot), and Custom
-            Automations (enterprise). Save 40+ hours/week, reply to 90% of leads in  {'<'}2 min, ship
-           proposals in hours.
-            </p>
-            <div className = "md:flex-row">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-colors mt-6">
-              Book a 15-min teardown
-            </button>
-            <button className=" ml-12 bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-colors mt-6">
-               See live demo
-            </button>
-            </div>
-          </div>
-          
-          {/* Right Content - Test Results Card */}
-      <div className="lg:w-1/2 relative">
-  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
-    {/* Header */}
-    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
-    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
-      <img src="https://via.placeholder.com/32" alt="eBay" className="w-8 h-8 rounded" />
-      <div className="ml-3">
-        <span className="font-semibold">eBay</span>
-        <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-      </div>
-    </div>
-
-    {/* Timeline Content */}
-    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
-      
-      {/* Timeline Item 1 - Optimal F1 and precision */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
-        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Optimal F1 and precision</span>
-            {testProgress >= 1 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Item 2 - LLM accurately summarizes context */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>LLM accurately summarizes context</span>
-            {testProgress >= 2 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Item 3 - Prevent fake product prompts */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Prevent fake product prompts</span>
-            {testProgress >= 3 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Item 4 - P99 latency < 5000ms */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>P99 latency {'<'} 5000ms</span>
-            {testProgress >= 4 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Summary Stats - Appears AFTER all timeline items */}
-      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-sm">22 tests passing</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span className="text-sm">10 tests failing</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-        
-    
-      </section>
-      </AnimatedSection>
-
-      <AnimatedSection delay={100}>
-      {/* Trusted by Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-gray-400 text-sm uppercase tracking-wider">Trusted by performance-led agencies & venture-backed teams.</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
-            <div className="flex justify-center">
-              <img src="https://via.placeholder.com/120x40?text=birdie" alt="birdie" className="h-10" />
-            </div>
-            <div className="flex justify-center">
-              <img src="https://via.placeholder.com/120x40?text=eBay" alt="eBay" className="h-10" />
-            </div>
-            <div className="flex justify-center">
-              <img src="https://via.placeholder.com/120x40?text=zuma" alt="zuma" className="h-10" />
-            </div>
-            <div className="flex justify-center">
-              <img src="https://via.placeholder.com/120x40?text=Company" alt="Company" className="h-10" />
-            </div>
-          </div>
-        </div>
-      </section>
-      </AnimatedSection>
-      {/* Second Section */}
-
-      <AnimatedSection delay={200}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
-          {/* Left Content */}
-          <div className="lg:w-1/2 space-y-6">
-            <div className="text-sm text-gray-400 uppercase">Offline evaluation</div>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Automate+ (Revenue Growth Engine)
-            </h2>
-            <p className="text-gray-300 text-lg mt-6">
-             Replies in  {'<'} 2 min (90% of inbound), +20–40% show rate, proposals in hours, revive ~10% of cold pipeline.
-
-            </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <button className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center">
-               See the 7-day rollout →
-              </button>
-            </div>
-          </div>
-          
-          {/* Right Content - Test Results Card */}
-<div className="lg:w-1/2 relative">
-  <div className="#151120 rounded-xl p-6 border border-gray-700 shadow-lg">
-<h4 className="text-center mb-4">
-  Environment{" "}
-  <span
-    className="px-2 py-1 rounded text-[#EDA430] bg-[linear-gradient(90deg,rgba(237,164,48,0.10)_0%,rgba(237,164,48,0.02)_100%)]"
-  >
-    Development
-  </span>
-</h4>
-    {/* Header */}
-    <div className = "rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
-    <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
-      <img src="https://via.placeholder.com/32" alt="Hurb" className="w-8 h-8 rounded" />
-      <div className="ml-3">
-        <span className="font-semibold">Hurb</span>
-                  <span className="text-sm text-gray-400 ml-2">4 of 4 Test results ready</span>
-      </div>
-    </div>
-
-    {/* Timeline Content */}
-    <div className="ml-4 relative pl-8  p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30">
-      
-      {/* Timeline Item 1 - Optimal F1 and precision */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 1 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 1 ? 'border-purple-500' : 'border-gray-500'
-        }  flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Outputs do not contain PII</span>
-            {testProgress >= 1 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Item 2 - LLM accurately summarizes context */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 2 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 2 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12zm0 0a9.863 9.863 0 01-4.8-8h4.8l-.4-1.6A9.863 9.863 0 0112 12z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Surface diverse recommendations</span>
-            {testProgress >= 2 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Item 3 - Prevent fake product prompts */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 3 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 3 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Time-to-first-token {'<'} 100ms </span>
-            {testProgress >= 3 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Item 4 - P99 latency < 5000ms */}
-      <div 
-        className={`flex items-start mb-4 group ${testProgress >= 4 ? 'opacity-100' : 'opacity-50'}`}
-        style={{ transition: 'opacity 0.5s ease-in-out' }}
-      >
-           <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${
-          testProgress >= 4 ? 'border-purple-500' : 'border-gray-500'
-        } flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13h8v6h-8v-6z" />
-          </svg>
-        </div>
-        <div className="ml-6 flex-1">
-          <div className="flex items-center justify-between">
-            <span>Ensure answers in PT-BR</span>
-            {testProgress >= 4 && (
-              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Summary Stats - Appears AFTER all timeline items */}
-      <div className={`mt-8 pt-4 border-t border-gray-700 flex items-center justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-sm">22 tests passing</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span className="text-sm">10 tests failing</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-        </div> 
-      </section>
-      </AnimatedSection>
-
-      {/* Sixth Section: Designed for Builders */}
-   <AnimatedSection delay={600}>
-  {/* Experience Section */}
-  <section className="py-16 px-6 bg-gray-900">
-    <div className="text-center mb-12">
-      <div className="inline-block bg-[#1F0F2B] text-xs px-3 py-1 rounded-full mb-4">
-        EXPERIENCE THE DIFFERENCE
-      </div>
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] to-pink-500 bg-clip-text text-transparent">
-        Don't Just Read About AuraOS – <br /> Experience It Live
-      </h2>
-      <p className="max-w-2xl mx-auto text-gray-300 mb-8">
-        See exactly how AuraOS will handle your high-value prospects. Choose your experience:
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      {/* Card 1 */}
-      <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
-        <div className="text-center mb-4">
-          <div className="inline-block text-[#7E22CE] border border-[#7E22CE] p-3 rounded-full mb-2">
-            <FontAwesomeIcon icon={faPhone} size="lg" />
-          </div>
-          <h3 className="text-xl font-semibold text-white">Experience AuraOS Live</h3>
-        </div>
-        <p className="text-sm text-gray-400 mb-4">
-          Our AI will call you right now and demonstrate exactly how it handles prospects. See the technology in action with your own ears.
-        </p>
-        <ul className="space-y-2 text-xs mb-4">
-          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Live conversation with AuraOS</li>
-          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Immediate results showcased</li>
-          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Feel the premium conversation quality</li>
-        </ul>
-        <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
-          Call Me Now - Experience AuraOS
-        </button>
-      </div>
-
-      {/* Card 2 */}
-      <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
-        <div className="text-center mb-4">
-          <div className="inline-block text-[#7E22CE] border border-[#7E22CE] p-3 rounded-full mb-2">
-            <FontAwesomeIcon icon={faCalendar} size="lg" />
-          </div>
-          <h3 className="text-xl font-semibold text-white">Strategic Implementation Call</h3>
-        </div>
-        <p className="text-sm text-gray-400 mb-4">
-          Speak with our team to understand how AuraOS will integrate with your business and drive revenue growth for your specific use case.
-        </p>
-        <ul className="space-y-2 text-xs mb-4">
-          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Custom implementation strategy</li>
-          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> ROI projection for your business</li>
-          <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Technical integration overview</li>
-        </ul>
-        <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
-          Book Strategic Call
-        </button>
-      </div>
-    </div>
-
-    <div className="text-center text-sm text-gray-400 mt-8">
-      *Results in 24 hours • Risk-free guarantee • Average 817% ROI
-    </div>
-  </section>
-</AnimatedSection>
-
-
-   {/* Speed to Lead Section */}
-   <AnimatedSection delay={600}>
-      <section className="py-12 px-6">
-        <div className="text-center mb-10">
-          <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
-            THE SPEED IMPERATIVE
-          </div>
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Speed to Lead <br /> Determines Everything
-          </h2>
-          <p className="max-w-2xl mx-auto text-gray-300">
-            In today's market, the fastest response wins—regardless of price, quality, or reputation.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stats.map((item, index) => (
-            <div
-              key={index}
-              className="border border-gray-700 p-6 rounded-xl hover:border-[#7E22CE] transition duration-300"
-            >
-              <div className="flex justify-center mb-3">{item.icon}</div>
-              <div className="text-2xl font-bold text-[#7E22CE] mb-2 text-center">
-                {item.value}
-              </div>
-              <h3 className="font-semibold mb-2 text-center text-white">
-                {item.title}
-              </h3>
-              <p className="text-sm text-gray-400 text-center">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </AnimatedSection>
-
-      {/* Lead Generation */}
-      <AnimatedSection delay= {700}>
-     <div className="bg-black text-white min-h-screen py-12 px-4 md:px-8">
-      {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-8">
-        <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
-          COMPLETE MULTI-CHANNEL INTELLIGENCE
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
-          Every Channel. Every Lead. <br /> Captured and Converted
-        </h2>
-        <p className="text-gray-300 max-w-2xl mx-auto">
-          See exactly how AuraOS transforms leads from any source into qualified appointments—with lightning-fast response times that ensure no opportunity is ever missed.
-        </p>
-      </div>
-
-      {/* Channel Tabs */}
-      <div className="max-w-4xl mx-auto mb-8 flex flex-wrap justify-center gap-3">
-        {channels.map((channel) => (
-          <button
-            key={channel.id}
-            onClick={() => setActiveTab(channel.id)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
-              activeTab === channel.id
-                ? `bg-gradient-to-r ${channel.color} text-white shadow-lg shadow-[#7E22CE]/30`
-                : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-            }`}
-          >
-            <span>{channel.icon}</span>
-            <div className="text-left">
-              <div className="font-medium">{channel.name}</div>
-              <div className="text-xs opacity-70">{channel.subtitle}</div>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {/* Main Content Card */}
-      <div className="max-w-5xl mx-auto bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800 shadow-2xl">
-        {/* Header Row */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-gray-800">
-          <div className="flex items-center space-x-3 mb-4 md:mb-0">
-            <div className="w-10 h-10 bg-gradient-to-r from-[#7E22CE] to-purple-500 rounded-full flex items-center justify-center text-xl">
-              {selectedChannel.icon}
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">{selectedChannel.name}</h3>
-              <p className="text-sm text-gray-400">{selectedChannel.subtitle}</p>
-            </div>
-          </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-[#7E22CE]">
-              {selectedChannel.stats.captureRate}
-            </div>
-            <div className="text-xs text-gray-400">
-              {selectedChannel.stats.availability}
-            </div>
-          </div>
-        </div>
-
-        {/* Flow Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          {selectedChannel.flow.map((step, index) => (
-            <div
-              key={index}
-              className="relative bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer group"
-            >
-              <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
-                {step.icon}
-              </div>
-              <div className="text-sm font-semibold mb-1">{step.time}</div>
-              <div className="text-xs text-gray-300 mb-1">{step.title}</div>
-              <div className="text-xs text-gray-500">{step.desc}</div>
-              {index < selectedChannel.flow.length - 1 && (
-                <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-gray-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-     </AnimatedSection>
-
-      {/* Seventh Section: Testimonials */}
-      <AnimatedSection delay = {700}>
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="container mx-auto">
-          {/* Header */}
-          <div className="max-w-xl mx-auto text-center mb-12">
-            <p className="text-gray-300 text-lg">
-             Openlayer is trusted by leading organizations to enhance their development and operational efficiency for accuracy, scalability, and seamless integration.
-            </p>
-          </div>
-
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Testimonial 1 */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-orange-500/20 to-transparent"></div>
-              <div className="relative z-10">
-                <p className="text-gray-300 text-sm mb-6">
-                  "The Openlayer team deeply understands the challenges faced by the ML community. Their platform is the best way to streamline the evaluation and analysis of models to drive continuous improvement in AI."
-                </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-semibold">Max Mullen</div>
-                    <div className="text-xs text-gray-400">Founder of Instacart</div>
-                  </div>
-                  <img src="https://via.placeholder.com/40" alt="Max Mullen" className="w-10 h-10 rounded-full" />
-                </div>
-              </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-blue-500/20 to-transparent"></div>
-              <div className="relative z-10">
-                <p className="text-gray-300 text-sm mb-6">
-                  "I've witnessed first-hand the critical importance of error analysis in the world of machine learning. The Openlayer platform can save countless debugging hours and significantly improve model performance for data scientists worldwide."
-                </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-semibold">Mark Belvedere</div>
-                    <div className="text-xs text-gray-400">Data Science Director at Meta</div>
-                  </div>
-                  <img src="https://via.placeholder.com/40" alt="Mark Belvedere" className="w-10 h-10 rounded-full" />
-                </div>
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-purple-500/20 to-transparent"></div>
-              <div className="relative z-10">
-                <p className="text-gray-300 text-sm mb-6">
-                  "Debugging error cases is the highest leverage way to improve ML systems. Openlayer makes it easy to debug those cases and, more importantly, helps fix them as well. I highly recommend using it in all ML workflows"
-                </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-semibold">Gautam Kedia</div>
-                    <div className="text-xs text-gray-400">Applied ML Leader at Stripe</div>
-                  </div>
-                  <img src="https://via.placeholder.com/40" alt="Gautam Kedia" className="w-10 h-10 rounded-full" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </AnimatedSection>
-
-   
-
-      {/* Ninth Section: Templates */}
-      <AnimatedSection delay = {900}>
-     <section className="py-20 px-4 md:px-8 lg:px-16 bg-black text-white">
-  <div className="container mx-auto">
-    {/* Header */}
-    <div className="max-w-xl mx-auto text-center mb-12">
-      <div className="text-sm text-[#7E22CE] uppercase tracking-widest">
-        Templates
-      </div>
-      <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-2 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
-        Get started in seconds
-      </h2>
-      <p className="text-gray-300 text-lg mt-6">
-        Pick a template to accelerate your setup. Templates are sample projects
-        with common AI patterns. They come pre-configured with all relevant tests.
-      </p>
-      <div className="flex justify-center gap-4 mt-8">
-        <button className="bg-[#7E22CE] hover:bg-[#6B1FB8] text-white px-6 py-2 rounded-full font-medium transition-all duration-300 shadow-lg shadow-[#7E22CE]/30">
-          Start from a template
-        </button>
-        <button className="text-[#7E22CE] hover:text-purple-300 text-sm font-medium flex items-center transition-colors">
-          Browse templates <span className="ml-1">{'>'}</span>
-        </button>
-      </div>
-    </div>
-
-    {/* Template Cards Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* Template 1 */}
-      <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-800 shadow-lg relative overflow-hidden group hover:bg-gray-900/90 transition-colors">
-        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-[#7E22CE]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div className="relative z-10">
-          <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#7E22CE] to-purple-500 rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6zM13 13h8v6h-8v-6z" />
-              </svg>
-            </div>
-            <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded transition-colors">
-              Clone template {'>'}
-            </button>
-          </div>
-          <h3 className="font-semibold mb-2 text-white">Question-answering retrieval</h3>
-          <div className="text-sm text-gray-400 mb-4">RAG with Python</div>
-          <p className="text-gray-300 text-sm mb-4">
-            Create a RAG pipeline for question-answering using Azure OpenAI and Python.
-          </p>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs bg-gray-800 px-2 py-1 rounded">Generative</span>
-            <span className="text-xs bg-gray-800 px-2 py-1 rounded flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#7E22CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9m0 0l6 6m-6-6l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-              </svg>
-              Python
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Template 2 */}
-      <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-800 shadow-lg relative overflow-hidden group hover:bg-gray-900/90 transition-colors">
-        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-[#7E22CE]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div className="relative z-10">
-          <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-[#7E22CE] rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6z" />
-              </svg>
-            </div>
-            <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded transition-colors">
-              Clone template {'>'}
-            </button>
-          </div>
-          <h3 className="font-semibold mb-2 text-white">Structured outputs</h3>
-          <div className="text-sm text-gray-400 mb-4">Instructor and Claude with Python</div>
-          <p className="text-gray-300 text-sm mb-4">
-            Build an AI that generates structured outputs using Claude, Instructor, and Python.
-          </p>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs bg-gray-800 px-2 py-1 rounded">Generative</span>
-            <span className="text-xs bg-gray-800 px-2 py-1 rounded flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#7E22CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9m0 0l6 6m-6-6l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-              </svg>
-              Python
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Template 3 */}
-      <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-800 shadow-lg relative overflow-hidden group hover:bg-gray-900/90 transition-colors">
-        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-[#7E22CE]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div className="relative z-10">
-          <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#7E22CE] to-purple-500 rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8v6h-8v-6zM13 13h8v6h-8v-6z" />
-              </svg>
-            </div>
-            <button className="text-xs text-gray-400 hover:text-white bg-gray-800 px-3 py-1 rounded transition-colors">
-              Clone template {'>'}
-            </button>
-          </div>
-          <h3 className="font-semibold mb-2 text-white">Simple chatbot</h3>
-          <div className="text-sm text-gray-400 mb-4">OpenAI with Python</div>
-          <p className="text-gray-300 text-sm mb-4">
-            Create a fully functional chatbot using OpenAI and Python in minutes.
-          </p>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs bg-gray-800 px-2 py-1 rounded">Generative</span>
-            <span className="text-xs bg-gray-800 px-2 py-1 rounded flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#7E22CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9m0 0l6 6m-6-6l6-6m6 6a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2z" />
-              </svg>
-              Python
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-      </AnimatedSection>
-
-
-<AnimatedSection delay ={900}>
-  <section className="bg-black text-white py-20 px-4">
-      <div className="max-w-3xl mx-auto text-center mb-10">
-        <div className="inline-block bg-gray-900 text-xs px-4 py-1 rounded-full mb-4 text-purple-400 border border-purple-600">
-          💜 REVENUE PROJECTOR
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">
-          Calculate Your{" "}
-          <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-            Revenue Growth Potential
-          </span>
-        </h2>
-        <p className="text-gray-400 max-w-xl mx-auto">
-          Input your business metrics to discover how much additional revenue
-          you can generate through improved response times and booking rates.
-        </p>
-      </div>
-
-      {/* Progress Steps */}
-      <div className="flex justify-center items-center space-x-3 mb-8">
-        {[1, 2, 3, 4].map((num) => (
-          <div
-            key={num}
-            className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
-              step >= num
-                ? "border-purple-500 bg-purple-600 text-white"
-                : "border-gray-700 text-gray-500"
-            }`}
-          >
-            {num}
-          </div>
-        ))}
-      </div>
-
-      {/* Step Container */}
-      <div className="max-w-2xl mx-auto bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-lg">
-        {step === 1 && (
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-purple-400">
-              Let’s start with your business basics
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm mb-1">Average Deal Size</label>
-                <input
-                  type="number"
-                  value={form.dealSize}
-                  onChange={(e) => handleChange("dealSize", e.target.value)}
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1">Monthly Inquiries</label>
-                <input
-                  type="number"
-                  value={form.monthlyInquiries}
-                  onChange={(e) =>
-                    handleChange("monthlyInquiries", e.target.value)
-                  }
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {step === 2 && (
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-purple-400">
-              What’s your current performance?
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm mb-1">Booking Rate (%)</label>
-                <input
-                  type="number"
-                  value={form.bookingRate}
-                  onChange={(e) => handleChange("bookingRate", e.target.value)}
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1">Conversion Rate (%)</label>
-                <input
-                  type="number"
-                  value={form.conversionRate}
-                  onChange={(e) =>
-                    handleChange("conversionRate", e.target.value)
-                  }
-                  className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {step === 3 && (
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-purple-400">
-              What industry are you in?
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {industries.map((ind) => (
-                <button
-                  key={ind}
-                  onClick={() => handleChange("industry", ind)}
-                  className={`border rounded-lg py-3 text-sm transition-all ${
-                    form.industry === ind
-                      ? "bg-purple-600 border-purple-400 text-white"
-                      : "bg-black border-gray-700 text-gray-400 hover:border-purple-500"
-                  }`}
-                >
-                  {ind}
+        <section className="md:mt-24 mt-1 pt-24 pb-20 px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            {/* Left Content */}
+            <div className="lg:w-1/2 space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
+                Turn More Leads into Booked Calls & Closed Deals—Automatically
+              </h1>
+              <p className="text-gray-300 text-base sm:text-lg mt-6">
+                2-min replies. +20–40% higher show rates. Proposals in hours. Proof every week. SLAs after readiness.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
+                  Book a 15-min teardown
                 </button>
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
+                  See live demo
+                </button>
+              </div>
+            </div>
+
+            {/* Right Content - Test Results Card */}
+            <div className="lg:w-1/2 w-full mt-10 lg:mt-0">
+              <div className="bg-[#151120] rounded-xl p-6 border border-gray-700 shadow-lg">
+                <div className="rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
+                  <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
+                    <img src="https://via.placeholder.com/32" alt="eBay" className="w-8 h-8 rounded" />
+                    <div className="ml-3">
+                      <span className="font-semibold">WorkFlow</span>
+                      <span className="text-sm text-gray-400 ml-2">7 of 7 Test results ready</span>
+                    </div>
+                  </div>
+                  <div className="ml-4 relative pl-8 p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30 max-h-[400px] overflow-y-auto">
+                    {[
+                      { text: "Leads In (Forms / WhatsApp/ Email / Ads)", passed: testProgress >= 1 },
+                      { text: "Speed Stack (instant humanlike reply + calendar)", passed: testProgress >= 2 },
+                      { text: "Hot-Route (owner alert + claim)", passed: testProgress >= 3 },
+                      { text: "Proposal Accelerator (autodraft → e-sign)", passed: testProgress >= 4 },
+                      { text: "CRM Update & Reporting", passed: testProgress >= 4 },
+                      { text: "Revival Engine (nonresponders + old pipeline)", passed: testProgress >= 4 },
+                      { text: "Onboarding + Reporting", passed: testProgress >= 4 },
+                    ].map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={`flex items-start mb-4 group ${item.passed ? 'opacity-100' : 'opacity-50'}`}
+                        style={{ transition: 'opacity 0.5s ease-in-out' }}
+                      >
+                        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${item.passed ? 'border-purple-500' : 'border-gray-500'} flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
+                          </svg>
+                        </div>
+                        <div className="ml-6 flex-1">
+                          <div className="flex items-center justify-between">
+                            <span>{item.text}</span>
+                            {item.passed && (
+                              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    <div className={`mt-8 pt-4 border-t border-gray-700 flex flex-wrap gap-4 justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span className="text-sm">22 tests passing</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <span className="text-sm">10 tests failing</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Trusted by Section */}
+      <AnimatedSection delay={100}>
+        <section className="py-16 px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="container mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-gray-400 text-sm uppercase tracking-wider">Trusted by performance-led agencies & venture-backed teams.</p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 items-center">
+              {["birdie", "eBay", "zuma", "Company"].map((name, i) => (
+                <div key={i} className="flex justify-center">
+                  <img src={`https://via.placeholder.com/120x40?text=${name}`} alt={name} className="h-8 sm:h-10" />
+                </div>
               ))}
             </div>
           </div>
-        )}
+        </section>
+      </AnimatedSection>
 
-        {step === 4 && (
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-purple-400">
-              Your Growth Potential
-            </h3>
-            <div className="bg-black rounded-lg border border-purple-600 p-6 text-center">
-              <p className="text-sm text-gray-400 mb-2">Additional Monthly Revenue</p>
-              <div className="text-3xl font-bold text-purple-400 mb-4">
-                +${results.additionalRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+      {/* Experience Section */}
+      <AnimatedSection delay={600}>
+        <section className="py-16 px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <div className="inline-block text-xs px-3 py-1 rounded-full mb-4 text-[#7E22CE]">
+              EXPERIENCE THE DIFFERENCE
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white bg-clip-text text-transparent">
+              Don't Just Read About Automate+ – <br /> Experience It Live
+            </h2>
+            <p className="max-w-2xl mx-auto text-gray-300 mb-8 px-2">
+              See exactly how Automate+ will handle your high-value prospects. Choose your experience:
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto px-2">
+            <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
+              <div className="text-center mb-4">
+                <div className="inline-block text-[#7E22CE] border border-[#7E22CE] p-3 rounded-full mb-2">
+                  <FontAwesomeIcon icon={faPhone} size="lg" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Experience Automate+ Live</h3>
               </div>
+              <p className="text-sm text-gray-400 mb-4">
+                Our AI will call you right now and demonstrate exactly how it handles prospects. See the technology in action with your own ears.
+              </p>
+              <ul className="space-y-2 text-xs mb-4">
+                <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Live conversation with Automate+</li>
+                <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Immediate results showcased</li>
+                <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Feel the premium conversation quality</li>
+              </ul>
+              <button
+                onClick={() => setIsOpen(true)}
+                className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300"
+              >
+                Call Me Now – Experience Automate+
+              </button>
+            </div>
+            <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
+              <div className="text-center mb-4">
+                <div className="inline-block text-[#7E22CE] border border-[#7E22CE] p-3 rounded-full mb-2">
+                  <FontAwesomeIcon icon={faCalendar} size="lg" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Strategic Implementation Call</h3>
+              </div>
+              <p className="text-sm text-gray-400 mb-4">
+                Speak with our team to understand how Automate+ will integrate with your business and drive revenue growth for your specific use case.
+              </p>
+              <ul className="space-y-2 text-xs mb-4">
+                <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Custom implementation strategy</li>
+                <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> ROI projection for your business</li>
+                <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Technical integration overview</li>
+              </ul>
+              <Link to="/contact">
+                <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
+                  Book Strategic Call
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="text-center text-sm text-gray-400 mt-8 px-2">
+            *Results in 24 hours • Risk-free guarantee • Average 817% ROI
+          </div>
+        </section>
+      </AnimatedSection>
 
-              <div className="flex justify-around text-sm text-gray-400">
-                <div>
-                  <p>Annual Potential</p>
-                  <p className="text-white font-semibold">
-                    ${results.annualPotential.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                  </p>
+      {/* Speed to Lead Section */}
+      <AnimatedSection delay={600}>
+        <section className="py-12 px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
+              THE SPEED IMPERATIVE
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Speed to Lead <br /> Determines Everything
+            </h2>
+            <p className="max-w-2xl mx-auto text-gray-300 px-2">
+              In today's market, the fastest response wins—regardless of price, quality, or reputation.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+            {stats.map((item, index) => (
+              <div
+                key={index}
+                className="border border-gray-700 p-5 sm:p-6 rounded-xl hover:border-[#7E22CE] transition duration-300"
+              >
+                <div className="flex justify-center mb-3">{item.icon}</div>
+                <div className="text-xl sm:text-2xl font-bold text-[#7E22CE] mb-2 text-center">
+                  {item.value}
+                </div>
+                <h3 className="font-semibold mb-2 text-center text-white text-sm sm:text-base">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-400 text-center">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Lead Generation */}
+      <AnimatedSection delay={700}>
+        <div className="text-white min-h-screen py-12 px-4 sm:px-6 md:px-8">
+          <div className="max-w-4xl mx-auto text-center mb-8 px-2">
+            <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
+              COMPLETE MULTI-CHANNEL INTELLIGENCE
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Every Channel. Every Lead. <br /> Captured and Converted
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              See exactly how Automate+ transforms leads from any source into qualified appointments—with lightning-fast response times that ensure no opportunity is ever missed.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto mb-8 flex flex-wrap justify-center gap-2 sm:gap-3 px-2">
+            {channels.map((channel) => (
+              <button
+                key={channel.id}
+                onClick={() => setActiveTab(channel.id)}
+                className={`flex items-center space-x-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base transition-all duration-300 ${
+                  activeTab === channel.id
+                    ? `bg-gradient-to-r ${channel.color} text-white shadow-lg shadow-[#7E22CE]/30`
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                }`}
+              >
+                <span>{channel.icon}</span>
+                <div className="text-left">
+                  <div className="font-medium">{channel.name}</div>
+                  <div className="text-[10px] sm:text-xs opacity-70">{channel.subtitle}</div>
+                </div>
+              </button>
+            ))}
+          </div>
+          <div className="max-w-5xl mx-auto bg-gray-900 rounded-xl p-5 sm:p-6 md:p-8 border border-gray-800 shadow-2xl px-2">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-gray-800">
+              <div className="flex items-center space-x-3 mb-4 md:mb-0">
+                <div className="w-10 h-10 bg-gradient-to-r from-[#7E22CE] to-purple-500 rounded-full flex items-center justify-center text-xl">
+                  {selectedChannel.icon}
                 </div>
                 <div>
-                  <p>Booking Improvement</p>
-                  <p className="text-white font-semibold">+50%</p>
+                  <h3 className="text-lg sm:text-xl font-bold">{selectedChannel.name}</h3>
+                  <p className="text-xs sm:text-sm text-gray-400">{selectedChannel.subtitle}</p>
                 </div>
-                <div>
-                  <p>Conversion Lift</p>
-                  <p className="text-white font-semibold">+10%</p>
+              </div>
+              <div className="text-right">
+                <div className="text-xl sm:text-2xl font-bold text-[#7E22CE]">
+                  {selectedChannel.stats.captureRate}
+                </div>
+                <div className="text-xs text-gray-400">
+                  {selectedChannel.stats.availability}
                 </div>
               </div>
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {selectedChannel.flow.map((step, index) => (
+                <div
+                  key={index}
+                  className="relative bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer group"
+                >
+                  <div className="text-xl mb-2 group-hover:scale-110 transition-transform">
+                    {step.icon}
+                  </div>
+                  <div className="text-xs font-semibold mb-1">{step.time}</div>
+                  <div className="text-xs text-gray-300 mb-1">{step.title}</div>
+                  <div className="text-[10px] text-gray-500">{step.desc}</div>
+                  {index < selectedChannel.flow.length - 1 && (
+                    <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3 w-3 text-gray-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        )}
-
-        {/* Navigation Buttons */}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={() => setStep(step - 1)}
-            disabled={step === 1}
-            className={`px-5 py-2 rounded-lg border border-gray-700 hover:border-purple-500 transition ${
-              step === 1 ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => setStep(step + 1)}
-            disabled={step === 4}
-            className={`px-5 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium hover:opacity-90 transition ${
-              step === 4 ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            Continue
-          </button>
         </div>
-      </div>
-    </section>
-</AnimatedSection>
+      </AnimatedSection>
 
-      {/* FAQ */}
-      <AnimatedSection delay = {1000}>
-      <section className="py-16 px-6 bg-black text-white">
-      <div className="text-center mb-10">
-        <div className="inline-block bg-gray-800 text-xs px-3 py-1 rounded-full mb-4">
-          QUESTIONS ANSWERED
-        </div>
-        <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-          Everything You Need <br /> To Know About AuraOS
-        </h2>
-        <p className="max-w-2xl mx-auto text-gray-300">
-          Find clear answers about setup, compliance, and how AuraOS helps you
-          automate conversations to close more deals effortlessly.
-        </p>
-      </div>
-
-      <div className="max-w-3xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="border border-gray-700 rounded-lg overflow-hidden"
-          >
-            <button
-              className="w-full flex justify-between items-center px-4 py-4 text-left hover:bg-gray-900 transition"
-              onClick={() => toggleFAQ(index)}
-            >
-              <span className="font-medium">{faq.question}</span>
-              <span className="text-purple-400 text-lg">
-                {openIndex === index ? "−" : "+"}
-              </span>
-            </button>
-
-            {openIndex === index && (
-              <div className="px-4 pb-4 text-gray-300 animate-fadeIn">
-                {faq.answer}
-              </div>
-            )}
+      {/* Testimonials */}
+      <AnimatedSection delay={700}>
+        <section className="py-20 px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="container mx-auto">
+            <div className="max-w-xl mx-auto text-center mb-12 px-2">
+              <p className="text-gray-300 text-base sm:text-lg">
+                Automate+ is trusted by leading organizations to enhance their development and operational efficiency for accuracy, scalability, and seamless integration.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+              {[
+                { name: "Sudhir Minotra", company: "Vidhitsu Concepts", quote: "Before Automate+, we were losing deals because replies took forever..." },
+                { name: "Poonam", company: "Omnific Fitouts LLP", quote: "We had great funnels but were bleeding leads after form fills..." },
+                { name: "Sunil Nayyar", company: "Consultants", quote: "AI Evoked made our operations insanely fast..." },
+              ].map((t, i) => (
+                <div key={i} className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-orange-500/20 to-transparent"></div>
+                  <div className="relative z-10">
+                    <p className="text-gray-300 text-sm mb-6">"{t.quote}"</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-semibold">{t.name}</div>
+                        <div className="text-xs text-gray-400">{t.company}</div>
+                      </div>
+                      <img src="https://via.placeholder.com/40" alt={t.name} className="w-10 h-10 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
+        </section>
+      </AnimatedSection>
+         <AnimatedSection delay = {700}>
+           <section className="py-20 px-4 md:px-8 lg:px-16">
+             <div className="container mx-auto">
+      {/* Header */}
+         <div className="max-w-xl mx-auto text-center mb-12">
+               <p className="text-gray-300 text-lg">
+             Automate+ is trusted by leading organizations to enhance their development and operational efficiency for accuracy, scalability, and seamless integration.
+             </p>
+           </div>
 
-      <div className="mt-10 text-center text-sm text-gray-400">
-        Need more information? Our team offers personalized onboarding and
-        24/7 support to ensure your success with AuraOS.
-      </div>
-    </section>
-    </AnimatedSection>
-      {/* Tenth Section: Final CTA */}
-      <AnimatedSection delay = {1000}>
-      <section className="py-20 px-4 md:px-8 lg:px-16 bg-black/30">
-        <div className="container mx-auto text-center">  
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
-            Ready to automate your revenue?
-          </h2>
-          <p className="text-gray-300 text-lg mb-8">
-            The automated AI evaluation and monitoring platform.
-          </p>
-          <div className = "md:flex-row">
-          <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-            Book 15-min teardown
-          </button>
-          <button className="ml-12 bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-            See live demo 
-          </button>
+           {/* Testimonials Grid */}
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+             {/* Testimonial 1 */}
+             <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
+               <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-orange-500/20 to-transparent"></div>
+               <div className="relative z-10">
+                 <p className="text-gray-300 text-sm mb-6">
+                   "Before Automate+, we were losing deals because replies took forever. Within a week, our response time was under two minutes. Everything just feels faster now. Follow-ups, proposals, even internal updates. Easily the best ops decision we’ve made this year."
+                 </p>
+                 <div className="flex items-center justify-between">
+                   <div>
+                     <div className="font-semibold">Sudhir Minotra</div>
+                     <div className="text-xs text-gray-400">Vidhitsu Concepts</div>
+                   </div>
+                   <img src="https:via.placeholder.com/40" alt="Max Mullen" className="w-10 h-10 rounded-full" />
+                 </div>
+               </div>
+             </div>
+
+             {/* Testimonial 2 */}
+             <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
+               <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-blue-500/20 to-transparent"></div>
+               <div className="relative z-10">
+                 <p className="text-gray-300 text-sm mb-6">
+                   "We had great funnels but were bleeding leads after form fills. Automate+ fixed that in a week. Response time dropped from six hours to 90 seconds, and show rates shot up nearly 40%."
+                 </p>
+                 <div className="flex items-center justify-between">
+                   <div>
+                     <div className="font-semibold">Poonam</div>
+                     <div className="text-xs text-gray-400">Omnific Fitouts LLP</div>
+                   </div>
+                   <img src="https:via.placeholder.com/40" alt="Mark Belvedere" className="w-10 h-10 rounded-full" />
+                 </div>
+               </div>
+             </div>
+
+             {/* Testimonial 3 */}
+             <div className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
+               <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-purple-500/20 to-transparent"></div>
+               <div className="relative z-10">
+                 <p className="text-gray-300 text-sm mb-6">
+                   "AI Evoked made our operations insanely fast. Proposals that used to take two days now go out the same day, and we even revived 12% of old leads. "
+                 </p>
+                 <div className="flex items-center justify-between">
+                   <div>
+                     <div className="font-semibold">Sunil Nayyar</div>
+                     <div className="text-xs text-gray-400">Consultants</div>
+                   </div>
+                   <img src="https:via.placeholder.com/40" alt="Gautam Kedia" className="w-10 h-10 rounded-full" />
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+       </AnimatedSection>
+
+   
+      {/* Proof & Wins */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">Proof & Wins</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              We publish proof screenshots weekly. No cherry-picking.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {metrics.map((metric, index) => {
+              const Icon = metric.icon;
+              return (
+                <div key={metric.label} className="border border-purple-500/30 rounded-xl p-6 text-center hover:border-purple-500 transition">
+                  <div className="inline-flex items-center justify-center p-3 rounded-full mb-4 bg-purple-500/10">
+                    <Icon className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold text-purple-500 mb-2">{metric.value}</div>
+                  <div className="text-sm font-semibold mb-1">{metric.label}</div>
+                  <div className="text-xs text-gray-400">{metric.description}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* Revenue Projector */}
+      <AnimatedSection delay={900}>
+        <section className="text-white py-20 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-10 px-2">
+            <div className="inline-block bg-gray-900 text-xs px-4 py-1 rounded-full mb-4 text-purple-400 border border-purple-600">
+              💜 REVENUE PROJECTOR
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+              Calculate Your{" "}
+              <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+                Revenue Growth Potential
+              </span>
+            </h2>
+            <p className="text-gray-400 max-w-xl mx-auto">
+              Input your business metrics to discover how much additional revenue
+              you can generate through improved response times and booking rates.
+            </p>
+          </div>
+          <div className="flex justify-center items-center space-x-2 sm:space-x-3 mb-8">
+            {[1, 2, 3].map((num) => (
+              <div
+                key={num}
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm border-2 ${
+                  step >= num
+                    ? "border-purple-500 bg-purple-600 text-white"
+                    : "border-gray-700 text-gray-500"
+                }`}
+              >
+                {num}
+              </div>
+            ))}
+          </div>
+          <div className="max-w-2xl mx-auto bg-gray-900 border border-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
+            {step === 1 && (
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-purple-400">
+                  Let’s start with your business basics
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm mb-1">Average Deal Size</label>
+                    <input
+                      type="number"
+                      value={form.dealSize}
+                      onChange={(e) => handleChange("dealSize", e.target.value)}
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm mb-1">Monthly Inquiries</label>
+                    <input
+                      type="number"
+                      value={form.monthlyInquiries}
+                      onChange={(e) => handleChange("monthlyInquiries", e.target.value)}
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            {step === 2 && (
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-purple-400">
+                  What’s your current performance?
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm mb-1">Booking Rate (%)</label>
+                    <input
+                      type="number"
+                      value={form.bookingRate}
+                      onChange={(e) => handleChange("bookingRate", e.target.value)}
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm mb-1">Conversion Rate (%)</label>
+                    <input
+                      type="number"
+                      value={form.conversionRate}
+                      onChange={(e) => handleChange("conversionRate", e.target.value)}
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            {step === 3 && (
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-purple-400">
+                  Your Growth Potential
+                </h3>
+                <div className="bg-black rounded-lg border border-purple-600 p-6 text-center">
+                  <p className="text-sm text-gray-400 mb-2">Additional Monthly Revenue</p>
+                  <div className="text-3xl font-bold text-purple-400 mb-4">
+                    +${results.additionalRevenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 text-sm text-gray-400">
+                    <div>
+                      <p>Annual Potential</p>
+                      <p className="text-white font-semibold">
+                        ${results.annualPotential.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                    </div>
+                    <div>
+                      <p>Booking Improvement</p>
+                      <p className="text-white font-semibold">+50%</p>
+                    </div>
+                    <div>
+                      <p>Conversion Lift</p>
+                      <p className="text-white font-semibold">+10%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="flex flex-col sm:flex-row justify-between gap-4 mt-8">
+              <button
+                onClick={() => setStep(step - 1)}
+                disabled={step === 1}
+                className={`px-4 py-2 rounded-lg border border-gray-700 hover:border-purple-500 transition ${
+                  step === 1 ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                Previous
+              </button>
+              <button
+                onClick={() => setStep(step + 1)}
+                disabled={step === 3}
+                className={`px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium hover:opacity-90 transition ${
+                  step === 3 ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                {step === 2 ? "Calculate" : "Continue"}
+              </button>
+            </div>
+          </div>
+        </section>
       </AnimatedSection>
+
+      {/* FAQ */}
+      <AnimatedSection delay={1000}>
+        <section className="py-16 px-4 sm:px-6 text-white">
+          <div className="text-center mb-10 px-2">
+            <div className="inline-block bg-gray-800 text-xs px-3 py-1 rounded-full mb-4">
+              QUESTIONS ANSWERED
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Everything You Need <br /> To Know About Automate+
+            </h2>
+            <p className="max-w-2xl mx-auto text-gray-300 px-2">
+              Find clear answers about setup, compliance, and how Automate+ helps you
+              automate conversations to close more deals effortlessly.
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-4 px-2">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="border border-gray-700 rounded-lg overflow-hidden"
+              >
+                <button
+                  className="w-full flex justify-between items-center px-4 py-4 text-left hover:bg-gray-900 transition"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <span className="font-medium text-sm sm:text-base">{faq.question}</span>
+                  <span className="text-purple-400 text-lg">
+                    {openIndex === index ? "−" : "+"}
+                  </span>
+                </button>
+                {openIndex === index && (
+                  <div className="px-4 pb-4 text-gray-300 text-sm">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center text-sm text-gray-400 px-2">
+            Need more information? Our team offers personalized onboarding and
+            24/7 support to ensure your success with Automate+.
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Final CTA */}
+      <AnimatedSection delay={1000}>
+        <section className="py-20 px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="container mx-auto text-center max-w-3xl px-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+              Ready to automate your revenue?
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg mb-8">
+              The automated AI evaluation and monitoring platform.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
+                Book 15-min teardown
+              </button>
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
+                See live demo
+              </button>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Video Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-3xl relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-4 text-2xl text-gray-600 hover:text-black z-10"
+            >
+              &times;
+            </button>
+            <div className="aspect-w-16 aspect-h-9 w-full">
+              <iframe
+                className="w-full h-[300px] sm:h-[400px]"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Experience Automate+"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+
+     <FixedFooter />
+     </>
   );
 };
 
 export default Home;
-

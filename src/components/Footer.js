@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Images/Logo.png";
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex space-x-4">
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/aievoked/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-pink-500 transition"
@@ -33,28 +33,12 @@ const Footer = () => {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://facebook.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-blue-600 transition"
-            >
-              <FaFacebookF size={18} />
-            </a>
-            <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/company/ai-evoked/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-500 transition"
             >
               <FaLinkedinIn size={18} />
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-sky-400 transition"
-            >
-              <FaTwitter size={18} />
             </a>
           </div>
         </div>
@@ -76,9 +60,8 @@ const Footer = () => {
           <ul className="space-y-3">
             <li><Link to="/privacy" className="text-sm text-gray-400 hover:text-blue-400 transition">Privacy Policy</Link></li>
             <li><Link to="/terms" className="text-sm text-gray-400 hover:text-blue-400 transition">Terms of Service</Link></li>
-            <li><Link to="/cookies" className="text-sm text-gray-400 hover:text-blue-400 transition">Cookie Policy</Link></li>
-            <li><Link to="/security" className="text-sm text-gray-400 hover:text-blue-400 transition">Security</Link></li>
-            <li><Link to="/disclaimer" className="text-sm text-gray-400 hover:text-blue-400 transition">Disclaimer</Link></li>
+            <li><Link to="/cookies" className="text-sm text-gray-400 hover:text-blue-400 transition">Refund & Cancellation Policy</Link></li>
+            <li><Link to="/security" className="text-sm text-gray-400 hover:text-blue-400 transition">Shipping & Delivery Policy</Link></li>
           </ul>
         </div>
 
@@ -90,8 +73,8 @@ const Footer = () => {
               <i className="fas fa-phone text-blue-400 mt-1"></i>
               <div>
                 <h4 className="text-sm font-medium text-gray-300">Phone</h4>
-                <a href="tel:+15551234567" className="text-sm text-gray-400 hover:text-blue-400 transition">
-                  +1 (555) 123-4567
+                <a href="tel:+919266101567" className="text-sm text-gray-400 hover:text-blue-400 transition">
+                  9266101567
                 </a>
               </div>
             </li>
@@ -100,8 +83,8 @@ const Footer = () => {
               <i className="fas fa-envelope text-blue-400 mt-1"></i>
               <div>
                 <h4 className="text-sm font-medium text-gray-300">Email</h4>
-                <a href="mailto:vidhibajaj1401@gmail.com" className="text-sm text-gray-400 hover:text-blue-400 transition">
-                  vidhibajaj1401@gmail.com
+                <a href="mailto:Pragun@aievoked.com" className="text-sm text-gray-400 hover:text-blue-400 transition">
+                  Pragun@aievoked.com
                 </a>
               </div>
             </li>
@@ -111,7 +94,7 @@ const Footer = () => {
               <div>
                 <h4 className="text-sm font-medium text-gray-300">Location</h4>
                 <p className="text-sm text-gray-400">
-                  123 Tech Avenue<br />San Francisco, CA 94107
+                  Delhi, India
                 </p>
               </div>
             </li>
@@ -121,7 +104,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} AuraOS. All rights reserved.
+        © {new Date().getFullYear()} Ai Evoked . All rights reserved.
       </div>
     </footer>
   );

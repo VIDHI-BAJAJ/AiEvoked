@@ -7,8 +7,11 @@ import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import Contact from './components/Contactus';
 import Resources from './components/Resources';
-import Documentations from './components/Documentations';
-
+import Aboutus from './components/Aboutus';
+import Terms from './components/Terms';
+import Privacy from './components/Privacypolicy ';
+import Security from './components/Security';
+import Cookies from './components/Cookiepolicy';
 
 function App() {
   return (
@@ -21,7 +24,11 @@ function App() {
           <Route path='/pricing' element = {<Pricing/>} />
           <Route path='/contact' element = {<Contact/>}/>
           <Route path='/resources' element = {<Resources/>}/>
-          <Route path='/documentation' element = {<Documentations/>}/>
+          <Route path='/aboutus' element = {<Aboutus/>}/>
+          <Route path = '/terms' element = {<Terms/>}/>
+          <Route path = '/privacy' element = {<Privacy/>}/>
+          <Route path = '/cookies' element = {<Cookies/>}/>
+          <Route path = '/security' element = {<Security/>}/>
         </Routes>
         <Footer />
       </div>

@@ -1,10 +1,13 @@
 import React from "react";
 import { FiZap, FiTrendingUp, FiSettings } from "react-icons/fi"; // outlined icons
+import FixedFooter from './FixedFooter';
+
 
 const Product = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <section className="mt-24 py-20 px-4 md:px-8 lg:px-16">
+    <>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white">
+      <section className="md:mt-24 mt-12 py-20 px-4 md:px-8 lg:px-16">
         <div className="container mx-auto">
           {/* Header */}
           <div className="max-w-xl mx-auto text-center mb-16">
@@ -25,7 +28,7 @@ const Product = () => {
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Automate+ */}
-            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[420px] flex flex-col justify-center items-center">
+            <div className="rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[420px] flex flex-col justify-center items-center">
               <div
                 className="w-16 h-16 flex items-center justify-center rounded-full mb-6"
                 style={{
@@ -51,7 +54,7 @@ const Product = () => {
             </div>
 
             {/* SalesPilot */}
-            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[420px] flex flex-col justify-center items-center">
+            <div className="rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[420px] flex flex-col justify-center items-center">
               <div
                 className="w-16 h-16 flex items-center justify-center rounded-full mb-6"
                 style={{
@@ -76,7 +79,7 @@ const Product = () => {
             </div>
 
             {/* Custom Automations */}
-            <div className="bg-[#0b0b0b] rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[420px] flex flex-col justify-center items-center">
+            <div className="rounded-2xl border border-gray-800 p-10 text-center hover:border-[#7E22CE] transition-all min-h-[420px] flex flex-col justify-center items-center">
               <div
                 className="w-16 h-16 flex items-center justify-center rounded-full mb-6"
                 style={{
@@ -103,6 +106,8 @@ const Product = () => {
         </div>
       </section>
     </div>
+     <FixedFooter />
+     </>
   );
 };
 
