@@ -16,7 +16,7 @@ const Contactus = () => {
     const service = encodeURIComponent(form.service.value.trim()); // ✅ 'service' (matches <select name="service">)
     const message = encodeURIComponent(form.message.value.trim());
 
-    // 🔁 REPLACE THIS WITH YOUR ACTUAL DEPLOYED GOOGLE APPS SCRIPT URL
+  
     const scriptURL = "https://script.google.com/macros/s/AKfycbyr8PJ9jr9bz3tUIktrO-2uNxkpZH4qKzn5B-kWd5rtLz-sDvXVxDpKGDpDkQ0eoPPk/exec";
 
     const url = `${scriptURL}?name=${name}&email=${email}&service=${service}&message=${message}`;
