@@ -6,6 +6,11 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { Zap, Clock, DollarSign, MessageSquare, Phone, Mail, Bot, CheckCircle, TrendingUp, FileCheck, ArrowRight} from "lucide-react";
 import { Link } from "react-router-dom";
 import FixedFooter from './FixedFooter';
+import algheroLogo from '../Images/alghero.jpeg';
+import marichamLogo from '../Images/maricham.jpeg';
+import sncLogo from '../Images/SNC.jpeg';
+import vidhitsuLogo from '../Images/vidhitsu.jpeg';
+
 
 const Home = () => {
   const [testProgress, setTestProgress] = useState(0);
@@ -160,11 +165,12 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
 
  const logos = [
-    { src: '../Images/alghero.jpeg', alt: 'Alghero' },
-    { src: '../Images/maricham.jpeg', alt: 'Maricham' },
-    { src: '../Images/SNC.jpeg', alt: 'SNC' },
-    { src: '../Images/vidhitsu.jpeg', alt: 'Vidhitsu' },
-  ];
+  { src: algheroLogo, alt: 'Alghero' },
+  { src: marichamLogo, alt: 'Maricham' },
+  { src: sncLogo, alt: 'SNC' },
+  { src: vidhitsuLogo, alt: 'Vidhitsu' },
+];
+
 
   return (
     <>
@@ -184,6 +190,7 @@ const Home = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
             Book a 15-min teardown
+             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
       </div>
@@ -266,7 +273,7 @@ const Home = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-8 sm:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity"
+                  className="h-32 sm:h-24 object-contain opacity-80 hover:opacity-100 transition-opacity"
                 />
               </div>
             ))}
@@ -335,7 +342,6 @@ const Home = () => {
               <Link to="/contact">
                 <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
                   Book Strategic Call
-                  <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
             </div>
