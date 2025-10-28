@@ -273,7 +273,7 @@ const Home = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-32 sm:h-24 object-contain opacity-80 hover:opacity-100 transition-opacity"
+                  className="h-32 sm:h-24 object-contain opacity-100 hover:opacity-150 transition-opacity"
                 />
               </div>
             ))}
