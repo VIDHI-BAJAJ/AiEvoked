@@ -1,39 +1,44 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+
 const Contactus = () => {
   const [submitting, setSubmitting] = React.useState(false);
   const [succeeded, setSucceeded] = React.useState(false);
 
-const handleGoogleSubmit = async (e) => {
-  e.preventDefault();
-  setSubmitting(true);
+  const handleGoogleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-  const form = e.target;
-  const name = encodeURIComponent(form.name.value);
-  const email = encodeURIComponent(form.email.value);
-  const message = encodeURIComponent(form.message.value);
+    const form = e.target;
+    const name = encodeURIComponent(form.name.value.trim());
+    const email = encodeURIComponent(form.email.value.trim());
+    const service = encodeURIComponent(form.service.value.trim()); // ✅ 'service' (matches <select name="service">)
+    const message = encodeURIComponent(form.message.value.trim());
 
-  const url = `https://script.google.com/macros/s/AKfycbyr8PJ9jr9bz3tUIktrO-2uNxkpZH4qKzn5B-kWd5rtLz-sDvXVxDpKGDpDkQ0eoPPk/exec?name=${name}&email=${email}&message=${message}`;
+    // 🔁 REPLACE THIS WITH YOUR ACTUAL DEPLOYED GOOGLE APPS SCRIPT URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyr8PJ9jr9bz3tUIktrO-2uNxkpZH4qKzn5B-kWd5rtLz-sDvXVxDpKGDpDkQ0eoPPk/exec";
 
-  try {
-    const response = await fetch(url);
-    const result = await response.json();
+    const url = `${scriptURL}?name=${name}&email=${email}&service=${service}&message=${message}`;
 
-    if (result.result === "success") {
-      setSucceeded(true);
-      form.reset();
-      setTimeout(() => setSucceeded(false), 5000);
-    } else {
-      alert("Failed: " + result.message);
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+
+      if (result.result === "success") {
+        setSucceeded(true);
+        form.reset();
+        setTimeout(() => setSucceeded(false), 5000);
+      } else {
+        alert("Submission failed: " + (result.message || "Unknown error"));
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to send. Please check your internet or try again.");
+    } finally {
+      setSubmitting(false);
     }
-  } catch (error) {
-    console.error("Error sending message:", error);
-    alert("Failed to send message. Please try again.");
-  } finally {
-    setSubmitting(false);
-  }
-};
+  };
 
   return (
     <div className="bg-gradient-to-br from-slate-900 to-black text-white min-h-screen py-16 px-6 md:px-12 md:pb-24">
@@ -52,137 +57,135 @@ const handleGoogleSubmit = async (e) => {
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Contact Form */}
-      <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl">
-  <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
+        <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl">
+          <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
 
-  {succeeded && (
-    <div className="mb-6 p-4 bg-green-900 text-green-200 rounded-lg flex items-center">
-      <i className="fas fa-check-circle text-green-400 mr-2"></i>
-      Message sent successfully! We’ll get back to you soon.
-    </div>
-  )}
+          {succeeded && (
+            <div className="mb-6 p-4 bg-green-900 text-green-200 rounded-lg flex items-center">
+              <i className="fas fa-check-circle text-green-400 mr-2"></i>
+              Message sent successfully! We’ll get back to you soon.
+            </div>
+          )}
 
-  <form onSubmit={handleGoogleSubmit} className="space-y-5">
-    <div>
-      <label htmlFor="name" className="block text-sm font-medium mb-2">
-        Full Name
-      </label>
-      <input
-        id="name"
-        type="text"
-        name="name"
-        required
-        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="John Doe"
-      />
-    </div>
+          <form onSubmit={handleGoogleSubmit} className="space-y-5">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="John Doe"
+              />
+            </div>
 
-    <div>
-      <label htmlFor="email" className="block text-sm font-medium mb-2">
-        Email Address
-      </label>
-      <input
-        id="email"
-        type="email"
-        name="email"
-        required
-        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="you@example.com"
-      />
-    </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="you@example.com"
+              />
+            </div>
 
-    {/* Service Dropdown */}
-    <div>
-      <label htmlFor="service" className="block text-sm font-medium mb-2">
-        Service Interested In
-      </label>
-      <select
-        id="service"
-        name="service"
-        required
-        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-      >
-        <option value="" disabled>
-          Select a service
-        </option>
-        <option value="Automate+">Automate+</option>
-        <option value="SalesPilot">SalesPilot</option>
-        <option value="Custom Automations">Custom Automations</option>
-      </select>
-    </div>
+            {/* Service Dropdown — name="service" is critical */}
+            <div>
+              <label htmlFor="service" className="block text-sm font-medium mb-2">
+                Service Interested In
+              </label>
+              <select
+                id="service"
+                name="service" // ✅ MUST match form.service.value in JS
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
+              >
+                <option value="" disabled>
+                  Select a service
+                </option>
+                <option value="Automate+">Automate+</option>
+                <option value="SalesPilot">SalesPilot</option>
+                <option value="Custom Automations">Custom Automations</option>
+              </select>
+            </div>
 
-    <div>
-      <label htmlFor="message" className="block text-sm font-medium mb-2">
-        Message
-      </label>
-      <textarea
-        id="message"
-        name="message"
-        rows="5"
-        required
-        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Tell us how we can help..."
-      ></textarea>
-    </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Tell us how we can help..."
+              ></textarea>
+            </div>
 
-    <button
-      type="submit"
-      disabled={submitting}
-      className={`w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-        submitting ? "opacity-70 cursor-not-allowed" : "hover:shadow-lg hover:scale-105"
-      }`}
-    >
-      {submitting ? (
-        <span className="flex items-center justify-center">
-          <i className="fas fa-spinner animate-spin mr-2"></i>
-          Sending...
-        </span>
-      ) : (
-        "Send Message →"
-      )}
-    </button>
-  </form>
-</div>
+            <button
+              type="submit"
+              disabled={submitting}
+              className={`w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                submitting ? "opacity-70 cursor-not-allowed" : "hover:shadow-lg hover:scale-105"
+              }`}
+            >
+              {submitting ? (
+                <span className="flex items-center justify-center">
+                  <i className="fas fa-spinner animate-spin mr-2"></i>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message →"
+              )}
+            </button>
+          </form>
+        </div>
 
-      {/* Contact Info */}
-{/* Contact Info */}
-<div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl space-y-10">
-  <h2 className="text-2xl font-semibold mb-2">Contact Information</h2>
+        {/* Contact Info */}
+        <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl space-y-10">
+          <h2 className="text-2xl font-semibold mb-2">Contact Information</h2>
 
-  <div className="flex items-center space-x-4">
-    <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
-      <FontAwesomeIcon icon={faEnvelope} className="text-white text-lg" />
-    </div>
-    <a
-      href="mailto:Pragun@aievoked.com"
-      className="text-white hover:underline"
-      onClick={(e) => e.stopPropagation()}
-    >
-      Pragun@aievoked.com
-    </a>
-  </div>
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
+              <FontAwesomeIcon icon={faEnvelope} className="text-white text-lg" />
+            </div>
+            <a
+              href="mailto:Pragun@aievoked.com"
+              className="text-white hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Pragun@aievoked.com
+            </a>
+          </div>
 
-  <div className="flex items-center space-x-4">
-    <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
-      <FontAwesomeIcon icon={faPhone} className="text-white text-lg" />
-    </div>
-    <a
-      href="tel:+919266101567"
-      className="text-white hover:underline"
-      onClick={(e) => e.stopPropagation()}
-    >
-      +91 92661 01567
-    </a>
-  </div>
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
+              <FontAwesomeIcon icon={faPhone} className="text-white text-lg" />
+            </div>
+            <a
+              href="tel:+919266101567"
+              className="text-white hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              +91 92661 01567
+            </a>
+          </div>
 
-  <div className="flex items-center space-x-4">
-    <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
-      <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white text-lg" />
-    </div>
-    <p className="text-white">Delhi, India</p>
-  </div>
-</div>
-
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white text-lg" />
+            </div>
+            <p className="text-white">Delhi, India</p>
+          </div>
+        </div>
       </div>
     </div>
   );
