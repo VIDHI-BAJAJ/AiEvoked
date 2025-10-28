@@ -190,7 +190,7 @@ const Home = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
             Book a 15-min teardown
-             <ArrowRight className="w-5 h-5" />
+             {/* <ArrowRight className="w-5 h-5" /> */}
           </button>
         </div>
       </div>
@@ -781,7 +781,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
                 Book 15-min teardown
-                <ArrowRight className="w-5 h-5" />
+                {/* <ArrowRight className="w-5 h-5" /> */}
               </button>
               {/* <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
                 See live demo
