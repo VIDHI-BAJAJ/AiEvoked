@@ -52,77 +52,97 @@ const handleGoogleSubmit = async (e) => {
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Contact Form */}
-        <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl">
-          <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
+      <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 shadow-xl">
+  <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
 
-          {succeeded && (
-            <div className="mb-6 p-4 bg-green-900 text-green-200 rounded-lg flex items-center">
-              <i className="fas fa-check-circle text-green-400 mr-2"></i>
-              Message sent successfully! We’ll get back to you soon.
-            </div>
-          )}
+  {succeeded && (
+    <div className="mb-6 p-4 bg-green-900 text-green-200 rounded-lg flex items-center">
+      <i className="fas fa-check-circle text-green-400 mr-2"></i>
+      Message sent successfully! We’ll get back to you soon.
+    </div>
+  )}
 
-          <form onSubmit={handleGoogleSubmit} className="space-y-5">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Full Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                name="name"
-                required
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="John Doe"
-              />
-            </div>
+  <form onSubmit={handleGoogleSubmit} className="space-y-5">
+    <div>
+      <label htmlFor="name" className="block text-sm font-medium mb-2">
+        Full Name
+      </label>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        required
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="John Doe"
+      />
+    </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email Address
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="you@example.com"
-              />
-            </div>
+    <div>
+      <label htmlFor="email" className="block text-sm font-medium mb-2">
+        Email Address
+      </label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        required
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="you@example.com"
+      />
+    </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Tell us how we can help..."
-              ></textarea>
-            </div>
+    {/* Service Dropdown */}
+    <div>
+      <label htmlFor="service" className="block text-sm font-medium mb-2">
+        Service Interested In
+      </label>
+      <select
+        id="service"
+        name="service"
+        required
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
+      >
+        <option value="" disabled>
+          Select a service
+        </option>
+        <option value="Automate+">Automate+</option>
+        <option value="SalesPilot">SalesPilot</option>
+        <option value="Custom Automations">Custom Automations</option>
+      </select>
+    </div>
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className={`w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                submitting ? "opacity-70 cursor-not-allowed" : "hover:shadow-lg hover:scale-105"
-              }`}
-            >
-              {submitting ? (
-                <span className="flex items-center justify-center">
-                  <i className="fas fa-spinner animate-spin mr-2"></i>
-                  Sending...
-                </span>
-              ) : (
-                "Send Message →"
-              )}
-            </button>
-          </form>
-        </div>
+    <div>
+      <label htmlFor="message" className="block text-sm font-medium mb-2">
+        Message
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Tell us how we can help..."
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      disabled={submitting}
+      className={`w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+        submitting ? "opacity-70 cursor-not-allowed" : "hover:shadow-lg hover:scale-105"
+      }`}
+    >
+      {submitting ? (
+        <span className="flex items-center justify-center">
+          <i className="fas fa-spinner animate-spin mr-2"></i>
+          Sending...
+        </span>
+      ) : (
+        "Send Message →"
+      )}
+    </button>
+  </form>
+</div>
 
       {/* Contact Info */}
 {/* Contact Info */}
@@ -133,7 +153,11 @@ const handleGoogleSubmit = async (e) => {
     <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
       <FontAwesomeIcon icon={faEnvelope} className="text-white text-lg" />
     </div>
-    <a href="mailto:Pragun@aievoked.com" className="text-white hover:underline">
+    <a
+      href="mailto:Pragun@aievoked.com"
+      className="text-white hover:underline"
+      onClick={(e) => e.stopPropagation()}
+    >
       Pragun@aievoked.com
     </a>
   </div>
@@ -142,8 +166,12 @@ const handleGoogleSubmit = async (e) => {
     <div className="w-12 h-12 rounded-full bg-[#7E22CE] flex items-center justify-center">
       <FontAwesomeIcon icon={faPhone} className="text-white text-lg" />
     </div>
-    <a href="tel:+919266101567" className="text-white hover:underline">
-      9266101567
+    <a
+      href="tel:+919266101567"
+      className="text-white hover:underline"
+      onClick={(e) => e.stopPropagation()}
+    >
+      +91 92661 01567
     </a>
   </div>
 
@@ -154,7 +182,6 @@ const handleGoogleSubmit = async (e) => {
     <p className="text-white">Delhi, India</p>
   </div>
 </div>
-
 
       </div>
     </div>

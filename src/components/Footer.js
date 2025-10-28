@@ -66,40 +66,48 @@ const Footer = () => {
         </div>
 
         {/* 4️⃣ Contact Info */}
-        <div>
-          <h3 className="font-semibold text-lg mb-4 text-white">Contact</h3>
-          <ul className="space-y-4">
-            <li className="flex items-start space-x-3">
-              <i className="fas fa-phone text-blue-400 mt-1"></i>
-              <div>
-                <h4 className="text-sm font-medium text-gray-300">Phone</h4>
-                <a href="tel:+919266101567" className="text-sm text-gray-400 hover:text-blue-400 transition">
-                  9266101567
-                </a>
-              </div>
-            </li>
+     <div>
+  <h3 className="font-semibold text-lg mb-4 text-white">Contact</h3>
+  <ul className="space-y-4">
+    <li className="flex items-start space-x-3">
+      <i className="fas fa-phone text-blue-400 mt-1"></i>
+      <div>
+        <h4 className="text-sm font-medium text-gray-300">Phone</h4>
+        <a
+          href="tel:+919266101567"
+          className="text-sm text-gray-400 hover:text-blue-400 transition"
+          onClick={(e) => e.stopPropagation()}
+          rel="noopener"
+        >
+          +91 92661 01567
+        </a>
+      </div>
+    </li>
 
-            <li className="flex items-start space-x-3">
-              <i className="fas fa-envelope text-blue-400 mt-1"></i>
-              <div>
-                <h4 className="text-sm font-medium text-gray-300">Email</h4>
-                <a href="mailto:Pragun@aievoked.com" className="text-sm text-gray-400 hover:text-blue-400 transition">
-                  Pragun@aievoked.com
-                </a>
-              </div>
-            </li>
+    <li className="flex items-start space-x-3">
+      <i className="fas fa-envelope text-blue-400 mt-1"></i>
+      <div>
+        <h4 className="text-sm font-medium text-gray-300">Email</h4>
+        <a
+          href="mailto:Pragun@aievoked.com"
+          className="text-sm text-gray-400 hover:text-blue-400 transition"
+          onClick={(e) => e.stopPropagation()}
+          rel="noopener"
+        >
+          Pragun@aievoked.com
+        </a>
+      </div>
+    </li>
 
-            <li className="flex items-start space-x-3">
-              <i className="fas fa-map-marker-alt text-blue-400 mt-1"></i>
-              <div>
-                <h4 className="text-sm font-medium text-gray-300">Location</h4>
-                <p className="text-sm text-gray-400">
-                  Delhi, India
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+    <li className="flex items-start space-x-3">
+      <i className="fas fa-map-marker-alt text-blue-400 mt-1"></i>
+      <div>
+        <h4 className="text-sm font-medium text-gray-300">Location</h4>
+        <p className="text-sm text-gray-400">Delhi, India</p>
+      </div>
+    </li>
+  </ul>
+</div>
       </div>
 
       {/* Footer Bottom */}

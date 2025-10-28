@@ -53,7 +53,7 @@ const Navbar = () => {
         {/* Desktop Button */}
         <div className="hidden md:flex items-center space-x-4">
           <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
-            Request demo {">"}
+            Request demo
           </button>
         </div>
 

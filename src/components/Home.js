@@ -3,9 +3,10 @@ import AnimatedSection from '../components/AnimatedSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { Zap, Clock, DollarSign, MessageSquare, Phone, Mail, Bot, CheckCircle, TrendingUp, FileCheck } from "lucide-react";
+import { Zap, Clock, DollarSign, MessageSquare, Phone, Mail, Bot, CheckCircle, TrendingUp, FileCheck, ArrowRight} from "lucide-react";
 import { Link } from "react-router-dom";
 import FixedFooter from './FixedFooter';
+
 const Home = () => {
   const [testProgress, setTestProgress] = useState(0);
   useEffect(() => {
@@ -158,107 +159,121 @@ const Home = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+ const logos = [
+    { src: '../Images/alghero.jpeg', alt: 'Alghero' },
+    { src: '../Images/maricham.jpeg', alt: 'Maricham' },
+    { src: '../Images/SNC.jpeg', alt: 'SNC' },
+    { src: '../Images/vidhitsu.jpeg', alt: 'Vidhitsu' },
+  ];
+
   return (
     <>
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-black text-white" style={{ backgroundColor: '#080412' }}>
       {/* Hero Section */}
-      <AnimatedSection>
-        <section className="md:mt-24 mt-1 pt-24 pb-20 px-4 sm:px-6 md:px-8 lg:px-16">
-          <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            {/* Left Content */}
-            <div className="lg:w-1/2 space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
-                Turn More Leads into Booked Calls & Closed Deals—Automatically
-              </h1>
-              <p className="text-gray-300 text-base sm:text-lg mt-6">
-                2-min replies. +20–40% higher show rates. Proposals in hours. Proof every week. SLAs after readiness.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
-                  Book a 15-min teardown
-                </button>
-                <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
-                  See live demo
-                </button>
+     <AnimatedSection>
+  <section className="md:mt-24 mt-1 pt-24 pb-20 px-4 sm:px-6 md:px-8 lg:px-16">
+    <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      {/* Left Content */}
+      <div className="lg:w-1/2 space-y-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
+          Turn More Leads into Booked Calls & Closed Deals—Automatically
+        </h1>
+        <p className="text-gray-300 text-base sm:text-lg mt-6">
+          2-min replies. +20–40% higher show rates. Proposals in hours. Proof every week. SLAs after readiness.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+          <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
+            Book a 15-min teardown
+          </button>
+        </div>
+      </div>
+
+      {/* Right Content - Test Results Card */}
+      <div className="lg:w-1/2 w-full mt-10 lg:mt-0">
+        <div className="bg-[#151120] rounded-xl p-6 border border-gray-700 shadow-lg">
+          <div className="rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
+            <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
+              <div className="ml-3">
+                <span className="font-semibold">WorkFlow</span>
+                <span className="text-sm text-gray-400 ml-2">7 of 7 Test results ready</span>
               </div>
             </div>
-
-            {/* Right Content - Test Results Card */}
-            <div className="lg:w-1/2 w-full mt-10 lg:mt-0">
-              <div className="bg-[#151120] rounded-xl p-6 border border-gray-700 shadow-lg">
-                <div className="rounded-xl pb-5 border border-gray-700 shadow-lg bg-[linear-gradient(90deg,rgba(91,47,234,0.10)_0%,rgba(228,207,255,0)_100%)]">
-                  <div className="flex items-center mb-4 pb-4 border-b border-gray-700 w-full p-4">
-                    <img src="https://via.placeholder.com/32" alt="eBay" className="w-8 h-8 rounded" />
-                    <div className="ml-3">
-                      <span className="font-semibold">WorkFlow</span>
-                      <span className="text-sm text-gray-400 ml-2">7 of 7 Test results ready</span>
+            <div className="ml-4 relative pl-8 p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30 max-h-[400px] overflow-y-auto">
+              {[
+                { text: "Leads In (Forms / WhatsApp/ Email / Ads)", passed: testProgress >= 1 },
+                { text: "Speed Stack (instant humanlike reply + calendar)", passed: testProgress >= 2 },
+                { text: "Hot-Route (owner alert + claim)", passed: testProgress >= 3 },
+                { text: "Proposal Accelerator (autodraft → e-sign)", passed: testProgress >= 4 },
+                { text: "CRM Update & Reporting", passed: testProgress >= 4 },
+                { text: "Revival Engine (nonresponders + old pipeline)", passed: testProgress >= 4 },
+                { text: "Onboarding + Reporting", passed: testProgress >= 4 },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`flex items-start mb-4 group ${item.passed ? 'opacity-100' : 'opacity-50'}`}
+                  style={{ transition: 'opacity 0.5s ease-in-out' }}
+                >
+                  <div
+                    className={`absolute left-1 w-6 h-6 bg-black border-2 ${
+                      item.passed ? 'border-purple-500' : 'border-gray-500'
+                    } flex items-center justify-center group-hover:bg-opacity-80 transition-colors`}
+                  >
+                    {item.passed && (
+                      <span className="text-white text-lg font-bold">✓</span>
+                    )}
+                  </div>
+                  <div className="ml-6 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span>{item.text}</span>
+                      {item.passed && (
+                        <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">
+                          Passing
+                        </span>
+                      )}
                     </div>
                   </div>
-                  <div className="ml-4 relative pl-8 p-4 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-0.5 before:bg-purple-500/30 max-h-[400px] overflow-y-auto">
-                    {[
-                      { text: "Leads In (Forms / WhatsApp/ Email / Ads)", passed: testProgress >= 1 },
-                      { text: "Speed Stack (instant humanlike reply + calendar)", passed: testProgress >= 2 },
-                      { text: "Hot-Route (owner alert + claim)", passed: testProgress >= 3 },
-                      { text: "Proposal Accelerator (autodraft → e-sign)", passed: testProgress >= 4 },
-                      { text: "CRM Update & Reporting", passed: testProgress >= 4 },
-                      { text: "Revival Engine (nonresponders + old pipeline)", passed: testProgress >= 4 },
-                      { text: "Onboarding + Reporting", passed: testProgress >= 4 },
-                    ].map((item, idx) => (
-                      <div
-                        key={idx}
-                        className={`flex items-start mb-4 group ${item.passed ? 'opacity-100' : 'opacity-50'}`}
-                        style={{ transition: 'opacity 0.5s ease-in-out' }}
-                      >
-                        <div className={`absolute left-1 w-6 h-6 bg-black border-2 ${item.passed ? 'border-purple-500' : 'border-gray-500'} flex items-center justify-center group-hover:bg-purple-600 transition-colors`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4l2 2h4l2-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-6 9l2 2 4-4" />
-                          </svg>
-                        </div>
-                        <div className="ml-6 flex-1">
-                          <div className="flex items-center justify-between">
-                            <span>{item.text}</span>
-                            {item.passed && (
-                              <span className="text-green-500 text-sm font-medium px-2 py-1 bg-green-900/30 rounded">Passing</span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                    <div className={`mt-8 pt-4 border-t border-gray-700 flex flex-wrap gap-4 justify-between ${testProgress === 4 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                        <span className="text-sm">22 tests passing</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                        <span className="text-sm">10 tests failing</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Trusted by Section */}
-      <AnimatedSection delay={100}>
-        <section className="py-16 px-4 sm:px-6 md:px-8 lg:px-16">
-          <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-gray-400 text-sm uppercase tracking-wider">Trusted by performance-led agencies & venture-backed teams.</p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 items-center">
-              {["birdie", "eBay", "zuma", "Company"].map((name, i) => (
-                <div key={i} className="flex justify-center">
-                  <img src={`https://via.placeholder.com/120x40?text=${name}`} alt={name} className="h-8 sm:h-10" />
                 </div>
               ))}
+              <div
+                className={`mt-8 pt-4 border-t border-gray-700 flex flex-wrap gap-4 justify-between ${
+                  testProgress === 4 ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ transition: 'opacity 0.5s ease-in-out' }}
+              >
+                {/* Summary stats can be added here later if needed */}
+              </div>
             </div>
           </div>
-        </section>
-      </AnimatedSection>
+        </div>
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+      {/* Trusted by Section */}
+      
+      <AnimatedSection delay={100}>
+      <section className="py-16 px-4 sm:px-6 md:px-8 lg:px-16">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-gray-400 text-sm uppercase tracking-wider">
+              Trusted by performance-led agencies & venture-backed teams.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-items-center">
+            {logos.map((logo, index) => (
+              <div key={index} className="flex justify-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-8 sm:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </AnimatedSection>
 
       {/* Experience Section */}
       <AnimatedSection delay={600}>
@@ -290,12 +305,17 @@ const Home = () => {
                 <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Immediate results showcased</li>
                 <li className="flex items-start"><span className="text-[#7E22CE] mr-2">✓</span> Feel the premium conversation quality</li>
               </ul>
-              <button
+              {/* <button
                 onClick={() => setIsOpen(true)}
                 className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300"
               >
                 Call Me Now – Experience Automate+
-              </button>
+              </button> */}
+              <Link to="/contact">
+                <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
+                 Call Me Now – Experience Automate+
+                </button>
+              </Link>
             </div>
             <div className="border border-[#7E22CE] p-6 rounded-2xl hover:shadow-lg transition duration-300">
               <div className="text-center mb-4">
@@ -315,6 +335,7 @@ const Home = () => {
               <Link to="/contact">
                 <button className="w-full bg-gradient-to-r from-[#7E22CE] to-[#7E22CE] px-4 py-2 rounded-xl font-medium hover:shadow-xl transition duration-300">
                   Book Strategic Call
+                  <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
             </div>
@@ -450,43 +471,18 @@ const Home = () => {
       </AnimatedSection>
 
       {/* Testimonials */}
-      <AnimatedSection delay={700}>
-        <section className="py-20 px-4 sm:px-6 md:px-8 lg:px-16">
-          <div className="container mx-auto">
-            <div className="max-w-xl mx-auto text-center mb-12 px-2">
-              <p className="text-gray-300 text-base sm:text-lg">
-                Automate+ is trusted by leading organizations to enhance their development and operational efficiency for accuracy, scalability, and seamless integration.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
-              {[
-                { name: "Sudhir Minotra", company: "Vidhitsu Concepts", quote: "Before Automate+, we were losing deals because replies took forever..." },
-                { name: "Poonam", company: "Omnific Fitouts LLP", quote: "We had great funnels but were bleeding leads after form fills..." },
-                { name: "Sunil Nayyar", company: "Consultants", quote: "AI Evoked made our operations insanely fast..." },
-              ].map((t, i) => (
-                <div key={i} className="bg-black/50 rounded-xl p-6 border border-gray-700 shadow-lg relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-br from-orange-500/20 to-transparent"></div>
-                  <div className="relative z-10">
-                    <p className="text-gray-300 text-sm mb-6">"{t.quote}"</p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-semibold">{t.name}</div>
-                        <div className="text-xs text-gray-400">{t.company}</div>
-                      </div>
-                      <img src="https://via.placeholder.com/40" alt={t.name} className="w-10 h-10 rounded-full" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+    
          <AnimatedSection delay = {700}>
            <section className="py-20 px-4 md:px-8 lg:px-16">
              <div className="container mx-auto">
       {/* Header */}
          <div className="max-w-xl mx-auto text-center mb-12">
+           <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
+              THE SPEED IMPERATIVE
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-[#7E22CE] via-purple-400 to-pink-400 bg-clip-text text-transparent">
+             Testimonals
+            </h2>
                <p className="text-gray-300 text-lg">
              Automate+ is trusted by leading organizations to enhance their development and operational efficiency for accuracy, scalability, and seamless integration.
              </p>
@@ -506,7 +502,8 @@ const Home = () => {
                      <div className="font-semibold">Sudhir Minotra</div>
                      <div className="text-xs text-gray-400">Vidhitsu Concepts</div>
                    </div>
-                   <img src="https:via.placeholder.com/40" alt="Max Mullen" className="w-10 h-10 rounded-full" />
+                   {/* 
+                   <img src="https:via.placeholder.com/40" alt="Max Mullen" className="w-10 h-10 rounded-full" /> */}
                  </div>
                </div>
              </div>
@@ -523,7 +520,7 @@ const Home = () => {
                      <div className="font-semibold">Poonam</div>
                      <div className="text-xs text-gray-400">Omnific Fitouts LLP</div>
                    </div>
-                   <img src="https:via.placeholder.com/40" alt="Mark Belvedere" className="w-10 h-10 rounded-full" />
+                   {/* <img src="https:via.placeholder.com/40" alt="Mark Belvedere" className="w-10 h-10 rounded-full" /> */}
                  </div>
                </div>
              </div>
@@ -540,7 +537,7 @@ const Home = () => {
                      <div className="font-semibold">Sunil Nayyar</div>
                      <div className="text-xs text-gray-400">Consultants</div>
                    </div>
-                   <img src="https:via.placeholder.com/40" alt="Gautam Kedia" className="w-10 h-10 rounded-full" />
+                   {/* <img src="https:via.placeholder.com/40" alt="Gautam Kedia" className="w-10 h-10 rounded-full" /> */}
                  </div>
                </div>
              </div>
@@ -554,6 +551,9 @@ const Home = () => {
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-block bg-gray-900 text-xs px-3 py-1 rounded-full mb-4">
+              THE SPEED IMPERATIVE
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">Proof & Wins</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               We publish proof screenshots weekly. No cherry-picking.
@@ -775,10 +775,11 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
                 Book 15-min teardown
+                <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
+              {/* <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
                 See live demo
-              </button>
+              </button> */}
             </div>
           </div>
         </section>

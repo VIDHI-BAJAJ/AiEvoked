@@ -90,12 +90,12 @@ const AboutPage = () => {
                   Book a 15-min teardown
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <button className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-purple-600 text-purple-600 rounded-lg font-medium text-base hover:bg-purple-50 transition-colors">
+                {/* <button className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-purple-600 text-purple-600 rounded-lg font-medium text-base hover:bg-purple-50 transition-colors">
                   See your 7-day plan
-                </button>
+                </button> */}
               </div>
             </div>
-            <div className="relative lg:ml-8 animate-fade-in" style={{ animationDelay: "200ms" }}>
+            {/* <div className="relative lg:ml-8 animate-fade-in" style={{ animationDelay: "200ms" }}>
               <div className="w-full h-96 bg-gray-200 rounded-2xl flex items-center justify-center border border-gray-300">
                 <span className="text-white-500">Dashboard Preview</span>
               </div>
@@ -107,7 +107,7 @@ const AboutPage = () => {
                 <div className="text-2xl font-bold text-pink-600">+38%</div>
                 <div className="text-xs text-white-600">show rate</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -328,13 +328,13 @@ const AboutPage = () => {
                     </Link>
                     <p className="text-xs text-white-600 text-center">We'll show you exactly what's leaking and how to fix it</p>
                   </div>
-                  <div className="bg-gray-50 border border-gray-300 rounded-2xl p-6">
+                  {/* <div className="bg-gray-50 border border-gray-300 rounded-2xl p-6">
                     <div className="text-sm text-white-600 font-semibold mb-2">OR START HERE</div>
                     <button className="w-full inline-flex items-center justify-center px-6 py-3 bg-white border border-gray-300 text-white-900 rounded-lg font-medium text-lg hover:bg-gray-100 transition-colors mb-3">
                       Get the readiness checklist
                     </button>
                     <p className="text-xs text-white-600 text-center">See if you're ready for the 7-day install</p>
-                  </div>
+                  </div> */}
                   <div className="text-center pt-4">
                     <p className="text-sm text-purple-600 font-medium">⚡ First wins inside 48 hours</p>
                   </div>
