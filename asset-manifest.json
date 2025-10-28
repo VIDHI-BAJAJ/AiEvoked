@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/AiEvoked/static/css/main.911de6f3.css",
-    "main.js": "/AiEvoked/static/js/main.d93dedef.js",
+    "main.css": "/AiEvoked/static/css/main.8ed4fb1e.css",
+    "main.js": "/AiEvoked/static/js/main.d7d36e5b.js",
     "static/js/488.c210a876.chunk.js": "/AiEvoked/static/js/488.c210a876.chunk.js",
     "static/media/Logo.png": "/AiEvoked/static/media/Logo.296db9ab5ef15b940043.png",
     "index.html": "/AiEvoked/index.html",
-    "main.911de6f3.css.map": "/AiEvoked/static/css/main.911de6f3.css.map",
-    "main.d93dedef.js.map": "/AiEvoked/static/js/main.d93dedef.js.map",
+    "main.8ed4fb1e.css.map": "/AiEvoked/static/css/main.8ed4fb1e.css.map",
+    "main.d7d36e5b.js.map": "/AiEvoked/static/js/main.d7d36e5b.js.map",
     "488.c210a876.chunk.js.map": "/AiEvoked/static/js/488.c210a876.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.911de6f3.css",
-    "static/js/main.d93dedef.js"
+    "static/css/main.8ed4fb1e.css",
+    "static/js/main.d7d36e5b.js"
   ]
 }
