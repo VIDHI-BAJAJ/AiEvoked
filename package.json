@@ -1,7 +1,7 @@
 {
   "name": "project",
   "version": "0.1.0",
-  "homepage": "https://vidhi-bajaj.github.io/AiEvoked",
+  "homepage": "https://aievoked.in/",
   "private": true,
   "dependencies": {
     "@formspree/react": "^3.0.0",
