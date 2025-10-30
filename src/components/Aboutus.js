@@ -54,7 +54,7 @@ const AboutPage = () => {
 
   // Final CTA benefits
   const benefits = [
-    "3 installs free (₹1.5L value)",
+    "3 installs free ($1600 value)",
     "Pilot credits to setup if it works",
     "First wins in 48 hours",
     "Only 6 pilot slots per 14 days",
@@ -87,8 +87,8 @@ const AboutPage = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg font-medium text-base hover:bg-purple-700 transition-colors">
-                  Book a 15-min teardown
-                  <ArrowRight className="w-5 h-5" />
+                    Book a 15-min pilot
+                  {/* <ArrowRight className="w-5 h-5" /> */}
                 </button>
                 {/* <button className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-purple-600 text-purple-600 rounded-lg font-medium text-base hover:bg-purple-50 transition-colors">
                   See your 7-day plan
@@ -323,8 +323,8 @@ const AboutPage = () => {
                      <Link
                       to="/contact"
                       className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg font-medium text-lg hover:bg-purple-700 transition-colors mb-3">
-                      Book a 15-min teardown
-                      <ArrowRight className="w-5 h-5" />
+                        Book a 15-min pilot
+                      {/* <ArrowRight className="w-5 h-5" /> */}
                     </Link>
                     <p className="text-xs text-white-600 text-center">We'll show you exactly what's leaking and how to fix it</p>
                   </div>
@@ -335,9 +335,9 @@ const AboutPage = () => {
                     </button>
                     <p className="text-xs text-white-600 text-center">See if you're ready for the 7-day install</p>
                   </div> */}
-                  <div className="text-center pt-4">
+                  {/* <div className="text-center pt-4">
                     <p className="text-sm text-purple-600 font-medium">⚡ First wins inside 48 hours</p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

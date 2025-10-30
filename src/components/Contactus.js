@@ -158,7 +158,7 @@ const Contactus = () => {
               <FontAwesomeIcon icon={faEnvelope} className="text-white text-lg" />
             </div>
             <a
-              href="mailto:Pragun@aievoked.com"
+              href="mailto:pragun@aievoked.com"
               className="text-white hover:underline"
               onClick={(e) => e.stopPropagation()}
             >

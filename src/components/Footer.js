@@ -89,7 +89,7 @@ const Footer = () => {
       <div>
         <h4 className="text-sm font-medium text-gray-300">Email</h4>
         <a
-          href="mailto:Pragun@aievoked.com"
+          href="mailto:pragun@aievoked.com"
           className="text-sm text-gray-400 hover:text-blue-400 transition"
           onClick={(e) => e.stopPropagation()}
           rel="noopener"

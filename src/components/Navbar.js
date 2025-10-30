@@ -53,7 +53,7 @@ const Navbar = () => {
         {/* Desktop Button */}
         <div className="hidden md:flex items-center space-x-4">
           <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
-            Request demo
+            Request Demo
           </button>
         </div>
 
@@ -75,7 +75,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={link.path}
-                className="text-white hover:text-purple-400 transition-colors text-lg"
+                className="text-white hover:text-black transition-colors text-lg"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.name}
@@ -86,7 +86,7 @@ const Navbar = () => {
            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors inline-block text-center"
            onClick={() => setTimeout(() => setMenuOpen(false), 50)}
           >
-           Request demo {">"}
+           Request Demo {">"}
          </Link>
           </div>
         </div>
