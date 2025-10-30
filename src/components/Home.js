@@ -190,10 +190,10 @@ const Home = () => {
             <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
               <div className="lg:w-1/2 space-y-6">
                 <h1 className="text-2xl sm:text-2xl md:text-2xl lg:text-5xl font-bold leading-tight">
-                  Convert More Leads Into Booked Calls & Clients in 7 Days — Automatically.
+                  Convert More Leads Into Booked Calls & Clients in 7 Days — Automatically
                 </h1>
                 <p className="text-gray-300 text-base sm:text-lg mt-6">
-                  Install your Revenue Engine in 7 days — 2-min replies, +40% more calls, proposals in hours. Backed by SLAs and weekly proof.
+                  Install your Revenue Engine in 7 days — 2- min replies, +40% more calls, proposals in hours. Backed by SLAs and weekly proof.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-6">
                   <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors whitespace-nowrap">
@@ -283,9 +283,9 @@ const Home = () => {
         <AnimatedSection delay={600}>
           <section className="py-20 px-4 sm:px-6 md:px-8 lg:px-16">
             <div className="text-center mb-12">
-              <div className="inline-block text-xs px-3 py-1 rounded-full mb-4 text-[#7E22CE]">
+              {/* <div className="inline-block text-xs px-3 py-1 rounded-full mb-4 text-[#7E22CE]">
                 EXPERIENCE THE DIFFERENCE
-              </div>
+              </div> */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white bg-clip-text text-transparent">
                 Watch Automate+ Convert Leads Faster Than Your Team — Live
               </h2>
